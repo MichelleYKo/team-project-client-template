@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 6px;
+  outline: 0;
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+
+.modal-title{
+    padding: 1px;
+    text-align: center;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+}

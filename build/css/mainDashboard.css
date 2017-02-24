@@ -5,33 +5,48 @@
 		line-height: 1.5em;
 	}
 
-	#leftbar {
+	#sidebar {
 		padding-top: 60px;
 		background: #222222;
 		overflow-y: auto;
-		height: 100%;
+		top: 0;
+		bottom: 0;
 	}
 
-	.leftbar-header {
-		position: fixed;
+	#sidebar-header {
+
+	}
+
+	#sidebar-list {
+
+	}
+
+	#sidebar-footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: black;
 	}
 
 	.createPlaylistBtn {
 		margin-bottom: 10px;
-		background: #1E392A;
-		border-radius: 24px;
+		background: green;
+		border-radius: 12px;
+		border-color: black;
 	}
 
-	.leftbar-list {
-		/*padding-top: 60px;*/
-	}
-
-	.leftbarbutton {
-		outline-color: #22222;
-		background: #828081;
+	.sidebarListItem {
+		border-bottom: 1px solid black;
 		color: white;
 	}
 
 	h3 {
 		color: #3CC47C;
+	}
+
+	hr {
+		border-style: inset;
+		border-width: 1px;
+		border-color: black;
 	}

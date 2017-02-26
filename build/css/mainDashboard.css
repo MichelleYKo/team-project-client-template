@@ -6,11 +6,16 @@
 	}
 
 	#sidebar {
-		padding-top: 60px;
-		background: #222222;
-		overflow-y: auto;
-		top: 0;
+		position: fixed;
+		top: 50px;
 		bottom: 0;
+		left: 0;
+		padding: 0;
+		padding-bottom: 0;
+		/*width: auto;*/
+		overflow-y: scroll;
+		overflow-x: hidden;
+		background: #222222;
 	}
 
 	#sidebar-header {
@@ -22,15 +27,15 @@
 	}
 
 	#sidebar-footer {
-		position: absolute;
+		/*position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: black;
+		background-color: black;*/
 	}
 
 	.createPlaylistBtn {
-		margin-bottom: 10px;
+		margin-top: 10px;
 		background: green;
 		border-radius: 12px;
 		border-color: black;
@@ -39,6 +44,11 @@
 	.sidebarListItem {
 		border-bottom: 1px solid black;
 		color: white;
+		display: inline;
+	}
+
+	div {
+		display: block;
 	}
 
 	h3 {
@@ -46,6 +56,8 @@
 	}
 
 	hr {
+		margin-top: 10px;
+		margin-bottom: 5px;
 		border-style: inset;
 		border-width: 1px;
 		border-color: black;

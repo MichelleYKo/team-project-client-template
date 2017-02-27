@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head;
+  any other head content must come *after* these tags -->
+  <title>Search Results</title>
+  <!-- Bootstrap's CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/kiwi.css" rel="stylesheet">
+  <!-- JQuery imported only to close Modal -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Bootstrap's Javascript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Simple Javascript function to show Modal-->
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#myModal").modal('show');
+  });
+  </script>
+</head>
+
+<body>
+  <!-- Popup -->
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- Search bar -->
+        <div class="modal-header">
+          <div class="btn-group">
+              <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Search By <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Song</a></li>
+                  <li><a href="#">Artist</a></li>
+                  <li><a href="#">Album</a></li>
+                  <li><a href="#">Genre</a></li>
+                  <li><a href="#">User</a></li>
+                  <li><a href="#">Playlist</a></li>
+              </ul>
+          </div>
+          <input class="textfield-input btn btn-default" type="text" value="" placeholder="Search" aria-required="false">
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+        <!-- Music Table -->
+        <div class="Music Table">
+  <table class="table">
+      <thead>
+          <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Album</th>
+              <th>Genre</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>1</td>
+              <td>John</td>
+              <td>Carter</td>
+              <td>johncarter@mail.com</td>
+              <td>Rock</td>
+          </tr>
+          <tr>
+              <td>2</td>
+              <td>Peter</td>
+              <td>Parker</td>
+              <td>peterparker@mail.com</td>
+              <td>Rock</td>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>John</td>
+              <td>Rambo</td>
+              <td>johnrambo@mail.com</td>
+              <td>Rock</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<div class="Artist table">
+    <table class="table">
+
+        <tbody>
+            <tr>
+                <td>Rihanna</td>
+
+            </tr>
+            <tr>
+                <td>Big Bang</td>
+
+            </tr>
+            <tr>
+                <td>Kanye</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+      </div>
+    </div>
+
+  </div>
+    <form>
+</body>
+</html>

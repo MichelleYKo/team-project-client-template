@@ -21,6 +21,14 @@
     $("#myModal").modal('show');
   });
   </script>
+
+  <!--accordion script-->
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+  <!--accordion script end--->
 </head>
 
 <body>
@@ -43,53 +51,74 @@
               </ul>
           </div>
           <input class="textfield-input btn btn-default" type="text" value="" placeholder="Search" aria-required="false">
+
           <button type="submit" class="btn btn-default">
             <span class="glyphicon glyphicon-search"></span>
           </button>
         </div>
         <!-- Music Table -->
-        <div class="Music Table">
-  <table class="table">
+
+        <div class="Songs">
+          <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title-SONGS">
+                              <a data-toggle="collapse" href="#collapseSONGS"> SONGS </a>
+                          </h4>
+                      </div>
+                      <div id="collapseSONGS" class="panel-collapse in collapse in">
+                          <div class="panel-body">
+  <table class="table table-hover">
       <thead>
           <tr>
-              <th>(play button)</th>
+              <th></th>
               <th>Title</th>
               <th>Artist</th>
               <th>Album</th>
               <th>Genre</th>
-              <th>(add button)</th>
           </tr>
       </thead>
       <tbody>
           <tr>
-              <td>1</td>
+              <td>button</td>
               <td>John</td>
               <td>Carter</td>
               <td>johncarter@mail.com</td>
               <td>Rock</td>
-              <td>1</td>
           </tr>
           <tr>
-              <td>2</td>
+              <td>button</td>
               <td>Peter</td>
               <td>Parker</td>
               <td>peterparker@mail.com</td>
               <td>Rock</td>
-              <td>2</td>
           </tr>
           <tr>
-              <td>3</td>
+              <td>button</td>
               <td>John</td>
               <td>Rambo</td>
               <td>johnrambo@mail.com</td>
               <td>Rock</td>
-              <td>3</td>
           </tr>
       </tbody>
   </table>
 </div>
-<div class="Artist table">
-    <table class="table">
+            </div>
+        </div>
+    </div>
+
+
+  <div class="artists">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h4 class="panel-title-ARTISTS">
+                      <a data-toggle="collapse" href="#collapseARTISTS"> ARTISTS </a>
+                  </h4>
+              </div>
+              <div id="collapseARTISTS" class="panel-collapse in collapse">
+                  <div class="panel-body">
+
+    <table class="table table-hover">
 
         <tbody>
             <tr>
@@ -106,9 +135,56 @@
             </tr>
         </tbody>
     </table>
+  </div>
 </div>
-<div class="Genre table">
-    <table class="table">
+</div>
+</div>
+
+
+<div class="albums">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title-ALBUMS">
+                    <a data-toggle="collapse" href="#collapseALBUMS"> ALBUMS</a>
+                </h4>
+            </div>
+            <div id="collapseALBUMS" class="panel-collapse in collapse in">
+                <div class="panel-body">
+
+    <table class="table table-hover">
+
+        <tbody>
+            <tr>
+              <td>button</td>
+                <td>What's my Name</td>
+
+            </tr>
+            <tr>
+              <td>button</td>
+                <td>Map of the Human soul</td>
+
+            </tr>
+            <tr>
+              <td>button</td>
+                <td>Born Hater</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="genre">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4 class="panel-title-GENRE">
+                          <a data-toggle="collapse" href="#collapseGENRE"> GENRE </a>
+                      </h4>
+                  </div>
+                  <div id="collapseGENRE" class="panel-collapse in collapse">
+                      <div class="panel-body">
+    <table class="table table-hover">
         <tbody>
             <tr>
                 <td>Rock</td>
@@ -123,9 +199,22 @@
             </tr>
         </tbody>
     </table>
-</div>
-<div class="User table">
-    <table class="table">
+  </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="users">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                     <h4 class="panel-title-USERS">
+                         <a data-toggle="collapse" href="#collapseUSERS"> USERS </a>
+                     </h4>
+                 </div>
+                 <div id="collapseUSERS" class="panel-collapse in collapse">
+                     <div class="panel-body">
+
+    <table class="table table-hover">
         <tbody>
             <tr>
                 <td>Michelle</td>
@@ -152,28 +241,47 @@
             </tr>
         </tbody>
     </table>
-</div>
-<div class="Playlist table">
-    <table class="table">
+  </div>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="playlists">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title-PLAYLISTS">
+                              <a data-toggle="collapse" href="#collapsePLAYLISTS"> PLAYLISTS </a>
+                          </h4>
+                      </div>
+                      <div id="collapsePLAYLISTS" class="panel-collapse in collapse">
+                          <div class="panel-body">
+    <table class="table table-hover">
+
         <tbody>
             <tr>
+              <td>button</td>
                 <td>Rock stuff</td>
 
             </tr>
             <tr>
+                <td>button</td>
                 <td>Road trip muz</td>
 
             </tr>
             <tr>
+                <td>button</td>
                 <td>study playlist</td>
             </tr>
         </tbody>
     </table>
-</div>
+  </div>
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
 
   </div>
-    <form>
 </body>
 </html>

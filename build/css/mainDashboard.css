@@ -149,3 +149,12 @@ Black*/
   color: white;
   background-color: #828081;
 }
+
+.music-popup:hover .play-button{
+  visibility: visible;
+}
+
+
+.play-button{
+  visibility: hidden;
+}

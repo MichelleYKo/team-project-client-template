@@ -118,7 +118,9 @@ thead{
 
 .table>tbody>tr>td:last-child{
 	color: white;
+  text-align: right;
 	padding-top: 8px;
+  width: 1px;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
@@ -131,3 +133,19 @@ Light Tan: #E9C893
 Tin Grey: #828081
 Dark Grey: #222222
 Black*/
+
+
+/* Music player CSS */
+.music-popup{
+  width: 300px;
+  color: #222222;
+  position: fixed;
+  bottom: 0px;
+  right: 750px;
+  padding-bottom: 10px;
+
+}
+.music-popup:hover{
+  color: white;
+  background-color: #828081;
+}

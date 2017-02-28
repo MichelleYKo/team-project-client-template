@@ -1,64 +1,133 @@
-	body {
-		margin:0;
-		padding:0;
-		font-family: Sans-Serif;
-		line-height: 1.5em;
-	}
+body {
+  margin:0;
+  padding:0;
+  font-family: Sans-Serif;
+  line-height: 1.5em;
+}
 
-	#sidebar {
-		position: fixed;
-		top: 50px;
-		bottom: 0;
-		left: 0;
-		padding: 0;
-		padding-bottom: 0;
-		/*width: auto;*/
-		overflow-y: scroll;
-		overflow-x: hidden;
-		background: #222222;
-	}
+.navbar-brand {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
 
-	#sidebar-header {
+#sidebar {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  padding-bottom: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background: #222222;
+}
 
-	}
+#sidebar:hover{
+  overflow-y: auto;
+}
 
-	#sidebar-list {
+#sidebar-header {
 
-	}
+}
 
-	#sidebar-footer {
-		/*position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background-color: black;*/
-	}
+#sidebar-list {
 
-	.createPlaylistBtn {
-		margin-top: 10px;
-		background: green;
-		border-radius: 12px;
-		border-color: black;
-	}
+}
 
-	.sidebarListItem {
-		border-bottom: 1px solid black;
-		color: white;
-		display: inline;
-	}
+.sidebarListItem {
+  border-bottom: 1px solid black;
+  color: white;
+  display: inline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-	div {
-		display: block;
-	}
+#sidebar-footer {
+  /*position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;*/
+}
 
-	h3 {
-		color: #3CC47C;
-	}
+.createPlaylistBtn {
+  margin-top: 10px;
+  background: green;
+  border-radius: 12px;
+  border-color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-	hr {
-		margin-top: 10px;
-		margin-bottom: 5px;
-		border-style: inset;
-		border-width: 1px;
-		border-color: black;
-	}
+div {
+  display: block;
+}
+
+h3 {
+  color: #3CC47C;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-style: inset;
+  border-width: 1px;
+  border-color: black;
+}
+
+.main-page{
+	background: #222222;
+	top: 50px;
+	bottom:0;
+	left: 0;
+	background-color: #222222;
+	overflow-y: hidden;
+  border: 1px solid black;
+}
+
+.main-page:hover{
+	overflow-y: auto;
+}
+
+/*Main component*/
+.page-header{
+	border-bottom:none;
+	color: gray;
+}
+
+.table-borderless tbody tr td,
+.table-borderless tbody tr th,
+.table-borderless thead tr th,
+.table-borderless thead tr td,
+.table-borderless tfoot tr th,
+.table-borderless tfoot tr td {
+    border: none;
+}
+
+thead{
+	color: white;
+}
+
+.table>tbody>tr>td{
+	color: white;
+	padding-top: 15px;
+}
+
+.table>tbody>tr>td:last-child{
+	color: white;
+	padding-top: 8px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #828081;
+}
+
+/*Electric Green: #3CC47C
+Forest Green: #1E392A
+Light Tan: #E9C893
+Tin Grey: #828081
+Dark Grey: #222222
+Black*/

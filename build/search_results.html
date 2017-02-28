@@ -29,6 +29,25 @@
   }
   </style>
   <!--accordion script end--->
+  <!--popover script-->
+  <script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+		placement : 'top',
+        trigger: 'hover'
+    });
+});
+</script>
+<style type="text/css">
+	.bs-example{
+    	margin: 150px 50px;
+    }
+	.bs-example button{
+		margin: 5px;
+	}
+</style>
+  <!--popover script end-->
+
 </head>
 
 <body>
@@ -88,7 +107,7 @@
                         <td>Carter</td>
                         <td>Blood</td>
                         <td>Rock</td>
-                        <td><button type="submit" class="btn btn-default">
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
                         <td></td>
@@ -101,7 +120,7 @@
                         <td>Parker</td>
                         <td>Sweat</td>
                         <td>R&B</td>
-                        <td><button type="submit" class="btn btn-default">
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
                       </tr>
@@ -113,7 +132,7 @@
                         <td>Rambo</td>
                         <td>Tears</td>
                         <td>Pop</td>
-                        <td><button type="submit" class="btn btn-default">
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
                       </tr>
@@ -174,19 +193,19 @@
                       <tr>
 
                         <td>What's My Name</td>
-                        <td><button type="submit" class="btn btn-default">
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
                       </tr>
                       <tr>
                         <td>Map of the Human Soul</td>
-                        <td><button type="submit" class="btn btn-default">
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
                       </tr>
                       <tr>
                         <td>Born Hater</td>
-                        <td><button type="submit" class="btn btn-default">
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
                       </tr>
@@ -263,17 +282,23 @@
                     <tbody>
                       <tr>
                         <td>Rock Stuff</td>
-                        <td>button</td>
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                          <span class="glyphicon glyphicon-plus-sign"></span>
+                        </button></td>
                       </tr>
                       <tr>
 
                         <td>Road Trip Music</td>
-                        <td>button</td>
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                          <span class="glyphicon glyphicon-plus-sign"></span>
+                        </button></td>
                       </tr>
                       <tr>
 
                         <td>Study Playlist</td>
-                        <td>button</td>
+                        <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                          <span class="glyphicon glyphicon-plus-sign"></span>
+                        </button></td>
                       </tr>
                     </tbody>
                   </table>

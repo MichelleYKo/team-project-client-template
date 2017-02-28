@@ -1,4 +1,4 @@
-# Team Notes
+#Pages
 * Main Page
 	* Music Playing
 * Account Settings
@@ -6,5 +6,8 @@
 * Playlist Settings
 * Create Playlist
 
-#colors 
-*828081
+#Colors 
+* Electric Green: #3CC47C
+* Forest Green: #1E392A
+* Light Tan: #E9C893
+* Tin Grey: #828081

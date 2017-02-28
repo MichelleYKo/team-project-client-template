@@ -32,21 +32,21 @@
   <!--accordion script end--->
   <!--popover script-->
   <script type="text/javascript">
-$(document).ready(function(){
+  $(document).ready(function(){
     $('[data-toggle="popover"]').popover({
-		placement : 'top',
-        trigger: 'hover'
+      placement : 'top',
+      trigger: 'hover'
     });
-});
-</script>
-<style type="text/css">
-	.bs-example{
-    	margin: 150px 50px;
-    }
-	.bs-example button{
-		margin: 5px;
-	}
-</style>
+  });
+  </script>
+  <style type="text/css">
+  .bs-example{
+    margin: 150px 50px;
+  }
+  .bs-example button{
+    margin: 5px;
+  }
+  </style>
   <!--popover script end-->
 
 </head>
@@ -58,6 +58,11 @@ $(document).ready(function(){
       <div class="modal-content">
         <!-- Search bar -->
         <div class="modal-header">
+
+          <input type="text" class="form-control" placeholder="Search">
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
           <div class="btn-group">
             <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Search By <span class="caret"></span>
             </button>
@@ -71,17 +76,11 @@ $(document).ready(function(){
               <li><a href="#">Playlist</a></li>
             </ul>
           </div>
-          <input class="textfield-input btn btn-default" type="text" value="" placeholder="Search" aria-required="false">
-
-          <button type="submit" class="btn btn-default">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
         </div>
         <!-- Music Table -->
 
         <div class="Songs">
-          <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
+            <div class="panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-SONGS">
                   <a data-toggle="collapse" href="#collapseSONGS" aria-expanded="true"> SONGS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
@@ -112,7 +111,6 @@ $(document).ready(function(){
                         <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                         </button></td>
-                        <td></td>
                       </tr>
                       <tr>
                         <td><button type="submit" class="btn btn-default">
@@ -144,10 +142,8 @@ $(document).ready(function(){
               </div>
             </div>
           </div>
-
-
           <div class="artists">
-            <div class="panel panel-default">
+            <div class="panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-ARTISTS">
                   <a data-toggle="collapse" href="#collapseARTISTS"aria-expanded="true"> ARTISTS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
@@ -180,7 +176,7 @@ $(document).ready(function(){
 
 
           <div class="albums">
-            <div class="panel panel-default">
+            <div class="panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-ALBUMS">
                   <a data-toggle="collapse" href="#collapseALBUMS"aria-expanded="true"> ALBUMS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
@@ -219,7 +215,7 @@ $(document).ready(function(){
           </div>
 
           <div class="genre">
-            <div class="panel panel-default">
+            <div class="panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-GENRE">
                   <a data-toggle="collapse" href="#collapseGENRE"aria-expanded="true"> GENRE<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
@@ -248,7 +244,7 @@ $(document).ready(function(){
           </div>
 
           <div class="users">
-            <div class="panel panel-default">
+            <div class="panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-USERS">
                   <a data-toggle="collapse" href="#collapseUSERS"aria-expanded="true"> USERS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
@@ -274,7 +270,7 @@ $(document).ready(function(){
 
 
           <div class="playlists">
-            <div class="panel panel-default">
+            <div class="panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-PLAYLISTS">
                   <a data-toggle="collapse" href="#collapsePLAYLISTS"aria-expanded="true"> PLAYLISTS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>

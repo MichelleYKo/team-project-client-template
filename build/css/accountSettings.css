@@ -1,0 +1,98 @@
+.center-pills {
+    display: flex;
+    justify-content: center;
+    color: #3CC47C;
+    background-color: #222222;
+    padding:0 15px;
+}
+
+.account-pop{
+  border: 2px solid #828081;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  background-color: #222222
+}
+
+.account-top{
+  border-bottom: 2px solid #828081;
+}
+
+.account-bottom{
+  border-top: 2px solid #828081;
+}
+
+.pill-top{
+  padding-top: 5px;
+}
+
+.pill-bottom{
+  padding-bottom: 5px;
+}
+
+.large-button{
+    height: auto;
+    width: 200px;
+	  display:inline-block;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+}
+
+.large-button:hover {
+    background-color: #828081;
+}
+
+.style-icon {
+    color: #3CC47C;
+}
+
+.style-icon:hover {
+    color: #3CC47C;
+    background-color: #828081;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.electric{
+  color: #3CC47C;
+}
+
+.dark-grey{
+  background-color: #222222;
+}
+
+.grey{
+  color: #828081;
+}
+
+.butt{
+  border: 2px solid #828081;
+  background-color: #222222;
+  color: #3CC47C;
+}
+
+.nav>li>a:hover {
+   background-color:#828081;
+   -webkit-border-radius: 16px;
+   -moz-border-radius: 16px;
+   border-radius: 16px;
+}
+
+.account-bottom>button:hover {
+  background-color: #828081;
+  color: #3CC47C;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}

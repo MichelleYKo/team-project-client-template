@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head;
+         any other head content must come *after* these tags -->
+    <title>Account Settings</title>
+    <!-- Bootstrap's CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/kiwi.css" rel="stylesheet">
+    <link href="css/accountSettings.css" rel="stylesheet">
+    <!-- JQuery imported only to close Modal -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Bootstrap's Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Simple Javascript function to show Modal-->
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("#myModal").modal('show');
+    	});
+    </script>
+  </head>
+
+  <body>
+  <div id="accountSettings" class="modal fade grey">
+    <div class="modal-dialog">
+      <div class="modal-content account-pop">
+        <div class="modal-header electric account-top">
+            <h3 class="modal-title electric"><strong>Account Settings</strong></h3>
+        </div>
+        <!-- Top Row -->
+        <ul class="nav nav-pills center-pills text-center pill-top">
+
+          <li id="submenu-item-account-overview" class="large-button">
+              <a href="#"><h1 class="glyphicon glyphicon-home style-icon">
+              </h1> <br><strong class="electric">Account Overview</strong></a>
+          </li>
+
+          <li id="submenu-item-edit-profile" class="large-button">
+              <a href="#"><h1 class="glyphicon glyphicon-pencil style-icon">
+              </h1> <br><strong class="electric">Edit Profile</strong></a>
+          </li>
+
+          <li id="submenu-item-change-password" class="large-button">
+              <a href="#"><h1 class="glyphicon glyphicon-lock style-icon">
+              </h1> <br><strong class="electric">Change Password</strong></a>
+          </li>
+
+          </ul>
+
+          <!-- Bottom Row -->
+          <ul class="nav nav-pills center-pills text-center electric pill-bottom">
+
+          <li id="submenu-item-recover-playlists" class="large-button">
+              <a href="#"><h1 class="glyphicon glyphicon-search style-icon">
+              </h1> <br><strong class="electric">Recover Playlists</strong></a>
+          </li>
+
+          <li id="submenu-item-connect-accounts" class="large-button">
+              <a href="#"><h1 class="glyphicon glyphicon-link style-icon">
+              </h1> <br><strong class="electric">Connect Accounts</strong></a>
+          </li>
+
+          <li id="submenu-music-settings" class="large-button">
+              <a href="#"><h1 class="glyphicon glyphicon-headphones style-icon">
+              </h1> <br><strong class="electric">Music Settings</strong></a>
+          </li>
+
+          </ul>
+
+        <div class="modal-footer account-bottom">
+            <button type="button" class="btn btn-default butt" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+
+</html>

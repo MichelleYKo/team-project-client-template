@@ -14,4 +14,42 @@ a[aria-expanded=false] .glyphicon-menu-up
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
+  color: #FFFFFF;
 }
+
+.modal-content
+{
+  background-color: #000000;
+}
+
+.panel-title
+{
+  color: #3CC47C;
+}
+
+.panel-heading
+{
+  background-color: #1E392A;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th
+{
+  background-color: #E9C893;
+}
+
+.panel-body
+{
+  color: #828081;
+}
+
+.btn
+{
+  background-color: #3CC47C;
+}
+
+.form-control
+{
+  background-color: #1E392A;
+}
+
+.

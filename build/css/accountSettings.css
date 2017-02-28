@@ -60,11 +60,17 @@
   color: #3CC47C;
 }
 
+
+
 .dark-grey{
   background-color: #222222;
 }
 
 .grey{
+  color: #828081;
+}
+
+.white{
   color: #828081;
 }
 
@@ -79,6 +85,10 @@
    -webkit-border-radius: 16px;
    -moz-border-radius: 16px;
    border-radius: 16px;
+}
+
+.nav>li>a:hover>strong {
+  color: white;
 }
 
 .account-bottom>button:hover {

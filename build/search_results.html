@@ -11,6 +11,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="css/kiwi.css" rel="stylesheet">
+  <link href="css/search_results.css" rel="stylesheet">
   <!-- JQuery imported only to close Modal -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- Bootstrap's Javascript -->
@@ -61,6 +62,7 @@ $(document).ready(function(){
             <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Search By <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+              <li><a href="#">All</a></li>
               <li><a href="#">Song</a></li>
               <li><a href="#">Artist</a></li>
               <li><a href="#">Album</a></li>
@@ -82,7 +84,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-SONGS">
-                  <a data-toggle="collapse" href="#collapseSONGS"> SONGS<span class="glyphicon glyphicon-menu-down"> </a>
+                  <a data-toggle="collapse" href="#collapseSONGS" aria-expanded="true"> SONGS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
                 </h4>
               </div>
               <div id="collapseSONGS" class="panel-collapse in collapse in">
@@ -148,7 +150,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-ARTISTS">
-                  <a data-toggle="collapse" href="#collapseARTISTS"> ARTISTS<span class="glyphicon glyphicon-menu-down"> </a>
+                  <a data-toggle="collapse" href="#collapseARTISTS"aria-expanded="true"> ARTISTS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
                 </h4>
               </div>
               <div id="collapseARTISTS" class="panel-collapse in collapse">
@@ -181,7 +183,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-ALBUMS">
-                  <a data-toggle="collapse" href="#collapseALBUMS"> ALBUMS<span class="glyphicon glyphicon-menu-down"> </a>
+                  <a data-toggle="collapse" href="#collapseALBUMS"aria-expanded="true"> ALBUMS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
                 </h4>
               </div>
               <div id="collapseALBUMS" class="panel-collapse in collapse in">
@@ -220,7 +222,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-GENRE">
-                  <a data-toggle="collapse" href="#collapseGENRE"> GENRE<span class="glyphicon glyphicon-menu-down"> </a>
+                  <a data-toggle="collapse" href="#collapseGENRE"aria-expanded="true"> GENRE<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
                 </h4>
               </div>
               <div id="collapseGENRE" class="panel-collapse in collapse">
@@ -249,7 +251,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-USERS">
-                  <a data-toggle="collapse" href="#collapseUSERS"> USERS<span class="glyphicon glyphicon-menu-down"> </a>
+                  <a data-toggle="collapse" href="#collapseUSERS"aria-expanded="true"> USERS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
                 </h4>
               </div>
               <div id="collapseUSERS" class="panel-collapse in collapse">
@@ -275,7 +277,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title-PLAYLISTS">
-                  <a data-toggle="collapse" href="#collapsePLAYLISTS"> PLAYLISTS<span class="glyphicon glyphicon-menu-down"> </a>
+                  <a data-toggle="collapse" href="#collapsePLAYLISTS"aria-expanded="true"> PLAYLISTS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
                 </h4>
               </div>
               <div id="collapsePLAYLISTS" class="panel-collapse in collapse">

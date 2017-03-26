@@ -2,44 +2,44 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Each major browser view user interface must be imported.
-import accountOverview from './components/accountOverview.js';
-import accountSettings from './components/accountSettings.js';
-import createPlaylist from './components/createPlaylist.js';
-import mainDashboard from './components/mainDashboard.js';
-import mainDashboardMusic from './components/mainDashboardMusic.js';
-import search_results from './components/search_results.js';
+import AccountOverview from './components/accountOverview.js';
+import AccountSettings from './components/accountSettings.js';
+import CreatePlaylist from './components/createPlaylist.js';
+import MainDashboard from './components/mainDashboard.js';
+import MainDashboardMusic from './components/mainDashboardMusic.js';
+import Search_results from './components/search_results.js';
 
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
 if (document.getElementById('accountOverview') !== null) {
   ReactDOM.render(
-    <accountOverview />,
+    <AccountOverview />,
     document.getElementById('accountOverview')
   );
 } else if (document.getElementById('accountSettings') !== null) {
   ReactDOM.render(
-    <accountSettings />,
+    <AccountSettings />,
     document.getElementById('accountSettings')
   );
-} else if (document.getElementById('createPlaylist') !== null) {
+} else if (document.getElementById('added-friends-list') !== null) {
   ReactDOM.render(
-    <createPlaylist />,
-    document.getElementById('mainDashboard')
+    <CreatePlaylist />,
+    document.getElementById('added-friends-list')
   );
 } else if (document.getElementById('mainDashboard') !== null) {
   ReactDOM.render(
-    <mainDashboard />,
+    <MainDashboard />,
     document.getElementById('mainDashboardMusic')
   );
 } else if (document.getElementById('mainDashboardMusic') !== null) {
   ReactDOM.render(
-    <mainDashboardMusic />,
+    <MainDashboardMusic />,
     document.getElementById('mainDashboardMusic')
   );
 } else if (document.getElementById('search_results') !== null) {
   ReactDOM.render(
-    <search_results />,
+    <Search_results />,
     document.getElementById('search_results')
   );
 }

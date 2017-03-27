@@ -1,14 +1,14 @@
 import React from 'react';
-import Sidebar from './mainDashboard/sidebar';
 import Navbar from './mainDashboard/navbar';
+import MainBody from './mainDashboard/maintable';
 
 export default class mainDashboard extends React.Component {
   render() {
     return (
-      <div>
-        //<Navbar />, document.body;
-        <Sidebar />, document.getElementById('sidebar')
-      </div>
+		<div>
+			<Navbar />
+			<MainBody />   
+		</div>
     )
   }
 }

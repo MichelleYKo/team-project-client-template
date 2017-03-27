@@ -1,6 +1,6 @@
 import React from 'react';
-import NavbarLeftItem from './mainDashboard/navbarleftitem';
-import NavbarRightItem from './mainDashboard/navbarrightitem';
+import NavbarLeftItem from './navbarleftitem';
+import NavbarRightItem from './navbarrightitem';
 
 export default class Navbar extends React.Component {
   render() {

@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default class search_results extends React.Component {
+export default class searchResults extends React.Component {
   render() {
     return (
-
         <div id="myModal" className = "modal fade">
           <div className = "modal-dialog">
             <div className = "modal-content">
@@ -41,10 +40,10 @@ export default class search_results extends React.Component {
                         <thead>
                           <tr>
                             <th></th>
-                            <th>Title</th>
-                            <th>Artist</th>
-                            <th>Album</th>
-                            <th>Genre</th>
+                            <th>{"Title"}</th>
+                            <th>{"Artist"}</th>
+                            <th>{"Album"}</th>
+                            <th>{"Genre"}</th>
                             <th></th>
                           </tr>
                         </thead>
@@ -53,10 +52,10 @@ export default class search_results extends React.Component {
                             <td><button type="submit" className =  "btn btn-default">
                               <span className =  "glyphicon glyphicon-play"></span>
                             </button></td>
-                            <td>Fire</td>
-                            <td>Carter</td>
-                            <td>Blood</td>
-                            <td>Rock</td>
+                            <td>{"Fire"}</td>
+                            <td>{"Carter"}</td>
+                            <td>{"Blood"}</td>
+                            <td>{"Rock"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
@@ -65,10 +64,10 @@ export default class search_results extends React.Component {
                             <td><button type="submit" className =  "btn btn-default">
                               <span className =  "glyphicon glyphicon-play"></span>
                             </button></td>
-                            <td>Dope</td>
-                            <td>Parker</td>
-                            <td>Sweat</td>
-                            <td>R&B</td>
+                            <td>{"Dope"}</td>
+                            <td>{"Parker"}</td>
+                            <td>{"Sweat"}</td>
+                            <td>{"R&B"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
@@ -77,10 +76,10 @@ export default class search_results extends React.Component {
                             <td><button type="submit" className =  "btn btn-default">
                               <span className =  "glyphicon glyphicon-play"></span>
                             </button></td>
-                            <td>Save Me</td>
-                            <td>Rambo</td>
-                            <td>Tears</td>
-                            <td>Pop</td>
+                            <td>{"Save Me"}</td>
+                            <td>{"Rambo"}</td>
+                            <td>{"Tears"}</td>
+                            <td>{"Pop"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
@@ -103,15 +102,15 @@ export default class search_results extends React.Component {
 
                         <tbody>
                           <tr>
-                            <td>Rihanna</td>
+                            <td>{"Rihanna"}</td>
 
                           </tr>
                           <tr>
-                            <td>Big Bang</td>
+                            <td>{"Big Bang"}</td>
 
                           </tr>
                           <tr>
-                            <td>Kanye</td>
+                            <td>{"Kanye"}</td>
 
                           </tr>
                         </tbody>
@@ -135,19 +134,19 @@ export default class search_results extends React.Component {
                         <tbody>
                           <tr>
 
-                            <td>What's My Name</td>
+                            <td>{"What's My Name"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
-                            <td>Map of the Human Soul</td>
+                            <td>{"Map of the Human Soul"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
-                            <td>Born Hater</td>
+                            <td>{"Born Hater"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
@@ -169,15 +168,15 @@ export default class search_results extends React.Component {
                       <table className =  "table table-hover">
                         <tbody>
                           <tr>
-                            <td>Rock</td>
+                            <td>{"Rock"}</td>
 
                           </tr>
                           <tr>
-                            <td>Trap</td>
+                            <td>{"Trap"}</td>
 
                           </tr>
                           <tr>
-                            <td>Hip Hop</td>
+                            <td>{"Hip Hop"}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -197,10 +196,10 @@ export default class search_results extends React.Component {
                       <table className =  "table table-hover">
                         <tbody>
                           <tr>
-                            <td>Michelle</td>
+                            <td>{"Michelle"}</td>
                           </tr>
                           <tr>
-                            <td>Jake</td>
+                            <td>{"Jake"}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -221,21 +220,21 @@ export default class search_results extends React.Component {
 
                         <tbody>
                           <tr>
-                            <td>Rock Stuff</td>
+                            <td>{"Rock Stuff"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
 
-                            <td>Road Trip Music</td>
+                            <td>{"Road Trip Music"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
 
-                            <td>Study Playlist</td>
+                            <td>{"Study Playlist"}</td>
                             <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
                               <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>

@@ -17,6 +17,7 @@ export default class TableHead extends React.Component {
               <div className="input-group div-filter">
 
                 <span className="input-group-btn">
+                
                   <button type="submit" className="btn btn-secondary">
                     <span className="glyphicon glyphicon-search"></span>
                   </button>

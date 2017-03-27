@@ -7,7 +7,7 @@ import AccountSettings from './components/accountSettings.js';
 import CreatePlaylist from './components/createPlaylist.js';
 import MainDashboard from './components/mainDashboard.js';
 import MainDashboardMusic from './components/mainDashboardMusic.js';
-import Search_results from './components/search_results.js';
+import Search_results from './components/searchResults.js';
 
 
 // For each view conditionally determine which view to display
@@ -37,9 +37,9 @@ if (document.getElementById('accountOverview') !== null) {
     <MainDashboardMusic />,
     document.getElementById('mainDashboardMusic')
   );
-} else if (document.getElementById('search_results') !== null) {
+} else if (document.getElementById('searchResults') !== null) {
   ReactDOM.render(
     <Search_results />,
-    document.getElementById('search_results')
+    document.getElementById('searchResults')
   );
 }

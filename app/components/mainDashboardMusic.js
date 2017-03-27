@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './mainDashboard/sidebar';
+import Navbar from './mainDashboard/navbar';
 import MainBodyMusic from './mainDashboard/maintable';
 
 export default class mainDashboardMusic extends React.Component {
@@ -7,7 +7,6 @@ export default class mainDashboardMusic extends React.Component {
     return (
 		<div>
 			<Navbar />
-			<Sidebar /> 
 			<MainBodyMusic />   
 		</div>
     )

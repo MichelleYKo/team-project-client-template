@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './mainDashboard/sidebar';
+import Navbar from './mainDashboard/navbar';
 import MainBody from './mainDashboard/maintable';
 
 export default class mainDashboard extends React.Component {
@@ -7,7 +7,6 @@ export default class mainDashboard extends React.Component {
     return (
 		<div>
 			<Navbar />
-			<Sidebar /> 
 			<MainBody />   
 		</div>
     )

@@ -12,7 +12,6 @@
 
   <body>
     <div id="mainDashboard"></div>
-    <script src="js/app.js"></script>
     <!--
     Top Navbar
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -181,6 +180,184 @@
         </div>
       </div> <!-- /Row
     </div> <!-- /Main Body -->
-    <script src="js/app.js"></script>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"; charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Team Kiwi &mdash; PlaylistParty</title>
+        <!-- Bootstrap's CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="css/mainDashboard.css" rel="stylesheet">
+      </head>
+
+      <body>
+        <div id="mainDashboard"></div>
+        <!--
+        Top Navbar
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="mainDashboard.html">
+              <img src="img/Logo_HeadphonesOuterGlow.png" style="width:40px; height:40px;"/>
+            </a>
+            Left Aligned Items
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            Right Aligned Items
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="accountSettings.html"><span class="glyphicon glyphicon-user"></span> Settings</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+          </div>
+        </nav> Top Navbar
+        <!-- Main body (Left sidebar and content pane)
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Left Sidebar
+            <div id="sidebar" class="col-md-2 sidebar">
+            <!--  <div id="sidebar-header" class="">
+                <ul class="nav nav-sidebar">
+                  <button type="button" href="createPlaylist.html" class="btn btn-primary btn-lg btn-block createPlaylistBtn">Create New Playlist</button>
+                </ul>
+              </div>
+              <hr>
+              <div id="sidebar-list">
+                <ul class="nav nav-sidebar">
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 1 | Creator 1</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 2 | Creator 2</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 3 | Creator 3</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 4 | Creator 4</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 5 | Creator 5</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 6 | Creator 6</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 7 | Creator 7</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 8 | Creator 8</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 9 | Creator 9</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 10 | Creator 10</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 11 | Creator 11</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 12 | Creator 12</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 13 | Creator 13</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 14 | Creator 14</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 15 | Creator 15</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 16 | Creator 16</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 17 | Creator 17</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 18 | Creator 18</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 19 | Creator 19</a></li>
+                  <li class="active sidebarListItem"><a class="sidebarListItem" href="#">Playlist 20 | Creator 20</a></li>
+                </ul>
+              </div>
+              <div id="sidebar-footer">
+                <ul class="nav nav-sidebar nav-sidebar-footer">
+                </ul>
+              </div>
+            </div> /Left Sidebar
+            <!-- Main screen
+            <div id="mainPanel" class="main-page col-md-10 col-md-offset-2" style="height: 999px;">
+              <div class = "container-fluid">
+                <table class="table table-hover table-borderless">
+                  <!-- table head
+                  <thead>
+                    <tr>
+                      <h2 class="page-header" style="color:white;"> Playlist name </h2>
+                    </tr>
+                    <tr>
+                      <th colspan="999" class="th-filter">
+                        <div class="form-inline div-filter">
+                          <div class="input-group div-filter">
+                            <span class="input-group-btn">
+                              <button type="submit" class="btn btn-secondary">
+                                <span class="glyphicon glyphicon-search"></span>
+                              </button>
+                            </span>
+                            <input type="text" class="form-control input-filter" placeholder="Filter">
+                            <span class="input-group-btn">
+                              <button type="submit" class="btn btn-secondary">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                              </button>
+                            </span>
+                          </div>
+                          <button type="submit" class="btn btn-default pull-right">
+                            <span class="glyphicon glyphicon-music"> </span>
+                            Playlist settings
+                          </button>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>
+                      </th>
+                      <th><span>SONG</span></th>
+                      <th><span>ALBUM</span></th>
+                      <th>
+                        <span>ARTIST</span>
+                        <span>
+                          <!-- Need sorting - might require JS
+                        </span>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <!-- table body
+                  <tbody>
+                    <tr>
+                      <td>  1</td>
+                      <td>  Song 1</td>
+                      <td>  Album 1</td>
+                      <td>  Artist 1</td>
+                      <td>
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-menu-up white"></span>
+                          </button>
+                          <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-menu-down white"></span>
+                          </button>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>  2</td>
+                      <td>  Song 2</td>
+                      <td>  Album 2</td>
+                      <td>  Artist 2</td>
+                      <td>
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-menu-up white"></span>
+                          </button>
+                          <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-menu-down white"></span>
+                          </button>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>  3</td>
+                      <td>  Song 3</td>
+                      <td>  Album 3</td>
+                      <td>  Artist 3</td>
+                      <td>
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-menu-up white"></span>
+                          </button>
+                          <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-menu-down white"></span>
+                          </button>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Audio player bottom bar (fixed position)
+            </div>
+          </div> <!-- /Row
+        </div> <!-- /Main Body -->
+        <script src="js/app.js"></script>
   </body>
 </html>

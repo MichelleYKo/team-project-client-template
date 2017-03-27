@@ -4,20 +4,20 @@ export default class search_results extends React.Component {
   render() {
     return (
 
-        <div id="myModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
+        <div id="myModal" className = "modal fade">
+          <div className = "modal-dialog">
+            <div className = "modal-content">
 
-              <div class="modal-header">
+              <div className = "modal-header">
 
-                <input type="text" class="form-control" placeholder="Search">
-                <button type="submit" class="btn btn-default">
-                  <span class="glyphicon glyphicon-search"></span>
+                <input type="text" className =  "form-control" placeholder="Search"></input>
+                <button type="submit" className =  "btn btn-default">
+                  <span className =  "glyphicon glyphicon-search"></span>
                 </button>
-                <div class="btn-group">
-                  <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle ">Search By <span class="caret"></span>
+                <div className =  "btn-group">
+                  <button type="button" data-toggle="dropdown" className =  "btn btn-default dropdown-toggle ">Search By <span className =  "caret"></span>
                   </button>
-                  <ul class="dropdown-menu">
+                  <ul className =  "dropdown-menu">
                     <li><a href="#">All</a></li>
                     <li><a href="#">Song</a></li>
                     <li><a href="#">Artist</a></li>
@@ -28,17 +28,16 @@ export default class search_results extends React.Component {
                   </ul>
                 </div>
               </div>
-              <!-- Music Table -->
 
-              <div class="Songs">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapseSONGS" aria-expanded="true"> SONGS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
+              <div className =  "Songs">
+                  <div className =  "panel-heading">
+                    <h4 className =  "panel-title">
+                      <a data-toggle="collapse" href="#collapseSONGS" aria-expanded="true"> SONGS<i className =  "glyphicon glyphicon-menu-down"></i><i className =  "glyphicon glyphicon-menu-up"></i></a>
                     </h4>
                   </div>
-                  <div id="collapseSONGS" class="panel-collapse in collapse in">
-                    <div class="panel-body">
-                      <table class="table table-hover">
+                  <div id="collapseSONGS" className =  "panel-collapse in collapse in">
+                    <div className =  "panel-body">
+                      <table className =  "table table-hover">
                         <thead>
                           <tr>
                             <th></th>
@@ -51,39 +50,39 @@ export default class search_results extends React.Component {
                         </thead>
                         <tbody>
                           <tr>
-                            <td><button type="submit" class="btn btn-default">
-                              <span class="glyphicon glyphicon-play"></span>
+                            <td><button type="submit" className =  "btn btn-default">
+                              <span className =  "glyphicon glyphicon-play"></span>
                             </button></td>
                             <td>Fire</td>
                             <td>Carter</td>
                             <td>Blood</td>
                             <td>Rock</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
-                            <td><button type="submit" class="btn btn-default">
-                              <span class="glyphicon glyphicon-play"></span>
+                            <td><button type="submit" className =  "btn btn-default">
+                              <span className =  "glyphicon glyphicon-play"></span>
                             </button></td>
                             <td>Dope</td>
                             <td>Parker</td>
                             <td>Sweat</td>
                             <td>R&B</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
-                            <td><button type="submit" class="btn btn-default">
-                              <span class="glyphicon glyphicon-play"></span>
+                            <td><button type="submit" className =  "btn btn-default">
+                              <span className =  "glyphicon glyphicon-play"></span>
                             </button></td>
                             <td>Save Me</td>
                             <td>Rambo</td>
                             <td>Tears</td>
                             <td>Pop</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                         </tbody>
@@ -91,16 +90,16 @@ export default class search_results extends React.Component {
                     </div>
                   </div>
               </div>
-              <div class="artists">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapseARTISTS" aria-expanded="true"> ARTISTS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
+              <div className =  "artists">
+                  <div className =  "panel-heading">
+                    <h4 className =  "panel-title">
+                      <a data-toggle="collapse" href="#collapseARTISTS" aria-expanded="true"> ARTISTS<i className =  "glyphicon glyphicon-menu-down"></i><i className =  "glyphicon glyphicon-menu-up"></i></a>
                     </h4>
                   </div>
-                  <div id="collapseARTISTS" class="panel-collapse in collapse">
-                    <div class="panel-body">
+                  <div id="collapseARTISTS" className =  "panel-collapse in collapse">
+                    <div className =  "panel-body">
 
-                      <table class="table table-hover">
+                      <table className =  "table table-hover">
 
                         <tbody>
                           <tr>
@@ -122,35 +121,35 @@ export default class search_results extends React.Component {
                 </div>
 
 
-              <div class="albums">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapseALBUMS" aria-expanded="true"> ALBUMS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
+              <div className =  "albums">
+                  <div className =  "panel-heading">
+                    <h4 className =  "panel-title">
+                      <a data-toggle="collapse" href="#collapseALBUMS" aria-expanded="true"> ALBUMS<i className =  "glyphicon glyphicon-menu-down"></i><i className =  "glyphicon glyphicon-menu-up"></i></a>
                     </h4>
                   </div>
-                  <div id="collapseALBUMS" class="panel-collapse in collapse in">
-                    <div class="panel-body">
+                  <div id="collapseALBUMS" className =  "panel-collapse in collapse in">
+                    <div className =  "panel-body">
 
-                      <table class="table table-hover">
+                      <table className =  "table table-hover">
 
                         <tbody>
                           <tr>
 
                             <td>What's My Name</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
                             <td>Map of the Human Soul</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
                             <td>Born Hater</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                         </tbody>
@@ -159,15 +158,15 @@ export default class search_results extends React.Component {
                   </div>
               </div>
 
-              <div class="genre">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapseGENRE" aria-expanded="true"> GENRE<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
+              <div className =  "genre">
+                  <div className =  "panel-heading">
+                    <h4 className =  "panel-title">
+                      <a data-toggle="collapse" href="#collapseGENRE" aria-expanded="true"> GENRE<i className =  "glyphicon glyphicon-menu-down"></i><i className =  "glyphicon glyphicon-menu-up"></i></a>
                     </h4>
                   </div>
-                  <div id="collapseGENRE" class="panel-collapse in collapse">
-                    <div class="panel-body">
-                      <table class="table table-hover">
+                  <div id="collapseGENRE" className =  "panel-collapse in collapse">
+                    <div className =  "panel-body">
+                      <table className =  "table table-hover">
                         <tbody>
                           <tr>
                             <td>Rock</td>
@@ -186,16 +185,16 @@ export default class search_results extends React.Component {
                   </div>
               </div>
 
-              <div class="users">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapseUSERS" aria-expanded="true"> USERS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
+              <div className =  "users">
+                  <div className =  "panel-heading">
+                    <h4 className =  "panel-title">
+                      <a data-toggle="collapse" href="#collapseUSERS" aria-expanded="true"> USERS<i className =  "glyphicon glyphicon-menu-down"></i><i className =  "glyphicon glyphicon-menu-up"></i></a>
                     </h4>
                   </div>
-                  <div id="collapseUSERS" class="panel-collapse in collapse">
-                    <div class="panel-body">
+                  <div id="collapseUSERS" className =  "panel-collapse in collapse">
+                    <div className =  "panel-body">
 
-                      <table class="table table-hover">
+                      <table className =  "table table-hover">
                         <tbody>
                           <tr>
                             <td>Michelle</td>
@@ -210,35 +209,35 @@ export default class search_results extends React.Component {
               </div>
 
 
-              <div class="playlists">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapsePLAYLISTS" aria-expanded="true"> PLAYLISTS<i class="glyphicon glyphicon-menu-down"></i><i class="glyphicon glyphicon-menu-up"></i></a>
+              <div className =  "playlists">
+                  <div className =  "panel-heading">
+                    <h4 className =  "panel-title">
+                      <a data-toggle="collapse" href="#collapsePLAYLISTS" aria-expanded="true"> PLAYLISTS<i className =  "glyphicon glyphicon-menu-down"></i><i className =  "glyphicon glyphicon-menu-up"></i></a>
                     </h4>
                   </div>
-                  <div id="collapsePLAYLISTS" class="panel-collapse in collapse">
-                    <div class="panel-body">
-                      <table class="table table-hover">
+                  <div id="collapsePLAYLISTS" className =  "panel-collapse in collapse">
+                    <div className =  "panel-body">
+                      <table className =  "table table-hover">
 
                         <tbody>
                           <tr>
                             <td>Rock Stuff</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
 
                             <td>Road Trip Music</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                           <tr>
 
                             <td>Study Playlist</td>
-                            <td><button type="submit" class="btn btn-default" data-toggle="popover" data-content="Add to Playlist">
-                              <span class="glyphicon glyphicon-plus-sign"></span>
+                            <td><button type="submit" className =  "btn btn-default" data-toggle="popover" data-content="Add to Playlist">
+                              <span className =  "glyphicon glyphicon-plus-sign"></span>
                             </button></td>
                           </tr>
                         </tbody>
@@ -248,7 +247,6 @@ export default class search_results extends React.Component {
               </div>
             </div>
           </div>
-
         </div>
     )
   }

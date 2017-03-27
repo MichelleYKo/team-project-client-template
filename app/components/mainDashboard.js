@@ -1,9 +1,15 @@
 import React from 'react';
+import Sidebar from './mainDashboard/sidebar';
+import MainBody from './mainDashboard/maintable';
 
 export default class mainDashboard extends React.Component {
   render() {
     return (
-      <h1> 4 </h1>
+		<div>
+			<Navbar />
+			<Sidebar /> 
+			<MainBody />   
+		</div>
     )
   }
 }

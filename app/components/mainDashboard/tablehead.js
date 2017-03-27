@@ -1,12 +1,14 @@
 import React from 'react';
 
+var white = "#ffffff";
+
 export default class TableHead extends React.Component {
   render() {
     return (
       <thead>
 
         <tr>
-          <h2 className="page-header" style="color:white;"> Playlist name </h2>
+          <h2 className="page-header" style={{color: white}}> Playlist name </h2>
         </tr>
         
         <tr>
@@ -15,6 +17,7 @@ export default class TableHead extends React.Component {
               <div className="input-group div-filter">
 
                 <span className="input-group-btn">
+                
                   <button type="submit" className="btn btn-secondary">
                     <span className="glyphicon glyphicon-search"></span>
                   </button>

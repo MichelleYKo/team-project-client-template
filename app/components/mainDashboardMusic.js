@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './mainDashboard/navbar';
-import MainBodyMusic from './mainDashboard/maintable';
+import MainBodyMusic from './mainDashboard/mainbodymusic';
 
 export default class mainDashboardMusic extends React.Component {
   render() {

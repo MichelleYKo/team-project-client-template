@@ -6,7 +6,7 @@ import SidebarFooter from './mainDashboard/sidebarfooter';
 export default class Sidebar extends React.Component {
   render() {
     return (
-      <div>
+      <div id="sidebar" className="col-md-2 sidebar">
         <SidebarHeader />
         <hr />
         <SidebarList />

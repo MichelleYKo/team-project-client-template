@@ -6,7 +6,7 @@ import TableHead from './tablehead'
 export default class MainTable extends React.Component {
   render() {
     return (
-        <div id="mainPanel" className="main-page col-md-10 col-md-offset-2" style="height: 999px;">
+        <div id="mainPanel" className="main-page col-md-10 col-md-offset-2" style={{height:999}} >
           <div className = "container-fluid">
             <table className="table table-hover table-borderless">
               <TableHead />

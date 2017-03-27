@@ -30,7 +30,7 @@ if (document.getElementById('accountOverview') !== null) {
 } else if (document.getElementById('mainDashboard') !== null) {
   ReactDOM.render(
     <MainDashboard />,
-    document.getElementById('mainDashboardMusic')
+    document.getElementById('mainDashboard')
   );
 } else if (document.getElementById('mainDashboardMusic') !== null) {
   ReactDOM.render(

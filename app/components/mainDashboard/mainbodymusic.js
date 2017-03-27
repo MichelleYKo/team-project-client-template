@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from './sidebar';
 import MainTable from './maintable'
 import MusicPlayer from './musicplayer'
 

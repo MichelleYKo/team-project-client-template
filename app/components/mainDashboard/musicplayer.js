@@ -7,7 +7,7 @@ export default class MusicPlayer extends React.Component {
         <div className="container-fluid">
           <div className="row">
 
-            <div className="col-md-2" style = "padding-top: 6px;">
+            <div className="col-md-2" style = {{paddingTop: 6}}>
               <span className = "play-button">
                 <button type="button" className="btn btn-secondary play-button">
                   <span className="glyphicon glyphicon-play-circle white"></span>
@@ -15,12 +15,12 @@ export default class MusicPlayer extends React.Component {
               </span>               
             </div>
 
-            <div className="col-md-10" style="padding-top: 14px;">
+            <div className="col-md-10" style={{paddingTop: 14}}>
               Internet Dating - Theoretical Girls
             </div>
 
           </div>
-        </div>          ``
+        </div>          
       </div>
     )
   }

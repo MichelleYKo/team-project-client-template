@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from './mainDashboard/sidebar';
-import MainTable from './mainDashboard/maintable';
+import Sidebar from './sidebar';
+import MainTable from './maintable';
 
 export default class MainBody extends React.Component {
   render() {

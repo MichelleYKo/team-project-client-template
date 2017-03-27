@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './mainDashboard/navbar';
-import MainBody from './mainDashboard/maintable';
+import MainBody from './mainDashboard/mainbody';
 
 export default class mainDashboard extends React.Component {
   render() {

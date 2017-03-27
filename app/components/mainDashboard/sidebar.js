@@ -1,7 +1,7 @@
 import React from 'react';
-import SidebarHeader from './mainDashboard/sidebarheader';
-import SidebarList from './mainDashboard/sidebarlist';
-import SidebarFooter from './mainDashboard/sidebarfooter';
+import SidebarHeader from './sidebarheader';
+import SidebarList from './sidebarlist';
+import SidebarFooter from './sidebarfooter';
 
 export default class Sidebar extends React.Component {
   render() {

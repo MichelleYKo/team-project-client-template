@@ -96,6 +96,7 @@ hr {
 .page-header{
 	border-bottom:none;
 	color: gray;
+  font-size: 200%
 }
 
 .table-borderless tbody tr td,

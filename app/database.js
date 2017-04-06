@@ -57,7 +57,8 @@ var initialData = {
       "description": "", // The description of this playlist, created by the user.
       "authors": ["Jon Bailey"], // Users who contributed to this playlist.
       "dateCreated": 1453690800000, // Date of playlist creation.
-      "numSongs": 8 // Number of songs in this playlist.
+      "playlistItems": ["1", "2"], // List of playlistitem IDs associated with this playlist.
+      "numSongs": 0 // Number of songs in this playlist.
     },
     "2": {
       "_id": 2,
@@ -65,7 +66,8 @@ var initialData = {
       "description": "",
       "authors": ["Jon Bailey", "Tim Richards"],
       "dateCreated": 1453690800000,
-      "numSongs": 15
+      "playlistItems": ["2", "4"],
+      "numSongs": 0
     },
     "3": {
       "_id": 3,
@@ -73,7 +75,8 @@ var initialData = {
       "description": "",
       "authors": ["Jon Bailey", "Dom Carnevale", "Sam McGuire"],
       "dateCreated": 1453668480000,
-      "numSongs": 21
+      "playlistItems": ["3", "4"],
+      "numSongs": 0
     }
   },
   // The "playlist item" collection. Contains a few sample song items which will later be pulled in from Spotify dynamically.
@@ -86,8 +89,9 @@ var initialData = {
         "album": "Appetite for Destruction", // The album this track is in. (String ... track.album.name), API returns album object which contains a name. Can be empty.
         "genres": ["Hard Rock"], // The genre(s) of this track. (String[] ... track.album.genres), API returns array of strings representing classified genres. Can be empty.
         "duration_ms": 1, // The duration of the track in milliseconds. (Integer ... track.duration_ms)
-        "upvotes": 5, // The number of positive "up" votes this track has. NOTE this is not from the API, this is a custom data field.
-        "downvotes": 1 // The number of negative "down" votes this track has. NOTE this is not from the API, this is a custom data field.
+        "upvotes": [1, 2], // List of user IDs who "up" vote this track has. NOTE this is not from the API, this is a custom data field.
+        "downvotes": [3], // List of user IDs who "down" vote this track. NOTE this is not from the API, this is a custom data field.
+        "associatedPlaylists": [1] //List of playlist IDs that contain this playlist item.
       }
     },
     "2": {
@@ -98,8 +102,9 @@ var initialData = {
         "album": "In the Zone",
         "genres": ["Pop"],
         "duration_ms": 1,
-        "upvotes": 0,
-        "downvotes": 120
+        "upvotes": [2],
+        "downvotes": [1, 2],
+        "associatedPlaylists": [1, 2] //List of playlist IDs that contain this playlist item.
       }
     },
     "3": {
@@ -110,8 +115,9 @@ var initialData = {
         "album": "Toto IV",
         "genres": ["Classic Rock", "Pop"],
         "duration_ms": 1,
-        "upvotes": 53,
-        "downvotes": 7
+        "upvotes": [1, 2, 3],
+        "downvotes": [],
+        "associatedPlaylists": [3] //List of playlist IDs that contain this playlist item.
       }
     },
     "4": {
@@ -122,8 +128,9 @@ var initialData = {
         "album": "Single",
         "genres": ["Pop"],
         "duration_ms": 1,
-        "upvotes": 532,
-        "downvotes": 1
+        "upvotes": [1],
+        "downvotes": [2, 3],
+        "associatedPlaylists": [2, 3]
       }
     }
   }

@@ -5,7 +5,7 @@ export default class SidebarHeader extends React.Component {
     return (
       <div id="sidebar-header">
         <ul className="nav nav-sidebar">
-          <button type="button" href="createPlaylist.html" className="btn btn-primary btn-lg btn-block createPlaylistBtn">Create New Playlist</button>
+          <a href="createPlaylist.html" className="btn btn-primary btn-lg btn-block createPlaylistBtn">Create New Playlist</a>
         </ul>
       </div>
     )

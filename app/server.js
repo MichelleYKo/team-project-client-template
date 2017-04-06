@@ -23,3 +23,8 @@ export function addPlaylist(name, description, friendList) {
 
   addDocument('playlists', playlist);
 }
+
+export function calculateVotes(upvotes, downvotes){
+  //Take a song and all of the user IDs associated with it
+  return upvotes-downvotes;
+}

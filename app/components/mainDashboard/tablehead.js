@@ -8,16 +8,16 @@ export default class TableHead extends React.Component {
       <thead>
 
         <tr>
-          <h2 className="page-header" style={{color: white}}> Playlist name </h2>
+          <th className="page-header" style={{color: white}}> Playlist name </th>
         </tr>
-        
+
         <tr>
           <th colSpan="999" className="th-Filter">
             <div className="form-inline div-filter">
               <div className="input-group div-filter">
 
                 <span className="input-group-btn">
-                
+
                   <button type="submit" className="btn btn-secondary">
                     <span className="glyphicon glyphicon-search"></span>
                   </button>
@@ -29,7 +29,7 @@ export default class TableHead extends React.Component {
                   <button type="submit" className="btn btn-secondary">
                     <span className="glyphicon glyphicon-remove-circle"></span>
                   </button>
-                </span> 
+                </span>
               </div>
 
               <button type="submit" className="btn btn-default pull-right">

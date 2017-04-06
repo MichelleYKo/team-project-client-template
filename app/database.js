@@ -54,29 +54,26 @@ var initialData = {
     "1": {
       "_id": 1,
       "name": "Homework Jammin'", // Playlist name.
-      "description": { // The description of this playlist, created by the user.
-        "authors": ["Jon Bailey"], // Users who contributed to this playlist.
-        "dateCreated": 1453690800000, // Date of playlist creation.
-        "numSongs": 8 // Number of songs in this playlist.
-      }
+      "description": "", // The description of this playlist, created by the user.
+      "authors": ["Jon Bailey"], // Users who contributed to this playlist.
+      "dateCreated": 1453690800000, // Date of playlist creation.
+      "numSongs": 8 // Number of songs in this playlist.
     },
     "2": {
       "_id": 2,
       "name": "Working Out",
-      "description": {
-        "authors": ["Jon Bailey", "Tim Richards"],
-        "dateCreated": 1453690800000,
-        "numSongs": 15
-      }
+      "description": "",
+      "authors": ["Jon Bailey", "Tim Richards"],
+      "dateCreated": 1453690800000,
+      "numSongs": 15
     },
     "3": {
       "_id": 3,
       "name": "House Party",
-      "description": {
-        "authors": ["Jon Bailey", "Dom Carnevale", "Sam McGuire"],
-        "dateCreated": 1453668480000,
-        "numSongs": 21
-      }
+      "description": "",
+      "authors": ["Jon Bailey", "Dom Carnevale", "Sam McGuire"],
+      "dateCreated": 1453668480000,
+      "numSongs": 21
     }
   },
   // The "playlist item" collection. Contains a few sample song items which will later be pulled in from Spotify dynamically.

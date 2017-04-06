@@ -22,10 +22,10 @@ if (document.getElementById('accountOverview') !== null) {
     <AccountSettings />,
     document.getElementById('accountSettings')
   );
-} else if (document.getElementById('added-friends-list') !== null) {
+} else if (document.getElementById('modal-body') !== null) {
   ReactDOM.render(
     <CreatePlaylist />,
-    document.getElementById('added-friends-list')
+    document.getElementById('modal-body')
   );
 } else if (document.getElementById('mainDashboard') !== null) {
   ReactDOM.render(

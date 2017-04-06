@@ -7,3 +7,19 @@ import {readDocument, writeDocument, addDocument} from './database.js';
 function emulateServerReturn(data, cb) {
   setTimeout(() => {cb(data);}, 4);
 }
+
+export function addPlaylist(name, description, friendList) {
+  // Since a CommentThread is embedded in a FeedItem object,
+  // we don't have to resolve it. Read the document,
+  // update the embedded object, and then update the
+  // document in the database.
+  var playlist = {
+    name: name,
+    description: description,
+    authors: friendList,
+    dateCreated: 0,
+    numSongs: 0
+  }
+
+  addDocument('playlists', playlist);
+}

@@ -148,3 +148,7 @@ input {
   padding: 1px 12px;
   border-radius: 4px;
 }
+
+#enter-button {
+  background-color: #3CC47C;
+}

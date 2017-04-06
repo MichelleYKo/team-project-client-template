@@ -12,9 +12,9 @@
     <!-- Custom CSS -->
     <link href="css/createPlaylist.css" rel="stylesheet">
     <!-- JQuery imported only to close Modal -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Bootstrap's Javascript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- Simple Javascript function to show Modal-->
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -30,51 +30,7 @@
         <div class="modal-header">
             <h3 class="modal-title">Create New Playlist</h3>
         </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12 playlist-name">
-                <div class="textfield-input-wrapper">
-                  <label id="playlist-name">
-                    <span class="textfield-label">Name:</span>
-                  </label>
-                  <input class="textfield-input" type="text" value=""
-                  placeholder="Enter Playlist name" aria-required="false">
-                    <button type="button" class="close" id="clear-text">
-                      <span>&times</span>
-                    </button>
-                  </input>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 add-friends">
-                <label>
-                  <span class="textfield-label">Add Friends (Max. 5 Friends)</span>
-                </label>
-                <div class="textfield-input-wrapper">
-                  <input class="textfield-input" type="text" value=""
-                  placeholder="Enter Friend's Name" aria-required="false">
-                    <button type="button" class="close" id="clear-text">
-                      <span>&times</span>
-                    </button>
-                  </input>
-                  <div class="textfield-validation"></div>
-                </div>
-                <div id="added-friends-list"></div>
-              </div>
-              <div class="col-md-6 description">
-                <label>
-                  <span class="textfield-label">Description</span>
-                </label>
-                <div class="description-text-box">
-                  <textarea class="description-text" rows="10"
-                  placeholder="Describe your playlist!"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="modal-body"></div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary">Create</button>

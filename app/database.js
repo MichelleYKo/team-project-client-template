@@ -17,7 +17,8 @@ var initialData = {
         "energy": 0.6, // Measure of intensity and activity, scale from 0.0 - 1.0 (1.0 being fast, loud and noisy while 0.0 is not).
         "instrumentalness": 0.2, // Presence of vocals in track, scale of 0.0 - 1.0 (1.0 being no vocals and 0.0 being many).
         "valence": 0.6 // "Positivity" of a track, scale of 0.0 - 1.0 (1.0 being very positive and 0.0 being sad).
-      }
+      },
+      "playlistCollection": [2, 3] // List of playlist IDs that this user has been an author of.
     },
     "2": {
       "_id": 2,
@@ -31,7 +32,8 @@ var initialData = {
         "energy": 0.5,
         "instrumentalness": 0.5,
         "valence": 0.4
-      }
+      },
+      "playlistCollection": [1, 2, 3]
     },
     "3": {
       "_id": 3,
@@ -45,7 +47,8 @@ var initialData = {
         "energy": 0.2,
         "instrumentalness": 0.1,
         "valence": 0.7
-      }
+      },
+      "playlistCollection": [3]
     }
   },
   // The "playlist" collection. Contains all of the playlists that have been created.
@@ -73,7 +76,7 @@ var initialData = {
       "_id": 3,
       "name": "House Party",
       "description": "",
-      "authors": ["Jon Bailey", "Dom Carnevale", "Sam McGuire"],
+      "authors": ["Jon Bailey", "Tim Richards", "Jake Magier"],
       "dateCreated": 1453668480000,
       "playlistItems": ["3", "4"],
       "numSongs": 0

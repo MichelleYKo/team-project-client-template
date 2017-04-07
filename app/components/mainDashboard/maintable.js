@@ -4,19 +4,6 @@ import TableHead from './tablehead'
 
 
 export default class MainTable extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        contents: []
-      }
-  }
-
-  componentDidMount() {
-    getFeedData(this.props.user, (playlistData) => {
-      this.setState(playlistData);
-    });
-  }
-
 
   render() {
     return (

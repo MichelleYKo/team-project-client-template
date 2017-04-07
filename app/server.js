@@ -24,39 +24,45 @@ export function addPlaylist(name, description, friendList) {
   addDocument('playlists', playlist);
 }
 
-export function getPlaylistList(user, cb) {
+//NOTE Not storing the playlists correctly...
+export function getPlaylistCollection(user, cb) {
   // Get the User object with the id "user".
   var userData = readDocument('users', user);
-  // Get the Feed object for the user.
-  var playlistList = readDocument('playlists', userData.playlistCollection);
-  userData.playlistCollection.map( (playlist) =>
-          readDocument('playlists', playlist)
-    );
-  // Map the Feed's FeedItem references to actual FeedItem objects.
+  // Get the PlaylistCollection object for the user.
+  //var playlistCollection = readDocument('users', userData.playlistCollection);
+  var playlistCollection = readDocument('users', userData.playlistCollection);
+  // Map the PlaylistCollection's PlaylistItem references to actual PlaylistItem objects.
   // Note: While map takes a callback function as an argument, it is
   // synchronous, not asynchronous. It calls the callback immediately.
-  
-  // Return FeedData with resolved references.
+  playlistCollection = userData.playlistCollection.map(getPlaylistSync);
+  // Return PlaylistCollection with resolved references.
   // emulateServerReturn will emulate an asynchronous server operation, which
   // invokes (calls) the "cb" function some time in the future.
-  emulateServerReturn(playlistList, cb);
+  emulateServerReturn(playlistCollection, cb);
 }
 
-function getPlaylistItemSync(feedItemId) {
-  var feedItem = readDocument('feedItems', feedItemId);
-  // Resolve 'like' counter.
-  feedItem.likeCounter =
-    feedItem.likeCounter.map((id) => readDocument('users', id));
-  // Assuming a StatusUpdate. If we had other types of
-  // FeedItems in the DB, we would
-  // need to check the type and have logic for each type.
-  feedItem.contents.author =
-    readDocument('users', feedItem.contents.author);
-  // Resolve comment author.
-  feedItem.comments.forEach((comment) => {
-    comment.author = readDocument('users', comment.author);
-  });
-  return feedItem;
+//NOTE THIS WORKS
+function getPlaylistSync(playlistId) {
+  var playlist = readDocument("playlists", playlistId);
+  //Resolve all data fields
+  playlist.authors.map((author) => readDocument('playlists', author));
+  playlist.playlistItems = playlist.playlistItems.map(getPlaylistItemSync);
+  playlist.numSongs = playlist.playlistItems.length;
+
+  return playlist;
+}
+
+//NOTE THIS WORKS
+function getPlaylistItemSync(playlistItemId) {
+  var playlistItem = readDocument('playlistItems', playlistItemId);
+  //Resolve all data fields.
+  playlistItem.data.artists.map((artist) => readDocument('playlistItems', artist));
+  playlistItem.data.genres.map((genre) => readDocument('playlistItems', genre));
+  playlistItem.data.upvotes.map((upvote) => readDocument('playlistItems', upvote));
+  playlistItem.data.downvotes.map((downvotes) => readDocument('playlistItems', downvotes));
+  playlistItem.data.associatedPlaylists.map((associatedPlaylist) => readDocument('playlistItems', associatedPlaylist));
+
+  return playlistItem;
 }
 
 export function calculateVotes(upvotes, downvotes){

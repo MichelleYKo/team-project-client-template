@@ -83,7 +83,7 @@ var initialData = {
     }
   },
   // The "playlist item" collection. Contains a few sample song items which will later be pulled in from Spotify dynamically.
-  "playlist items": { // NOTE that all datatypes listed here match with what the Spotify API returns.
+  "playlistItems": { // NOTE that all datatypes listed here match with what the Spotify API returns.
     "1": {
       "_id": "1", // The Spotify ID for this track, NOTE the API returns a STRING, not integer!
       "data": { // The various data fields included in this track file.
@@ -91,7 +91,7 @@ var initialData = {
         "artists": ["Guns N' Roses"], // The artist(s) of this track. (String[] ... track.artists.name), API returns array of artist objects which contain names.
         "album": "Appetite for Destruction", // The album this track is in. (String ... track.album.name), API returns album object which contains a name. Can be empty.
         "genres": ["Hard Rock"], // The genre(s) of this track. (String[] ... track.album.genres), API returns array of strings representing classified genres. Can be empty.
-        "duration_ms": 1, // The duration of the track in milliseconds. (Integer ... track.duration_ms)
+        "duration_ms": 1100, // The duration of the track in milliseconds. (Integer ... track.duration_ms)
         "upvotes": [1, 2], // List of user IDs who "up" vote this track has. NOTE this is not from the API, this is a custom data field.
         "downvotes": [3], // List of user IDs who "down" vote this track. NOTE this is not from the API, this is a custom data field.
         "associatedPlaylists": [1] //List of playlist IDs that contain this playlist item.
@@ -104,7 +104,7 @@ var initialData = {
         "artists": ["Britney Spears"],
         "album": "In the Zone",
         "genres": ["Pop"],
-        "duration_ms": 1,
+        "duration_ms": 1200,
         "upvotes": [2],
         "downvotes": [1, 2],
         "associatedPlaylists": [1, 2] //List of playlist IDs that contain this playlist item.
@@ -117,7 +117,7 @@ var initialData = {
         "artists": ["Toto"],
         "album": "Toto IV",
         "genres": ["Classic Rock", "Pop"],
-        "duration_ms": 1,
+        "duration_ms": 1300,
         "upvotes": [1, 2, 3],
         "downvotes": [],
         "associatedPlaylists": [3] //List of playlist IDs that contain this playlist item.
@@ -130,7 +130,7 @@ var initialData = {
         "artists": ["Michael Jackson", "Lionel Richie", "USA for Africa"],
         "album": "Single",
         "genres": ["Pop"],
-        "duration_ms": 1,
+        "duration_ms": 1400,
         "upvotes": [1],
         "downvotes": [2, 3],
         "associatedPlaylists": [2, 3]
@@ -139,7 +139,7 @@ var initialData = {
   }
 };
 
-var data = JSON.parse(localStorage.getItem('facebook_data'));
+var data = JSON.parse(localStorage.getItem('kiwi_data'));
 if (data === null) {
   data = JSONClone(initialData);
 }
@@ -149,7 +149,10 @@ if (data === null) {
  * deserializes it.
  */
 function JSONClone(obj) {
-  return JSON.parse(JSON.stringify(obj));
+  if (obj !== undefined){
+    return JSON.parse(JSON.stringify(obj));
+  }
+
 }
 
 /**
@@ -214,6 +217,6 @@ class ResetDatabase extends React.Component {
 
 ReactDOM.render(
   <ResetDatabase />,
-  document.getElementById('fb-db-reset')
+  document.getElementById('kiwi-db-reset')
 );
 */

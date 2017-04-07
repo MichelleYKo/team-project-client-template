@@ -46,9 +46,9 @@ export default class TableHead extends React.Component {
 
           </th>
           <th><span>SONG</span></th>
-          <th><span>ALBUM</span></th>
+          <th><span>ARTIST</span></th>
           <th>
-            <span>ARTIST</span>
+            <span>ALBUM</span>
 
             <span>
             </span>

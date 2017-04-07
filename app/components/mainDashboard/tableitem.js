@@ -1,22 +1,14 @@
 import React from 'react'
-import {calculateVotes} from '.../server'
 
 export default class TableItem extends React.Component {
 
   render() {
-    //we want to render a song within the context of a playlist. 
-
-
-    var data = this.props.data;
-
-
     return (
         <tr>
-          <td>  //numbering relative to the order of the playlist </td>
-          <td>  {data.title} </td>
-          <td>  {data.album} </td>
-          <td>  {data.artists} </td>
-          <td>  {calculateVotes(data.upvotes.length, data.downvotes.length)} </td>
+          <td>  1 </td>
+          <td>  Song 1 </td>
+          <td>  Artist 1 </td>
+          <td>  Album 1 </td>
           <td>
             <span className="input-group-btn">
               <button type="button" className="btn btn-success">

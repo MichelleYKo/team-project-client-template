@@ -7,7 +7,7 @@ export default class mainDashboard extends React.Component {
     return (
 		<div>
 			<Navbar />
-			<MainBody user={1} />   
+			<MainBody user={1} />
 		</div>
     )
   }

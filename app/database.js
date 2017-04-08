@@ -1,11 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+//import React from 'react';
+//import ReactDOM from 'react-dom';
 
 var initialData = {
   // The "user" collection. Contains all of the users in our Facebook system.
   "users": {
-    // This user has id "1".
-    "1": {
+    "1": { // This user has id "1".
       "_id": 1,
       "name": "Tim Richards", // Name of user.
       "email": "trichards@cs.umass.edu", // Email associated with account.
@@ -107,7 +106,7 @@ var initialData = {
         "duration_ms": 1200,
         "upvotes": [2],
         "downvotes": [1, 2],
-        "associatedPlaylists": [1, 2] //List of playlist IDs that contain this playlist item.
+        "associatedPlaylists": [1, 2]
       }
     },
     "3": {
@@ -120,7 +119,7 @@ var initialData = {
         "duration_ms": 1300,
         "upvotes": [1, 2, 3],
         "downvotes": [],
-        "associatedPlaylists": [3] //List of playlist IDs that contain this playlist item.
+        "associatedPlaylists": [3]
       }
     },
     "4": {
@@ -149,10 +148,7 @@ if (data === null) {
  * deserializes it.
  */
 function JSONClone(obj) {
-  if (obj !== undefined){
     return JSON.parse(JSON.stringify(obj));
-  }
-
 }
 
 /**

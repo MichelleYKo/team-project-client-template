@@ -21,10 +21,11 @@ export default class SidebarList extends React.Component {
   }
 
   render() {
+    var collection = this.state.playlistCollection;
     return (
       <div id="sidebar-list">
         <ul className="nav nav-sidebar">
-          {this.state.playlistCollection.map((playlist) => {
+          {collection.map((playlist) => {
             return (
               <SidebarListItem key={playlist._id} playlist={playlist} />
             )

@@ -10,8 +10,8 @@ export default class MainTable extends React.Component {
         <div id="mainPanel" className="main-page col-md-10 col-md-offset-2" style={{height:999}} >
           <div className = "container-fluid">
             <table className="table table-hover table-borderless">
-              <TableHead />
-              <TableBody />
+              <TableHead currentPlaylist={this.props.currentPlaylist} />
+              <TableBody currentPlaylist={this.props.currentPlaylist} />
             </table>
           </div>
         </div>

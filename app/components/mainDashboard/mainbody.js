@@ -6,12 +6,12 @@ export default class MainBody extends React.Component {
 
   render() {
     return (
-	<div className="container-fluid">
-		<div className="row">
-			<Sidebar user={this.props.user} />
-			<MainTable />
-		</div>
-	</div>
+      <div className="container-fluid">
+        <div className="row">
+          <Sidebar playlistCollection={this.props.playlistCollection}/>
+          <MainTable currentPlaylist={this.props.playlistCollection[0]} />
+        </div>
+      </div>
     )
   }
 }

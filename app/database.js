@@ -1,5 +1,7 @@
-//import React from 'react';
-//import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+var startupName = 'playlistParty';
 
 var initialData = {
   // The "user" collection. Contains all of the users in our Facebook system.
@@ -138,7 +140,7 @@ var initialData = {
   }
 };
 
-var data = JSON.parse(localStorage.getItem('kiwi_data'));
+var data = JSON.parse(localStorage.getItem(startupName));
 if (data === null) {
   data = JSONClone(initialData);
 }
@@ -170,7 +172,7 @@ export function writeDocument(collection, changedDocument) {
   // Store a copy of the object into the database. Models a database's behavior.
   data[collection][id] = JSONClone(changedDocument);
   // Update our 'database'.
-  localStorage.setItem('kiwi_data', JSON.stringify(data));
+  localStorage.setItem(startupName, JSON.stringify(data));
 }
 
 /**
@@ -189,15 +191,15 @@ export function addDocument(collectionName, newDoc) {
 
 /**
  * Reset our browser-local database.
-
+*/
 export function resetDatabase() {
-  localStorage.setItem('kiwi_data', JSON.stringify(initialData));
+  localStorage.setItem(startupName, JSON.stringify(initialData));
   data = JSONClone(initialData);
 }
-
 /**
  * Reset database button.
-
+*/
+/*
 class ResetDatabase extends React.Component {
   render() {
     return (
@@ -208,11 +210,10 @@ class ResetDatabase extends React.Component {
       }}>Reset Mock DB</button>
     );
   }
-}
+}*/
 
-
+/*
 ReactDOM.render(
   <ResetDatabase />,
-  document.getElementById('kiwi-db-reset')
-);
-*/
+  document.getElementById('db-reset')
+);*/

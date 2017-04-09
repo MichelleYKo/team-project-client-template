@@ -17,7 +17,7 @@ export default class Navbar extends React.Component {
             <img src="img/Logo_HeadphonesOuterGlow.png" style={divStyle}/>
           </a>
           <NavbarLeftItem />
-          <NavbarRightItem />
+          <NavbarRightItem handleUserChange={this.props.handleUserChange}/>
         </div>
       </nav>
     )

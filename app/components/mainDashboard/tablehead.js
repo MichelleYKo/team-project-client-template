@@ -3,11 +3,12 @@ import React from 'react';
 var white = "#ffffff";
 
 export default class TableHead extends React.Component {
+
   render() {
     return (
       <thead>
         <tr>
-          <th className="page-header" style={{color: white}}> Playlist name </th>
+          <th className="page-header" style={{color: white}}> {this.props.currentPlaylist.name} </th>
         </tr>
         <tr>
           <th colSpan="999" className="th-Filter">

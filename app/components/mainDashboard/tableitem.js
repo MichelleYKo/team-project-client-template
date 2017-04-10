@@ -5,10 +5,10 @@ export default class TableItem extends React.Component {
   render() {
     return (
         <tr>
-          <td>  1 </td>
-          <td>  Song 1 </td>
-          <td>  Artist 1 </td>
-          <td>  Album 1 </td>
+          <td>  {this.props.playlistItem._id} </td>
+          <td>  {this.props.playlistItem.title} </td>
+          <td>  {this.props.playlistItem.artists[0]} </td>
+          <td>  {this.props.playlistItem.album} </td>
           <td>
             <span className="input-group-btn">
               <button type="button" className="btn btn-success">

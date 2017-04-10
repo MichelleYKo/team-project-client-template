@@ -2,10 +2,6 @@ import React from 'react';
 
 export default class NavbarRightItem extends React.Component {
 
-  handleUserChange(clickEvent){
-    clickEvent.preventDefault();
-  }
-
   render() {
 
     return (

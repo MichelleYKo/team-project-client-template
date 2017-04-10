@@ -45,6 +45,19 @@ function getPlaylistSync(playlistId) {
   return playlist;
 }
 
+export function getPlaylistASync(playlistId, cb) {
+  var playlist = readDocument("playlists", playlistId);
+  //Resolve all data fields
+  playlist.playlistItems = playlist.playlistItems.map(getPlaylistItemSync);
+  playlist.numSongs = playlist.playlistItems.length;
+  emulateServerReturn(playlist, cb);
+}
+
+export function getPlaylistID(playlistID, cb){
+  var playlist = readDocument("playlists", playlistID);
+  emulateServerReturn(playlist._id, cb);
+}
+
 function getPlaylistItemSync(playlistItemId) {
   return readDocument('playlistItems', playlistItemId);
 }

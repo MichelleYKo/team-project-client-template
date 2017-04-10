@@ -11,7 +11,7 @@ export default class SidebarList extends React.Component {
         <ul className="nav nav-sidebar">
           {collection.map((playlist) => {
             return (
-              <SidebarListItem key={playlist._id} playlist={playlist} />
+              <SidebarListItem key={playlist._id} playlist={playlist} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
             )
           })}
         </ul>

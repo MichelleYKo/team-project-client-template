@@ -10,7 +10,7 @@ export default class Sidebar extends React.Component {
       <div id="sidebar" className="col-md-2 sidebar">
         <SidebarHeader />
         <hr />
-        <SidebarList playlistCollection={this.props.playlistCollection}/>
+        <SidebarList playlistCollection={this.props.playlistCollection} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
         <SidebarFooter />
       </div>
     )

@@ -7,7 +7,7 @@ export default class mainbodyAccount extends React.Component {
     return (
 	<div className="container-fluid">
 		<div className="row">
-			<Sidebar />
+			<Sidebar playlistCollection={this.props.playlistCollection} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
 			<AccountInfo />
 		</div>
 	</div>

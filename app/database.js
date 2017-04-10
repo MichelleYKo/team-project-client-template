@@ -87,55 +87,47 @@ var initialData = {
   "playlistItems": { // NOTE that all datatypes listed here match with what the Spotify API returns.
     "1": {
       "_id": "1", // The Spotify ID for this track, NOTE the API returns a STRING, not integer!
-      "data": { // The various data fields included in this track file.
-        "title": "Welcome to the Jungle", // The title of this track. (String ... track.name)
-        "artists": ["Guns N' Roses"], // The artist(s) of this track. (String[] ... track.artists.name), API returns array of artist objects which contain names.
-        "album": "Appetite for Destruction", // The album this track is in. (String ... track.album.name), API returns album object which contains a name. Can be empty.
-        "genres": ["Hard Rock"], // The genre(s) of this track. (String[] ... track.album.genres), API returns array of strings representing classified genres. Can be empty.
-        "duration_ms": 1100, // The duration of the track in milliseconds. (Integer ... track.duration_ms)
-        "upvotes": [1, 2], // List of user IDs who "up" vote this track has. NOTE this is not from the API, this is a custom data field.
-        "downvotes": [3], // List of user IDs who "down" vote this track. NOTE this is not from the API, this is a custom data field.
-        "associatedPlaylists": [1] //List of playlist IDs that contain this playlist item.
-      }
+      "title": "Welcome to the Jungle", // The title of this track. (String ... track.name)
+      "artists": ["Guns N' Roses"], // The artist(s) of this track. (String[] ... track.artists.name), API returns array of artist objects which contain names.
+      "album": "Appetite for Destruction", // The album this track is in. (String ... track.album.name), API returns album object which contains a name. Can be empty.
+      "genres": ["Hard Rock"], // The genre(s) of this track. (String[] ... track.album.genres), API returns array of strings representing classified genres. Can be empty.
+      "duration_ms": 1100, // The duration of the track in milliseconds. (Integer ... track.duration_ms)
+      "upvotes": [1, 2], // List of user IDs who "up" vote this track has. NOTE this is not from the API, this is a custom data field.
+      "downvotes": [3], // List of user IDs who "down" vote this track. NOTE this is not from the API, this is a custom data field.
+      "associatedPlaylists": [1] //List of playlist IDs that contain this playlist item.
     },
     "2": {
       "_id": "2",
-      "data": {
-        "title": "Toxic",
-        "artists": ["Britney Spears"],
-        "album": "In the Zone",
-        "genres": ["Pop"],
-        "duration_ms": 1200,
-        "upvotes": [2],
-        "downvotes": [1, 2],
-        "associatedPlaylists": [1, 2]
-      }
+      "title": "Toxic",
+      "artists": ["Britney Spears"],
+      "album": "In the Zone",
+      "genres": ["Pop"],
+      "duration_ms": 1200,
+      "upvotes": [2],
+      "downvotes": [1, 2],
+      "associatedPlaylists": [1, 2]
     },
     "3": {
       "_id": "3",
-      "data": {
-        "title": "Africa",
-        "artists": ["Toto"],
-        "album": "Toto IV",
-        "genres": ["Classic Rock", "Pop"],
-        "duration_ms": 1300,
-        "upvotes": [1, 2, 3],
-        "downvotes": [],
-        "associatedPlaylists": [3]
-      }
+      "title": "Africa",
+      "artists": ["Toto"],
+      "album": "Toto IV",
+      "genres": ["Classic Rock", "Pop"],
+      "duration_ms": 1300,
+      "upvotes": [1, 2, 3],
+      "downvotes": [],
+      "associatedPlaylists": [3]
     },
     "4": {
       "_id": "4",
-      "data": {
-        "title": "We Are the World",
-        "artists": ["Michael Jackson", "Lionel Richie", "USA for Africa"],
-        "album": "Single",
-        "genres": ["Pop"],
-        "duration_ms": 1400,
-        "upvotes": [1],
-        "downvotes": [2, 3],
-        "associatedPlaylists": [2, 3]
-      }
+      "title": "We Are the World",
+      "artists": ["Michael Jackson", "Lionel Richie", "USA for Africa"],
+      "album": "Single",
+      "genres": ["Pop"],
+      "duration_ms": 1400,
+      "upvotes": [1],
+      "downvotes": [2, 3],
+      "associatedPlaylists": [2, 3]
     }
   }
 };

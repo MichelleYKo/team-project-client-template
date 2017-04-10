@@ -27,6 +27,10 @@ export default class mainDashboard extends React.Component {
     e.preventDefault();
     var newID = parseInt(window.prompt("Enter a user ID:"), 10);
     this.setState({user: newID});
+    getPlaylistCollection(newID, (playlistCollection) => {
+      this.setState({playlistCollection: playlistCollection});
+      this.setState({currentPlaylist: this.state.playlistCollection[0]})
+    });
   }
 
   handleSelectPlaylist(clickEvent, selectedPlaylist) {

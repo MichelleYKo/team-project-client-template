@@ -66,3 +66,23 @@ export function calculateVotes(upvotes, downvotes){
   //Take a song and all of the user IDs associated with it
   return upvotes-downvotes;
 }
+
+export function getName(user, cb) {
+  // Get the User object with the id "user".
+  var userData = readDocument('users', user);
+  var name = userData.name;
+  emulateServerReturn(name, cb);
+}
+
+export function getEmail(user, cb) {
+  // Get the User object with the id "user".
+  var userData = readDocument('users', user);
+  var email = userData.email;
+  emulateServerReturn(email, cb);
+}
+export function getConnectedAccts(user, cb) {
+  // Get the User object with the id "user".
+  var userData = readDocument('users', user);
+  var connectedAccts = userData.connectedAccts;
+  emulateServerReturn(connectedAccts, cb);
+}

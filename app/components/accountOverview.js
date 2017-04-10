@@ -2,6 +2,9 @@ import React from 'react';
 import Navbar from './mainDashboard/navbar';
 import MainBodyAccount from './mainDashboard/mainBodyAccount';
 import {getPlaylistCollection} from '../server';
+import {getEmail} from '../server';
+import {getName} from '../server';
+import {getConnectedAccts} from '../server';
 
 export default class accountOverview extends React.Component {
   constructor(props){
@@ -10,6 +13,9 @@ export default class accountOverview extends React.Component {
     this.handleSelectPlaylist = this.handleSelectPlaylist.bind(this);
     this.state = {
       user: 1,
+      name: "",
+      email: "",
+      connectedAccts: [],
       playlistCollection: [],
       currentPlaylist: {
         _id: 1,
@@ -39,6 +45,15 @@ export default class accountOverview extends React.Component {
       this.setState({playlistCollection: playlistCollection});
       this.setState({currentPlaylist: this.state.playlistCollection[0]})
     });
+    getEmail(this.state.user, (email) => {
+      this.setState({email: email})
+    });
+    getName(this.state.user, (name) => {
+      this.setState({name: name})
+    });
+    getConnectedAccts(this.state.user, (connectedAccts) => {
+      this.setState({connectedAccts: connectedAccts})
+    });
   }
 
   componentDidMount() {
@@ -49,7 +64,7 @@ export default class accountOverview extends React.Component {
     return (
       <div>
         <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
-        <MainBodyAccount playlistCollection={this.state.playlistCollection} currentPlaylist={this.state.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist}/>
+        <MainBodyAccount playlistCollection={this.state.playlistCollection} currentPlaylist={this.state.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.state.email} connectedAccts={this.state.connectedAccts} name={this.state.name}/>
       </div>
     )
   }

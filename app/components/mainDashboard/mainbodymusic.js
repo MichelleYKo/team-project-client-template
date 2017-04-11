@@ -1,7 +1,7 @@
 import React from 'react';
-import Sidebar from './sidebar';
+import SidebarMusic from './sidebarmusic';
 import MainTable from './maintable'
-import MusicPlayer from './musicplayer'
+
 
 
 export default class MainBodyMusic extends React.Component {
@@ -9,9 +9,8 @@ export default class MainBodyMusic extends React.Component {
     return (
 	<div className="container-fluid">
 		<div className="row">
-			<Sidebar playlistCollection={this.props.playlistCollection}/>
-			<MainTable currentPlaylist={this.props.playlistCollection[0]}/>
-			<MusicPlayer />
+			<SidebarMusic playlistCollection={this.props.playlistCollection} currentSong = {this.props.currentSong} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
+			<MainTable currentPlaylist={this.props.currentPlaylist} handleSelectSong={this.props.handleSelectSong}/>
 		</div>
 	</div>
     )

@@ -53,6 +53,19 @@ body {
   background-color: black;*/
 }
 
+#sidebar-footer-music {
+  color: white;
+  position: fixed;
+  bottom: 0px;
+  padding-bottom: 40px;
+  color: white;
+  text-overflow: ellipsis;
+  /*position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+}
+
 .createPlaylistBtn {
   margin-top: 10px;
   background: green;
@@ -137,16 +150,20 @@ Black*/
 
 
 /* Music player CSS */
-.music-popup{
-  width: 300px;
-  color: #222222;
+/*.music-popup{
+  width: 214px;
+  height: 150px;
+  color: #ffffff;
   position: fixed;
   bottom: 0px;
-  left: 225px;
+  left: 0px;
   padding-bottom: 10px;
+  border-left: none;
+  border-bottom: none;
 
 }
-.music-popup:hover{
+*/
+/*.music-popup:hover{
   color: white;
   background-color: #828081;
 }
@@ -158,4 +175,4 @@ Black*/
 
 .play-button{
   visibility: hidden;
-}
+}*/

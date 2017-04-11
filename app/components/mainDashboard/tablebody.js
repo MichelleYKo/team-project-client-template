@@ -8,7 +8,7 @@ export default class TableBody extends React.Component {
       <tbody>
         {this.props.currentPlaylist.playlistItems.map((playlistItem, i) => {
           return (
-            <TableItem key={i} playlistItem={playlistItem} />
+            <TableItem key={i} playlistItem={playlistItem} handleSelectSong = {this.props.handleSelectSong}/>
           )
         })}
       </tbody>

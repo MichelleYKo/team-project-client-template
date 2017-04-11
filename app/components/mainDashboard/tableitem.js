@@ -3,8 +3,9 @@ import React from 'react'
 export default class TableItem extends React.Component {
 
   render() {
+
     return (
-        <tr>
+        <tr href="#"  onDoubleClick={ (e) => this.props.handleSelectSong(e, this.props.playlistItem) }>
           <td>  {this.props.playlistItem._id} </td>
           <td>  {this.props.playlistItem.title} </td>
           <td>  {this.props.playlistItem.artists[0]} </td>

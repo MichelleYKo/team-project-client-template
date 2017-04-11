@@ -11,7 +11,7 @@ export default class MainTable extends React.Component {
           <div className = "container-fluid">
             <table className="table table-hover table-borderless">
               <TableHead currentPlaylist={this.props.currentPlaylist} />
-              <TableBody currentPlaylist={this.props.currentPlaylist} />
+              <TableBody currentPlaylist={this.props.currentPlaylist} handleSelectSong = {this.props.handleSelectSong} />
             </table>
           </div>
         </div>

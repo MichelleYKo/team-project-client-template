@@ -38,6 +38,11 @@ export default class mainDashboard extends React.Component {
     this.setState({currentPlaylist: selectedPlaylist});
   }
 
+  handlePlaySong(clickEvent, selectedSong) {
+    clickEvent.preventDefault();
+    this.setState({currentPlaylist: selectedPlaylist});
+  }
+
   refresh() {
     getPlaylistCollection(this.state.user, (playlistCollection) => {
       this.setState({playlistCollection: playlistCollection});

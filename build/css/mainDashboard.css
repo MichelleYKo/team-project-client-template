@@ -141,6 +141,10 @@ thead{
   background-color: #828081;
 }
 
+.table-selected {
+  background-color: #828081;
+}
+
 /*Electric Green: #3CC47C
 Forest Green: #1E392A
 Light Tan: #E9C893

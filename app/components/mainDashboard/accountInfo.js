@@ -14,7 +14,12 @@ export default class accountInfo extends React.Component {
         <div className = "container-fluid">
           <table className="table table-hover table-borderless">
             <thead>
-              <h1 style={{color: white}}><strong>Account Settings</strong></h1>
+              <h1 style={{color: white}}><strong>Account Settings</strong>
+                    <a className="btn btn-default pull-right" href="editProfile.html">
+                        Edit Profile
+                        <span className="glyphicon glyphicon-pencil"> </span>
+                    </a>
+              </h1>
             </thead>
             <tbody>
                 <tr className="info-borders">

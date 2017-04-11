@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import AccountOverview from './components/accountOverview.js';
 import AccountSettings from './components/accountSettings.js';
 import CreatePlaylist from './components/createPlaylist.js';
+import EditProfile from './components/editProfile.js';
 import MainDashboard from './components/mainDashboard.js';
 import MainDashboardMusic from './components/mainDashboardMusic.js';
 import SearchResults from './components/searchResults.js';
@@ -21,6 +22,11 @@ if (document.getElementById('accountOverview') !== null) {
   ReactDOM.render(
     <AccountSettings />,
     document.getElementById('accountSettings')
+  );
+} else if (document.getElementById('editProfile') !== null) {
+  ReactDOM.render(
+    <EditProfile />,
+    document.getElementById('editProfile')
   );
 } else if (document.getElementById('modal-body') !== null) {
   ReactDOM.render(

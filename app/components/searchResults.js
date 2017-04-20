@@ -13,19 +13,19 @@ export default class searchResults extends React.Component {
                 <button type="submit" className =  "btn btn-default">
                   <span className =  "glyphicon glyphicon-search"></span>
                 </button>
-                // <div className =  "btn-group">
-                //   <button type="button" data-toggle="dropdown" className =  "btn btn-default dropdown-toggle ">Search By <span className =  "caret"></span>
-                //   </button>
-                //   <ul className =  "dropdown-menu">
-                //     <li><a href="#">All</a></li>
-                //     <li><a href="#">Song</a></li>
-                //     <li><a href="#">Artist</a></li>
-                //     <li><a href="#">Album</a></li>
-                //     <li><a href="#">Genre</a></li>
-                //     <li><a href="#">User</a></li>
-                //     <li><a href="#">Playlist</a></li>
-                //   </ul>
-                // </div>
+                   <div className =  "btn-group">
+                     <button type="button" data-toggle="dropdown" className =  "btn btn-default dropdown-toggle ">Search By <span className =  "caret"></span>
+                     </button>
+                     <ul className =  "dropdown-menu">
+                       <li><a href="#">All</a></li>
+                       <li><a href="#">Song</a></li>
+                       <li><a href="#">Artist</a></li>
+                       <li><a href="#">Album</a></li>
+                       <li><a href="#">Genre</a></li>
+                       <li><a href="#">User</a></li>
+                       <li><a href="#">Playlist</a></li>
+                     </ul>
+                   </div>
               </div>
 
               <div className =  "Songs">

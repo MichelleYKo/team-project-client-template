@@ -13,11 +13,15 @@ export function addPlaylist(name, description, friendList) {
   // we don't have to resolve it. Read the document,
   // update the embedded object, and then update the
   // document in the database.
+
+  var time = new Date().getTime();
+
   var playlist = {
     name: name,
     description: description,
     authors: friendList,
-    dateCreated: 0,
+    dateCreated: time,
+    playlistItems: [],
     numSongs: 0
   }
 

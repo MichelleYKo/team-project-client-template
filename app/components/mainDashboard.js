@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './mainDashboard/navbar';
 import MainBody from './mainDashboard/mainbody';
+import CPModal from './cpmodal';
 import { getPlaylistCollection } from '../server';
 
 export default class mainDashboard extends React.Component {
@@ -38,10 +39,10 @@ export default class mainDashboard extends React.Component {
     this.setState({currentPlaylist: selectedPlaylist});
   }
 
-  handlePlaySong(clickEvent, selectedSong) {
+  /*handlePlaySong(clickEvent, selectedSong) {
     clickEvent.preventDefault();
     this.setState({currentPlaylist: selectedPlaylist});
-  }
+  }*/
 
   refresh() {
     getPlaylistCollection(this.state.user, (playlistCollection) => {
@@ -59,6 +60,7 @@ export default class mainDashboard extends React.Component {
 		<div>
 			<Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
 			<MainBody playlistCollection={this.state.playlistCollection} currentPlaylist={this.state.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist}/>
+      <CPModal/>
 		</div>
     )
   }

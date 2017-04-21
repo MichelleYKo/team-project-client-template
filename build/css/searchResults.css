@@ -1,12 +1,4 @@
-a[aria-expanded=true] .glyphicon-menu-down
-{
-  display: none;
-}
 
-a[aria-expanded=false] .glyphicon-menu-up
-{
-  display: none;
-}
 
 .panel-body
 {
@@ -17,7 +9,7 @@ a[aria-expanded=false] .glyphicon-menu-up
   color: #FFFFFF;
 }
 
-.modal-content
+#srmodal-content
 {
   background-color: #000000;
 }
@@ -32,24 +24,13 @@ a[aria-expanded=false] .glyphicon-menu-up
   background-color: #1E392A;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th
-{
-  background-color: #E9C893;
-}
 
 .panel-body
 {
   color: #828081;
 }
 
-.btn
+.btn-sr
 {
   background-color: #3CC47C;
 }
-
-.form-control
-{
-  background-color: #1E392A;
-}
-
-.

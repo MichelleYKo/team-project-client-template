@@ -157,32 +157,3 @@ Light Tan: #E9C893
 Tin Grey: #828081
 Dark Grey: #222222
 Black*/
-
-
-/* Music player CSS */
-/*.music-popup{
-  width: 214px;
-  height: 150px;
-  color: #ffffff;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  padding-bottom: 10px;
-  border-left: none;
-  border-bottom: none;
-
-}
-*/
-/*.music-popup:hover{
-  color: white;
-  background-color: #828081;
-}
-
-.music-popup:hover .play-button{
-  visibility: visible;
-}
-
-
-.play-button{
-  visibility: hidden;
-}*/

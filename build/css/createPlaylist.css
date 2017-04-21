@@ -8,7 +8,7 @@ ul {
   list-style-type: none;
 }
 
-.modal-content {
+#cpmodal-content {
   color: white;
   background-color: #222222;
   background-clip: padding-box;
@@ -18,31 +18,31 @@ ul {
   box-shadow: 0 3px 9px rgba(0,0,0,.5);
 }
 
-.modal-title{
+#cpmodal-title{
     padding: 1px;
     text-align: center;
     color: #3CC47C;
 }
 
-.modal-header {
+#cpmodal-header {
   border-bottom: 2px solid #828081;
 }
 
-.modal-body {
+#cpmodal-body {
     padding: 10px;
 }
 
-.modal-footer {
+#cpmodal-footer {
     padding: 15px;
     text-align: center;
     border-top: 2px solid #828081;
 }
 
-.textfield-input {
+#cptextfield-input {
   width: 200px
 }
 
-.textfield-input-wrapper{
+#cptextfield-input-wrapper{
   display: flex;
   padding-bottom: 10px;
 }
@@ -100,16 +100,12 @@ ul {
   margin-top: 5px;
 }
 
-.btn {
-
-}
-
-.btn-default {
+.cpModal-cancel {
   background-color: #ccc;
   border-color: #828081;
 }
 
-.btn-primary {
+.cpModal-create {
   background-color: #3CC47C;
   border-color: #1E392A;
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 import Navbar from './mainDashboard/navbar';
 import MainBodyMusic from './mainDashboard/mainbodymusic';
+import CPModal from './cpmodal';
+import ASModal from './asmodal';
+import SRModal from './srmodal';
 import {getPlaylistCollection} from '../server';
 
 export default class mainDashboardMusic extends React.Component {
@@ -73,6 +76,9 @@ export default class mainDashboardMusic extends React.Component {
 		<div>
 			<Navbar user={this.state.user} handleUserChange={this.handleUserChange} />
 			<MainBodyMusic playlistCollection={this.state.playlistCollection} currentPlaylist = {this.state.currentPlaylist} currentSong = {this.state.currentSong} handleSelectPlaylist = {this.handleSelectPlaylist} handleSelectSong= {this.handleSelectSong}/>
+      <CPModal />
+      <ASModal />
+      <SRModal />
 		</div>
     )
   }

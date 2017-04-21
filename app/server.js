@@ -9,10 +9,6 @@ function emulateServerReturn(data, cb) {
 }
 
 export function addPlaylist(name, description, friendList) {
-  // Since a CommentThread is embedded in a FeedItem object,
-  // we don't have to resolve it. Read the document,
-  // update the embedded object, and then update the
-  // document in the database.
 
   var time = new Date().getTime();
 

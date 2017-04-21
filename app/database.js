@@ -62,6 +62,8 @@ var initialData = {
       "authors": ["Jon Bailey"], // Users who contributed to this playlist.
       "dateCreated": 1453690800000, // Date of playlist creation.
       "playlistItems": ["1", "2"], // List of playlistitem IDs associated with this playlist.
+      "playlistItemUpvotes": [0, 0],
+      "playlistItemDownvotes": [0, 1],
       "numSongs": 0 // Number of songs in this playlist.
     },
     "2": {
@@ -71,6 +73,8 @@ var initialData = {
       "authors": ["Jon Bailey", "Tim Richards"],
       "dateCreated": 1453690800000,
       "playlistItems": ["2", "4"],
+      "playlistItemUpvotes": [2, 1],
+      "playlistItemDownvotes": [0, 1],
       "numSongs": 0
     },
     "3": {
@@ -80,6 +84,8 @@ var initialData = {
       "authors": ["Jon Bailey", "Tim Richards", "Jake Magier"],
       "dateCreated": 1453668480000,
       "playlistItems": ["3", "4"],
+      "playlistItemUpvotes": [1, 0],
+      "playlistItemDownvotes": [0, 2],
       "numSongs": 0
     }
   },

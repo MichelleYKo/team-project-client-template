@@ -1,6 +1,126 @@
 // Your startup's initial mock objects go here
 var initialData = {
-
+  // The "user" collection. Contains all of the users in our Facebook system.
+  "users": {
+    "1": { // This user has id "1".
+      "_id": 1,
+      "name": "Tim Richards", // Name of user.
+      "email": "trichards@cs.umass.edu", // Email associated with account.
+      "connectedAccts": ["Spotify", "Facebook"], // Linked accounts with application.
+      "playlistCollection": 1 // List of playlist IDs that this user has been an author of.
+    },
+    "2": {
+      "_id": 2,
+      "name": "Jon Bailey",
+      "email": "jonathanbail@umass.edu",
+      "connectedAccts": ["Spotify"],
+      "playlistCollection": 2
+    },
+    "3": {
+      "_id": 3,
+      "name": "Jake Magier",
+      "email": "jmagier@umass.edu",
+      "connectedAccts": ["Napster", "MySpace", "Facebook"],
+      "playlistCollection": 3
+    }
+  },
+  // The "playlist" collection. Contains all of the playlists that have been created.
+  "playlists": {
+    // This playlist has id "1".
+    "1": {
+      "_id": 1,
+      "name": "Homework Jammin'", // Playlist name.
+      "description": "", // The description of this playlist, created by the user.
+      "authors": [2], // Users who contributed to this playlist.
+      "dateCreated": 1453690800000, // Date of playlist creation.
+      "playlistItems": [1, 2], // List of playlistitem IDs associated with this playlist.
+      "playlistItemUpvotes": [0, 0],
+      "playlistItemDownvotes": [0, 1]
+    },
+    "2": {
+      "_id": 2,
+      "name": "Working Out",
+      "description": "",
+      "authors": [1, 2],
+      "dateCreated": 1453690800000,
+      "playlistItems": [2, 4],
+      "playlistItemUpvotes": [2, 1],
+      "playlistItemDownvotes": [0, 1]
+    },
+    "3": {
+      "_id": 3,
+      "name": "House Party",
+      "description": "",
+      "authors": [1, 2, 3],
+      "dateCreated": 1453668480000,
+      "playlistItems": [3, 4],
+      "playlistItemUpvotes": [1, 0],
+      "playlistItemDownvotes": [0, 2]
+    }
+  },
+  // The "playlist item" collection. Contains a few sample song items which will later be pulled in from Spotify dynamically.
+  "playlistItems": { // NOTE that all datatypes listed here match with what the Spotify API returns.
+    "1": {
+      "_id": "1", // The Spotify ID for this track, NOTE the API returns a STRING, not integer!
+      "title": "Welcome to the Jungle", // The title of this track. (String ... track.name)
+      "artists": ["Guns N' Roses"], // The artist(s) of this track. (String[] ... track.artists.name), API returns array of artist objects which contain names.
+      "album": "Appetite for Destruction", // The album this track is in. (String ... track.album.name), API returns album object which contains a name. Can be empty.
+      "genres": ["Hard Rock"], // The genre(s) of this track. (String[] ... track.album.genres), API returns array of strings representing classified genres. Can be empty.
+      "duration_ms": 1100 // The duration of the track in milliseconds. (Integer ... track.duration_ms)
+    },
+    "2": {
+      "_id": "2",
+      "title": "Toxic",
+      "artists": ["Britney Spears"],
+      "album": "In the Zone",
+      "genres": ["Pop"],
+      "duration_ms": 1200
+    },
+    "3": {
+      "_id": "3",
+      "title": "Africa",
+      "artists": ["Toto"],
+      "album": "Toto IV",
+      "genres": ["Classic Rock", "Pop"],
+      "duration_ms": 1300
+    },
+    "4": {
+      "_id": "4",
+      "title": "We Are the World",
+      "artists": ["Michael Jackson", "Lionel Richie", "USA for Africa"],
+      "album": "Single",
+      "genres": ["Pop"],
+      "duration_ms": 1400
+    }
+  },
+  "playlistCollections": {
+    "3": {
+      "_id": 3,
+      "contents": [3]
+    },
+    "2": {
+      "_id": 2,
+      "contents": [1, 2, 3]
+    },
+    "1": {
+      "_id": 1,
+      "contents": [2, 3]
+    }
+  },
+  "playlistItems": {
+    "3": {
+      "_id": 3,
+      "contents": [3, 4]
+    },
+    "2": {
+      "_id": 2,
+      "contents": [2, 4]
+    },
+    "1": {
+      "_id": 1,
+      "contents": [1, 2]
+    }
+  }
 };
 
 var data;

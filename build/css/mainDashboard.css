@@ -145,6 +145,12 @@ thead{
   background-color: #828081;
 }
 
+.db-reset {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
 /*Electric Green: #3CC47C
 Forest Green: #1E392A
 Light Tan: #E9C893

@@ -183,15 +183,15 @@ export function addDocument(collectionName, newDoc) {
 
 /**
  * Reset our browser-local database.
-*/
+ */
 export function resetDatabase() {
   localStorage.setItem(startupName, JSON.stringify(initialData));
   data = JSONClone(initialData);
 }
+
 /**
  * Reset database button.
-*/
-/*
+ */
 class ResetDatabase extends React.Component {
   render() {
     return (
@@ -202,10 +202,9 @@ class ResetDatabase extends React.Component {
       }}>Reset Mock DB</button>
     );
   }
-}*/
+}
 
-/*
 ReactDOM.render(
   <ResetDatabase />,
   document.getElementById('db-reset')
-);*/
+);

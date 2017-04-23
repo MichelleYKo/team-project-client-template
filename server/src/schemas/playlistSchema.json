@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {},
+    "id": "/",
+    "properties": {
+        "authors": {
+            "id": "/properties/authors",
+            "items": {
+                "id": "/properties/authors/items",
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "dateCreated": {
+            "id": "/properties/dateCreated",
+            "type": "integer"
+        },
+        "description": {
+            "id": "/properties/description",
+            "type": "string"
+        },
+        "name": {
+            "id": "/properties/name",
+            "type": "string"
+        },
+        "playlistItemDownvotes": {
+            "id": "/properties/playlistItemDownvotes",
+            "items": {
+                "id": "/properties/playlistItemDownvotes/items",
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "playlistItemUpvotes": {
+            "id": "/properties/playlistItemUpvotes",
+            "items": {
+                "id": "/properties/playlistItemUpvotes/items",
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "playlistItems": {
+            "id": "/properties/playlistItems",
+            "items": {
+                "id": "/properties/playlistItems/items",
+                "type": "integer"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "name",
+        "playlistItemDownvotes",
+        "playlistItemUpvotes",
+        "dateCreated",
+        "playlistItems",
+        "authors",
+        "description"
+    ],
+    "type": "object"
+}

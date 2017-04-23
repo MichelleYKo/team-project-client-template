@@ -11,6 +11,8 @@ var deleteDocument = database.deleteDocument;
 var addDocument = database.addDocument;
 var getCollection = database.getCollection;
 var validate = require('express-jsonschema').validate;
+var UserSchema = require('./schemas/userSchema.json');
+var PlaylistSchema = require('./schemas/playlistSchema.json');
 
 
 app.use(bodyParser.text());
@@ -54,7 +56,7 @@ function getPlaylistItemData(playlist) {
 
 
 //---------- addUser
-app.post('/user:userid', function(req, res) {
+app.post('/user:userid', validate({ body: UserSchema }), function(req, res) {
   var body = req.body;
 
   var newUser = addUser(body.name, body.email);
@@ -190,7 +192,7 @@ app.post('/playlist/:playlistid',
 
   var body = re.body;
 
-  var newPlaylist = addUser(body.name, body.description);
+  var newPlaylist = addPlaylist(body.name, body.description);
   // When POST creates a new resource, we should tell the client about it
   // in the 'Location' header and use status code 201.
   res.status(201);

@@ -5,6 +5,7 @@ import CPModal from './cpmodal';
 import ASModal from './asmodal';
 import SRModal from './srmodal';
 import {getPlaylistCollection} from '../server';
+import ErrorBanner from './components/errorbanner';
 
 export default class mainDashboardMusic extends React.Component {
 
@@ -74,6 +75,11 @@ export default class mainDashboardMusic extends React.Component {
   render() {
     return (
 		<div>
+      <div className = "row">
+        <div className="col-md-12">
+          <ErrorBanner />
+        </div>
+      </div>
 			<Navbar user={this.state.user} handleUserChange={this.handleUserChange} />
 			<MainBodyMusic playlistCollection={this.state.playlistCollection} currentPlaylist = {this.state.currentPlaylist} currentSong = {this.state.currentSong} handleSelectPlaylist = {this.handleSelectPlaylist} handleSelectSong= {this.handleSelectSong}/>
       <CPModal />

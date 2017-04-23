@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ErrorBanner from './components/errorbanner'
 
 // Each major browser view user interface must be imported.
 import AccountOverview from './components/accountOverview.js';

@@ -5,6 +5,7 @@ import {getPlaylistCollection} from '../server';
 import {getEmail} from '../server';
 import {getName} from '../server';
 import {getConnectedAccts} from '../server';
+import ErrorBanner from './components/errorbanner';
 
 export default class editProfile extends React.Component {
   constructor(props){
@@ -63,6 +64,11 @@ export default class editProfile extends React.Component {
   render() {
     return (
       <div>
+        <div className = "row">
+          <div className="col-md-12">
+            <ErrorBanner />
+          </div>
+        </div>
         <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
         <MainBodyEditProfile playlistCollection={this.state.playlistCollection} currentPlaylist={this.state.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.state.email} connectedAccts={this.state.connectedAccts} name={this.state.name}/>
       </div>

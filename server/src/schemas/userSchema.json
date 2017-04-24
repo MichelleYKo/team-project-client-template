@@ -5,23 +5,23 @@
     "id": "/",
     "properties": {
         "connectedAccts": {
-            "id": "/properties/connectedAccts",
+            "id": "connectedAccts",
             "items": {
-                "id": "/properties/connectedAccts/items",
+                "id": "connectedAccts/items",
                 "type": "string"
             },
             "type": "array"
         },
         "email": {
-            "id": "/properties/email",
+            "id": "email",
             "type": "string"
         },
         "name": {
-            "id": "/properties/name",
+            "id": "name",
             "type": "string"
         },
         "playlistCollection": {
-            "id": "/properties/playlistCollection",
+            "id": "playlistCollection",
             "type": "integer"
         }
     },

@@ -110,7 +110,7 @@ export function editPlaylistDescription(playlistId, cb) {
   });
 }
 
-export function addPlaylist(name, description, authors, cb) {
+export function postPlaylist(name, description, authors, cb) {
   sendXHR('POST', '/playlists', {
     "name": name, // Playlist name.
     "description": description, // The description of this playlist, created by the user.

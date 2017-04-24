@@ -211,8 +211,6 @@ function addPlaylist(name, description) {
     "name": name,
     "description": description,
     "authors": [],
-    "connectedAccounts": [],
-    "authors": []
     "dateCreated": time,
     "playlistItems": [],
     "playlistItemUpvotes": [],
@@ -314,13 +312,13 @@ app.get('/playlist/:playlistid/playlistItems', function(req, res) {
 
 // ------ addPlaylistItem
 // TODO: Figure out Spotify API data to put in here
-app.post('/playlistitems/:playlistitemid',
+/*app.post('/playlistitems/:playlistitemid',
          validate({ body: PlaylistItemSchema }), function(req, res) {
   var playlistItemId = req.params.playlistItemid;
 
   res.set('Location', '/playlistitems/' + playlistItemId);
   //res.send(getUserItemSync(UserId));
-});
+});*/
 
 // ------ upvoteItem
 app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {

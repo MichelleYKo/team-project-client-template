@@ -5,7 +5,7 @@ import CPModal from './cpmodal';
 import ASModal from './asmodal';
 import SRModal from './srmodal';
 import {getPlaylistCollection} from '../server';
-import ErrorBanner from './components/errorbanner';
+import ErrorBanner from './errorbanner';
 
 export default class mainDashboardMusic extends React.Component {
 

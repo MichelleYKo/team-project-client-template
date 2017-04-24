@@ -5,45 +5,45 @@
     "id": "/",
     "properties": {
         "authors": {
-            "id": "/properties/authors",
+            "id": "authors",
             "items": {
-                "id": "/properties/authors/items",
+                "id": "authors/items",
                 "type": "integer"
             },
             "type": "array"
         },
         "dateCreated": {
-            "id": "/properties/dateCreated",
+            "id": "dateCreated",
             "type": "integer"
         },
         "description": {
-            "id": "/properties/description",
+            "id": "description",
             "type": "string"
         },
         "name": {
-            "id": "/properties/name",
+            "id": "name",
             "type": "string"
         },
         "playlistItemDownvotes": {
-            "id": "/properties/playlistItemDownvotes",
+            "id": "playlistItemDownvotes",
             "items": {
-                "id": "/properties/playlistItemDownvotes/items",
+                "id": "playlistItemDownvotes/items",
                 "type": "integer"
             },
             "type": "array"
         },
         "playlistItemUpvotes": {
-            "id": "/properties/playlistItemUpvotes",
+            "id": "playlistItemUpvotes",
             "items": {
-                "id": "/properties/playlistItemUpvotes/items",
+                "id": "playlistItemUpvotes/items",
                 "type": "integer"
             },
             "type": "array"
         },
         "playlistItems": {
-            "id": "/properties/playlistItems",
+            "id": "playlistItems",
             "items": {
-                "id": "/properties/playlistItems/items",
+                "id": "playlistItems/items",
                 "type": "integer"
             },
             "type": "array"

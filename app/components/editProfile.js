@@ -5,7 +5,7 @@ import {getPlaylistCollection} from '../server';
 import {getEmail} from '../server';
 import {getName} from '../server';
 import {getConnectedAccts} from '../server';
-import ErrorBanner from './components/errorbanner';
+import ErrorBanner from './errorbanner';
 
 export default class editProfile extends React.Component {
   constructor(props){

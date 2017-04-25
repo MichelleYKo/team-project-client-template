@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ErrorBanner from './components/errorbanner'
+
 // Each major browser view user interface must be imported.
 import MainBodyMusic from './components/mainDashboard/mainbodymusic.js';
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
@@ -28,7 +30,9 @@ class MainBodyMusicPage extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      <div><Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
+      <div>
+      <ErrorBanner />
+      <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
       {this.props.children}
       <Sidebar playlistCollection={this.props.playlistCollection} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
       <CPModal />

@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {},
+    "id": "/",
+    "properties": {
+        "authors": {
+            "id": "authors",
+            "items": {
+                "id": "authors/items",
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "dateCreated": {
+            "id": "dateCreated",
+            "type": "integer"
+        },
+        "description": {
+            "id": "description",
+            "type": "string"
+        },
+        "name": {
+            "id": "name",
+            "type": "string"
+        },
+        "playlistItemDownvotes": {
+            "id": "playlistItemDownvotes",
+            "items": {
+                "id": "playlistItemDownvotes/items",
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "playlistItemUpvotes": {
+            "id": "playlistItemUpvotes",
+            "items": {
+                "id": "playlistItemUpvotes/items",
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "playlistItems": {
+            "id": "playlistItems",
+            "items": {
+                "id": "playlistItems/items",
+                "type": "integer"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "name",
+        "playlistItemDownvotes",
+        "playlistItemUpvotes",
+        "dateCreated",
+        "playlistItems",
+        "authors",
+        "description"
+    ],
+    "type": "object"
+}

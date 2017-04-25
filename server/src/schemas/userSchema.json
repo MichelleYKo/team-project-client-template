@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {},
+    "id": "/",
+    "properties": {
+        "connectedAccts": {
+            "id": "connectedAccts",
+            "items": {
+                "id": "connectedAccts/items",
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "email": {
+            "id": "email",
+            "type": "string"
+        },
+        "name": {
+            "id": "name",
+            "type": "string"
+        },
+        "playlistCollection": {
+            "id": "playlistCollection",
+            "type": "integer"
+        }
+    },
+    "required": [
+        "playlistCollection",
+        "connectedAccts",
+        "name",
+        "email"
+    ],
+    "type": "object"
+}

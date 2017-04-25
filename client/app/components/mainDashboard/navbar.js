@@ -1,8 +1,8 @@
 import React from 'react';
 import NavbarLeftItem from './navbarleftitem';
 import NavbarRightItem from './navbarrightitem';
-import ResetDatabase from '../../database';
-import {Link} from 'react-router';
+//import ResetDatabase from '../../database';
+//import {Link} from 'react-router';
 //import {getPlaylistCollection} from '../../server';
 
 
@@ -16,12 +16,12 @@ export default class Navbar extends React.Component {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="#">
             <img src="img/Logo_HeadphonesOuterGlow.png" style={divStyle}/>
-          </Link>
+          </a>
           <NavbarLeftItem />
           <NavbarRightItem handleUserChange={this.props.handleUserChange}/>
-        
+
         </div>
       </nav>
     )

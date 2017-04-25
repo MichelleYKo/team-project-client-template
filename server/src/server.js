@@ -53,13 +53,36 @@ function getPlaylistItemData(playlist) {
   return playlistItemData;
 }
 
+function getUserIdFromToken(authorizationLine) {
+  try {
+    // Cut off "Bearer " from the header value.
+    var token = authorizationLine.slice(7);
+    // Convert the base64 string to a UTF-8 string.
+    var regularString = new Buffer(token, 'base64').toString('utf8');
+    // Convert the UTF-8 string into a JavaScript object.
+    var tokenObj = JSON.parse(regularString);
+    var id = tokenObj['id'];
+    // Check that id is a number.
+    if (typeof id === 'number') {
+      return id;
+    } else {
+      // Not a number. Return -1, an invalid ID.
+      return -1;
+    }
+  } catch (e) {
+    // Return an invalid ID.
+    return -1;
+  }
+}
 
 
 //---------- addUser
-app.post('/user:userid', validate({ body: UserSchema }), function(req, res) {
+app.post('/user/:userid', validate({ body: UserSchema }), function(req, res) {
   var body = req.body;
 
   var newUser = addUser(body.name, body.email);
+
+  newUser.playlistCollection = newUser._id;
 
   res.status(201);
   res.set('Location', '/user/' + newUser._id);
@@ -68,15 +91,12 @@ app.post('/user:userid', validate({ body: UserSchema }), function(req, res) {
 
 function addUser(name, email) {
 
-  // Get the current UNIX time.
-  var time = new Date().getTime();
-
   // The new user
   var newUser = {
     "name": name,
     "email": email,
     "connectedAccounts": [],
-    "friends": []
+    "playlistCollection": 0
   };
 
   addDocument('Users', newUser);
@@ -87,9 +107,10 @@ function addUser(name, email) {
 
 
 // ------ editUserName
-app.put('/user:userid/name', function(req, res) {
+app.put('/user/:userid/name', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
-  var user = readDocument('users', userID);
+  var user = readDocument('users', userId);
 
   if (typeof(req.body) !== 'string') {
    // 400: Bad request.
@@ -100,14 +121,15 @@ app.put('/user:userid/name', function(req, res) {
   user.name = req.body
   writeDocument('users', user)
 
-  res.send(getUserItemSync(UserId));
+  res.send(readDocument('users', userId));
 });
 
 
 // ------ editUserEmail
 app.put('/user/:userid/email', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
-  var user = readDocument('users', userID);
+  var user = readDocument('users', userId);
 
   if (typeof(req.body) !== 'string') {
    // 400: Bad request.
@@ -118,17 +140,16 @@ app.put('/user/:userid/email', function(req, res) {
   user.email = req.body
   writeDocument('users', user)
 
-  res.send(getUserItemSync(UserId));
+  res.send(readDocument('users', userId));
 });
 
 
-// ------ deletePlaylist
+/*// ------ deletePlaylist
 app.delete('/user/:userid/playlistCollection/:playlistid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
 
-  // Convert params from string to number.
-  var userId = parseInt(req.params.userid, 10);
-  var playlistId = parseInt(req.params.playlistid, 10);
+  var userId = req.params.userid
+  var playlistId = req.params.playlistid
 
   if (fromUser === userId) {
     var user = readDocument('users', userId);
@@ -145,32 +166,49 @@ app.delete('/user/:userid/playlistCollection/:playlistid', function(req, res) {
     // 401: Unauthorized.
     res.status(401).end();
   }
+});*/
+
+
+app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+
+  var playlistCollectionId = req.params.playlistCollectionid
+
+  var playlistCollection = readDocument('playlistCollections', userId);
+  var index = playlistCollection.contents.indexOf(playlistCollectionId);
+
+  // Remove from likeCounter if present
+  if (index !== -1) {
+    playlistCollection.contents.splice(playlistIndex, 1);
+    writeDocument('playlistCollections', playlistCollection);
+  }
+
+  res.send(playlistCollection.contents.map((playlistId) => readDocument('playlists', playlistId)));
+
 });
 
 // ------ addNewPlaylist
-app.put('/user/:userid/playlistCollection/:playlistid', function(req, res) {
+app.put('playlistCollections/:playlistid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   // Convert params from string to number.
-  var playlistId = parseInt(req.params.playlistid, 10);
-  var userId = parseInt(req.params.userid, 10);
+  var authors = req.params.authors;
 
-  if (fromUser === userId) {
-    var user = readDocument('feedItems', userId);
+  authors.foreach(function(userId) {
+    var playlistCollection = readDocument('playlistCollections', userId);
     // Add to likeCounter if not already present.
-    if (user.playlistCollection.indexOf(playlistId) === -1) {
-      user.playlistCollection.push(userId);
-      writeDocument('feedItems', feedItem);
+    if (playlistCollection.contents.indexOf(playlistId) === -1) {
+      playlistCollection.contents.push(userId);
+      writeDocument('playlistCollections', playlistCollection);
     }
     // Return a resolved version of the likeCounter
-    res.send(feedItem.likeCounter.map((userId) => readDocument('users', userId)));
-  } else {
-    // 401: Unauthorized.
-    res.status(401).end();
-  }
+    res.send(playlistCollection.contents.map((playlistId) => readDocument('playlists', playlistId)));
+  });
+
 });
 
 // ------- getPlaylistData
 app.get('/user/:userid/playlistCollection', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userid = req.params.userid;
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
   // userid is a string. We need it to be a number.
@@ -186,9 +224,10 @@ app.get('/user/:userid/playlistCollection', function(req, res) {
 
 
 // ------ addPlaylist
-app.post('/playlist/:playlistid',
+app.post('/playlists/:playlistid',
          validate({ body: PlaylistSchema }), function(req, res) {
   var playlistId = req.params.playlistid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
 
   var body = re.body;
 
@@ -196,7 +235,7 @@ app.post('/playlist/:playlistid',
   // When POST creates a new resource, we should tell the client about it
   // in the 'Location' header and use status code 201.
   res.status(201);
-  res.set('Location', '/playlist/' + newPlaylist._id);
+  res.set('Location', '/playlists/' + newPlaylist._id);
    // Send the update!
   res.send(newPlaylist);
 });
@@ -225,7 +264,8 @@ function addPlaylist(name, description) {
 
 
 // ------ editPlaylistName
-app.put('/playlist/:playlistid/name', function(req, res) {
+app.put('/playlists/:playlistid/name', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var playlist = readDocument('playlists', playlistID);
 
@@ -243,7 +283,8 @@ app.put('/playlist/:playlistid/name', function(req, res) {
 
 
 // ------ editPlaylistDescription
-app.put('/playlist/:playlistid/description', function(req, res) {
+app.put('/playlists/:playlistid/description', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var playlist = readDocument('playlists', playlistID);
 
@@ -260,7 +301,8 @@ app.put('/playlist/:playlistid/description', function(req, res) {
 });
 
 // ------ addToPlaylist
-app.put('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, res) {
+app.put('/playlists/:playlistid/playlistItems/:playlistitemid', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
 
@@ -278,6 +320,7 @@ app.put('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, res
 
 // ------ deleteFromPlaylist
 app.delete('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
 
@@ -296,6 +339,7 @@ app.delete('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, 
 
 // ------- getPlaylistItemData
 app.get('/playlist/:playlistid/playlistItems', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
   // userid is a string. We need it to be a number.
@@ -322,6 +366,7 @@ app.get('/playlist/:playlistid/playlistItems', function(req, res) {
 
 // ------ upvoteItem
 app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var userId = req.params.playlistitemid;
 

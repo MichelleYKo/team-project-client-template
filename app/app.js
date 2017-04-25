@@ -4,6 +4,9 @@ import ErrorBanner from './components/errorbanner';
 import Navbar from './components/mainDashboard/navbar';
 import SidebarMusic from './components/mainDashboard/sidebarmusic';
 import {getPlaylistCollection} from './server';
+import {getEmail} from './server';
+import {getName} from './server';
+import {getConnectedAccts} from './server';
 import CPModal from './components/CPModal';
 import ASModal from './components/ASModal';
 import SRModal from './components/SRModal';
@@ -11,6 +14,7 @@ import SRModal from './components/SRModal';
 // Each major browser view user interface must be imported.
 import MainBodyMusic from './components/mainDashboard/mainbodymusic.js';
 import MainBodyAccount from './components/mainDashboard/mainBodyAccount.js';
+import MainBodyEditProfile from './components/mainDashboard/mainBodyEditProfile.js';
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
 
@@ -38,6 +42,12 @@ class MainBodyMusicPage extends React.Component {
 class AccountOverviewPage extends React.Component{
   render(){
     return <MainBodyAccount playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
+  }
+}
+
+class EditProfilePage extends React.Component{
+  render(){
+    return <MainBodyEditProfile playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
   }
 }
 
@@ -97,6 +107,15 @@ class App extends React.Component {
       this.setState({playlistCollection: playlistCollection});
       this.setState({currentPlaylist: this.state.playlistCollection[0]})
     });
+    getEmail(this.state.user, (email) => {
+      this.setState({email: email})
+    });
+    getName(this.state.user, (name) => {
+      this.setState({name: name})
+    });
+    getConnectedAccts(this.state.user, (connectedAccts) => {
+      this.setState({connectedAccts: connectedAccts})
+    });
   }
 
   componentDidMount() {
@@ -122,8 +141,8 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={MainBodyMusicPage} />
-      <Route path="mainbodyAccount/:id" component={AccountOverviewPage}/>
-
+      <Route path="mainBodyAccount" component={AccountOverviewPage}/>
+      <Route path="mainBodyEditProfile" component={EditProfilePage}/>
     </Route>
   </Router>
 ),document.getElementById('dashboard'));

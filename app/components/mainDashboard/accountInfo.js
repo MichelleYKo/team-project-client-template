@@ -16,7 +16,7 @@ export default class accountInfo extends React.Component {
           <table className="table table-hover table-borderless">
             <thead>
               <h1 style={{color: white}}><strong>Account Settings</strong>
-                    <Link className="btn btn-default pull-right" to="/editProfile">
+                    <Link className="btn btn-default pull-right" to="/mainBodyEditProfile">
                         Edit Profile
                         <span className="glyphicon glyphicon-pencil"> </span>
                     </Link>

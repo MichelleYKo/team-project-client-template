@@ -15,11 +15,11 @@ export default class editAccountInfo extends React.Component {
           <table className="table table-hover table-borderless">
             <thead>
               <h1 style={{color: white}}><strong>Account Settings</strong>
-                    <Link className="btn btn-default pull-right" to="/accountOverview">
+                    <Link className="btn btn-default pull-right" to="/mainBodyAccount">
                         Cancel
                         <span className="glyphicon glyphicon-remove"> </span>
                     </Link>
-                    <Link type="submit" className="btn btn-default pull-right" to="/editProfile">
+                    <Link type="submit" className="btn btn-default pull-right" to="#">
                         Save
                         <span className="glyphicon glyphicon-pencil"> </span>
                     </Link>

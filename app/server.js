@@ -72,49 +72,95 @@ export function getPlaylistData(user, cb) {
   });
 }
 
-export function getPlaylistItemData(user, cb) {
-  sendXHR('GET', '/playlist/2/playlistItems', undefined, (xhr) => {
+export function getPlaylistItemData(playlistId, cb) {
+  sendXHR('GET', '/playlist/' + playlistId +'/playlistItems', undefined, (xhr) => {
+    // Call the callback with the data.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function getUserData(user, cb) {
+  sendXHR('GET', '/user/2', undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));
   });
 }
 
 export function editUserName(userId, cb) {
-  sendXHR('PUT', '/user/' + userId + '/name/', undefined, (xhr) => {
+  sendXHR('PUT', '/user/' + userId + '/name', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
 
 export function editUserEmail(userId, cb) {
-  sendXHR('PUT', '/user/' + userId + '/name/', undefined, (xhr) => {
+  sendXHR('PUT', '/user/' + userId + '/name', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
 
+export function deletePlaylist(playlistCollectionId, cb) {
+  sendXHR('DELETE', '/playlistCollections/' + playlistCollectionId, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
 
-export function deletePlaylist(playlistId, cb) {
-  sendXHR('DELETE', '/playlists/' + playlistId, undefined, () => {
-    cb();
+export function addPlaylistToCollection(playlistCollectionId, cb) {
+  sendXHR('PUT', '/playlistCollections/' + playlistCollectionId, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
   });
 }
 
 export function editPlaylistName(playlistId, cb) {
-  sendXHR('PUT', '/playlists/' + playlistId + '/name/', undefined, (xhr) => {
+  sendXHR('PUT', '/playlists/' + playlistId + '/name', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
 
 export function editPlaylistDescription(playlistId, cb) {
-  sendXHR('PUT', '/playlists/' + playlistId + '/description/', undefined, (xhr) => {
+  sendXHR('PUT', '/playlists/' + playlistId + '/description', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
 
-export function postPlaylist(name, description, authors, cb) {
+export function addToPlaylist(playlistId, playlistItemId, cb) {
+  sendXHR('PUT', '/playlists/' + playlistId + '/playlistItems/' + playlistItemId, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function deleteFromPlaylist(playlistId, playlistItemId, cb) {
+  sendXHR('DELETE', '/playlists/' + playlistId + '/playlistItems/' + playlistItemId, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function addPlaylist(name, description, authors, cb) {
   sendXHR('POST', '/playlists', {
     "name": name, // Playlist name.
     "description": description, // The description of this playlist, created by the user.
     "authors": authors
+  }, (xhr) => {
+    // Return the new status update.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function upvoteItem(playlistId, cb) {
+  sendXHR('PUT', '/playlist/' + playlistId + '/playlistItemUpvotes', undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function downvoteItem(playlistId, cb) {
+  sendXHR('DELETE', '/playlist/' + playlistId + '/playlistItemDownvotes', undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function addUser(name, email, cb) {
+  sendXHR('POST', '/users', {
+    "name": name, // Playlist name.
+    "email": email // The description of this playlist, created by the user.
   }, (xhr) => {
     // Return the new status update.
     cb(JSON.parse(xhr.responseText));
@@ -135,7 +181,7 @@ function emulateServerReturn(data, cb) {
   setTimeout(() => {cb(data);}, 4);
 }
 
-export function addPlaylist(name, description, friendList) {
+/*export function addPlaylist(name, description, friendList) {
 
   var time = new Date().getTime();
 
@@ -149,7 +195,7 @@ export function addPlaylist(name, description, friendList) {
   }
 
   addDocument('playlists', playlist);
-}
+}*/
 
 export function getPlaylistCollection(user, cb) {
   // Get the User object with the id "user".
@@ -207,6 +253,7 @@ export function getEmail(user, cb) {
   var email = userData.email;
   emulateServerReturn(email, cb);
 }
+
 export function getConnectedAccts(user, cb) {
   // Get the User object with the id "user".
   var userData = readDocument('users', user);

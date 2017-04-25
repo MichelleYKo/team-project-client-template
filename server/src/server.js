@@ -44,6 +44,7 @@ function getPlaylistItemSync(playlistItemId) {
 
   return playlistItems;
 }
+
 function getPlaylistItemData(playlist) {
   var playlistData = readDocument('playlists', playlist);
   var playlistItemData = readDocument('playlistItems', playlistData.playlistItems);
@@ -105,6 +106,19 @@ function addUser(name, email) {
   return newUser;
 }
 
+// ------- getUserData
+app.get('/user/:userid', function(req, res) {
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var userId = req.params.userid;
+
+  //if (fromUser === useridNumber) {
+    // Send response.
+  res.send(readDocument('users', userId));
+  //} else {
+    // 403: Unauthorized request.
+  //  res.status(403).end();
+  //}
+});
 
 // ------ editUserName
 app.put('/user/:userid/name', function(req, res) {
@@ -168,7 +182,7 @@ app.delete('/user/:userid/playlistCollection/:playlistid', function(req, res) {
   }
 });*/
 
-
+// deletePlaylist
 app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
 
@@ -187,9 +201,9 @@ app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
 
 });
 
-// ------ addNewPlaylist
-app.put('playlistCollections/:playlistid', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+// ------ addPlaylistToCollection
+app.put('playlistCollections/:playlistCollectionid', function(req, res) {
+  // var fromUser = getUserIdFromToken(req.get('Authorization'));
   // Convert params from string to number.
   var authors = req.params.authors;
 
@@ -200,10 +214,9 @@ app.put('playlistCollections/:playlistid', function(req, res) {
       playlistCollection.contents.push(userId);
       writeDocument('playlistCollections', playlistCollection);
     }
-    // Return a resolved version of the likeCounter
-    res.send(playlistCollection.contents.map((playlistId) => readDocument('playlists', playlistId)));
   });
 
+  res.send()
 });
 
 // ------- getPlaylistData

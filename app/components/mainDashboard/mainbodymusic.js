@@ -9,8 +9,8 @@ export default class MainBodyMusic extends React.Component {
     return (
 	<div className="container-fluid">
 		<div className="row">
-			<SidebarMusic playlistCollection={this.props.playlistCollection} currentSong = {this.props.currentSong} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
-			<MainTable currentPlaylist={this.props.currentPlaylist} handleSelectSong={this.props.handleSelectSong}/>
+      //<SidebarMusic playlistCollection={this.props.playlistCollection} currentSong = {this.props.currentSong} handleSelectPlaylist={this.props.handleSelectPlaylist}/>
+      <MainTable currentPlaylist={this.props.currentPlaylist} handleSelectSong={this.props.handleSelectSong}/>
 		</div>
 	</div>
     )

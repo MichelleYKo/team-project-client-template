@@ -65,7 +65,10 @@ export default class editProfile extends React.Component {
       <div>
         <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
         <MainBodyEditProfile playlistCollection={this.state.playlistCollection} currentPlaylist={this.state.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.state.email} connectedAccts={this.state.connectedAccts} name={this.state.name}/>
-      </div>
+        <CPModal />
+        <ASModal />
+        <SRModal />
+    </div>
     )
   }
 }

@@ -1,4 +1,4 @@
-import {readDocument, /*writeDocument,*/ addDocument} from './database.js';
+import {readDocument /*, writeDocument, addDocument*/} from './database.js';
 
 var token = 'eyAiaWQiOiA0IH0NCg==';
 
@@ -14,7 +14,7 @@ function sendXHR(verb, resource, body, cb) {
   // The below comment tells ESLint that FacebookError is a global.
   // Otherwise, ESLint would complain about it! (See what happens in Atom if
   // you remove the comment...)
-  /* global FacebookError */
+  /* globa l FacebookError */
 
   // Response received from server. It could be a failure, though!
   xhr.addEventListener('load', function() {
@@ -135,7 +135,7 @@ export function addPlaylist(name, description, authors, cb) {
 function emulateServerReturn(data, cb) {
   setTimeout(() => {cb(data);}, 4);
 }
-
+/*
 export function addPlaylist(name, description, friendList) {
 
   var time = new Date().getTime();
@@ -151,7 +151,7 @@ export function addPlaylist(name, description, friendList) {
 
   addDocument('playlists', playlist);
 }
-
+*/
 export function getPlaylistCollection(user, cb) {
   // Get the User object with the id "user".
   var userData = readDocument('users', user);

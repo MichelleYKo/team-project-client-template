@@ -11,7 +11,7 @@ export default class SidebarListItem extends React.Component {
 
   render() {
     return (
-      <li className="active sidebarListItem"><a className="sidebarListItem" href="#" onClick={(e) => this.props.handleSelectPlaylist(e, this.state.playlist)}>{this.state.playlist.name}</a></li>
+      <li className="active sidebarListItem"><Link className="sidebarListItem" to="#" onClick={(e) => this.props.handleSelectPlaylist(e, this.state.playlist)}>{this.state.playlist.name}</Link></li>
     )
   }
 }

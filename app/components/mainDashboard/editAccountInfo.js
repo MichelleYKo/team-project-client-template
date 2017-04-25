@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router';
 var white = "#ffffff";
 
 export default class editAccountInfo extends React.Component {

@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import SidebarHeader from './sidebarheader';
 import SidebarList from './sidebarlist';
 import SidebarFooter from './sidebarfooter';
@@ -16,3 +16,4 @@ export default class Sidebar extends React.Component {
     )
   }
 }
+*/

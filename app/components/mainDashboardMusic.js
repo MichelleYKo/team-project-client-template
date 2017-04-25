@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import Navbar from './mainDashboard/navbar';
 import MainBodyMusic from './mainDashboard/mainbodymusic';
 import CPModal from './cpmodal';
@@ -89,3 +89,4 @@ export default class mainDashboardMusic extends React.Component {
     )
   }
 }
+*/

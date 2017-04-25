@@ -31,13 +31,16 @@ class MainDashboard extends React.Component {
 
 class MainBodyMusicPage extends React.Component {
   render() {
-    return <MainBodyMusic  playlistCollection={this.props.playlistCollection} currentPlaylist = {this.props.currentPlaylist} currentSong = {this.props.currentSong} handleSelectPlaylist = {this.handleSelectPlaylist} handleSelectSong= {this.handleSelectSong}/>;
+    return <MainBodyMusic  playlistCollection={this.props.playlistCollection} currentPlaylist = {this.props.currentPlaylist} currentSong = {this.props.currentSong} handleSelectPlaylist = {this.props.handleSelectPlaylist} handleSelectSong= {this.props.handleSelectSong}/>;
+   
+    //return <MainBodyMusic />
   }
 }
 
 class AccountOverviewPage extends React.Component{
   render(){
-    return <MainBodyAccount playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
+    return <MainBodyAccount playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
+    //return <MainBodyAccount />
   }
 }
 
@@ -73,6 +76,7 @@ class App extends React.Component {
       }
     };
   }
+
   handleUserChange(e){
     e.preventDefault();
     var newID = parseInt(window.prompt("Enter a user ID:"), 10);
@@ -92,6 +96,7 @@ class App extends React.Component {
     clickEvent.preventDefault();
     this.setState({currentSong: selectedSong});
   }
+
   refresh() {
     getPlaylistCollection(this.state.user, (playlistCollection) => {
       this.setState({playlistCollection: playlistCollection});
@@ -102,8 +107,16 @@ class App extends React.Component {
   componentDidMount() {
     this.refresh();
   }
+
   render() {
-    var childrenWithProps = React.cloneElement(this.props.children, this.state);
+    //var childrenWithProps = React.cloneElement(this.props.children, this.state);
+    var childrenWithProps = React.cloneElement(this.props.children, {
+      user: this.state.user,
+      playlistCollection: this.playlistCollection,
+      currentPlaylist: this.state.currentPlaylist,
+      currentSong: this.state.currentSong,
+      handleSelectSong: this.handleSelectSong
+    });
     return (
       <div>
       <ErrorBanner />
@@ -122,7 +135,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={MainBodyMusicPage} />
-      <Route path="mainbodyAccount/:id" component={AccountOverviewPage}/>
+      <Route path="/mainBodyAccount" component={AccountOverviewPage}/>
 
     </Route>
   </Router>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default class Songs extends React.Component {
+
   render() {
     return (
       <div className="Songs">
@@ -67,3 +68,20 @@ export default class Songs extends React.Component {
     )
   }
 }
+
+
+
+// songs.map( s => {
+//     <tr>
+//     <td><button type="submit" className="btn btn-default btn-sr">
+//       <span className="glyphicon glyphicon-play"></span>
+//     </button></td>
+//     <td>{s.title}</td>
+//     <td>{s.album}</td>
+//     <td>{s.artist}</td>
+//     <td>{s.genre}</td>
+//     <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
+//       <span className="glyphicon glyphicon-plus-sign"></span>
+//     </button></td>
+//   </tr>
+// })

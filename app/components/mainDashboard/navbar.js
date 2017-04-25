@@ -16,7 +16,7 @@ export default class Navbar extends React.Component {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/mainDashboardMusic">
+          <Link className="navbar-brand" to="/">
             <img src="img/Logo_HeadphonesOuterGlow.png" style={divStyle}/>
           </Link>
           <NavbarLeftItem />

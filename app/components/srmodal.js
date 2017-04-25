@@ -7,6 +7,48 @@ import Playlists from './search_results/playlists';
 import Users from './search_results/users';
 
 export default class SRModal extends React.Component {
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     query: this.props.query
+  //     songs: []
+  //     artists: []
+  //     genre: []
+  //     albums: []
+  //     playlists: []
+  //     users: []
+  //   }
+  // }
+
+  // componentDidMount(){
+  //   this.searchSpotify(this.state.text, this.addItems);
+  // }
+
+  // searchSpotify(query, handleData) {
+  //   $.ajax({
+  //     url: 'https://api.spotify.com/v1/search',
+  //     data: {
+  //       q: query,
+  //       type: 'track,artist,album',
+  //       market: 'US',
+  //       limit: 10
+  //     },
+  //     success: function(response) {
+  //       handleData(response);
+  //     }
+  //   });
+  // }
+
+  // addItems(data) {
+  //   this.setState({
+  //     albums: data.albums.items,
+  //     artists: data.artists.items,
+  //     tracks: data.tracks.items
+  //   });
+  // }
+
+
+
   render() {
     return(
       <div id="srModal" className="modal fade">
@@ -14,29 +56,25 @@ export default class SRModal extends React.Component {
           <div className= "modal-content" id="srmodal-content">
             <div className= "modal-header">
               <input type="text" className="form-control" placeholder="Search"></input>
+
               <button type="submit" className="btn btn-default">
                 <span className="glyphicon glyphicon-search"></span>
               </button>
-                 <div className="btn-group">
-                   <button type="button" data-toggle="dropdown" className="btn btn-default dropdown-toggle ">Search By <span className="caret"></span>
-                   </button>
-                   <ul className="dropdown-menu">
-                     <li><a href="#">All</a></li>
-                     <li><a href="#">Song</a></li>
-                     <li><a href="#">Artist</a></li>
-                     <li><a href="#">Album</a></li>
-                     <li><a href="#">Genre</a></li>
-                     <li><a href="#">User</a></li>
-                     <li><a href="#">Playlist</a></li>
-                   </ul>
-                 </div>
+
             </div>
-            <Songs />
-            <Artists />
-            <Genre />
+
+            <Songs/>
+
+            <Artists/>
+
+            <Genre/>
+
             <Albums />
+
             <Playlists />
+
             <Users />
+
             </div>
           </div>
         </div>

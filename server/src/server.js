@@ -42,7 +42,7 @@ function getPlaylistData(user) {
 function getPlaylistItemSync(playlistItemId) {
   var playlistItems = readDocument('playlistItems', playlistItemId);
 
-  return playlist;
+  return playlistItems;
 }
 function getPlaylistItemData(playlist) {
   var playlistData = readDocument('playlists', playlist);
@@ -108,7 +108,7 @@ function addUser(name, email) {
 
 // ------ editUserName
 app.put('/user/:userid/name', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
   var user = readDocument('users', userId);
 
@@ -127,7 +127,7 @@ app.put('/user/:userid/name', function(req, res) {
 
 // ------ editUserEmail
 app.put('/user/:userid/email', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
   var user = readDocument('users', userId);
 
@@ -174,12 +174,12 @@ app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
 
   var playlistCollectionId = req.params.playlistCollectionid
 
-  var playlistCollection = readDocument('playlistCollections', userId);
+  var playlistCollection = readDocument('playlistCollections', playlistCollectionId);
   var index = playlistCollection.contents.indexOf(playlistCollectionId);
 
   // Remove from likeCounter if present
   if (index !== -1) {
-    playlistCollection.contents.splice(playlistIndex, 1);
+    playlistCollection.contents.splice(index, 1);
     writeDocument('playlistCollections', playlistCollection);
   }
 
@@ -189,14 +189,14 @@ app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
 
 // ------ addNewPlaylist
 app.put('playlistCollections/:playlistid', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   // Convert params from string to number.
   var authors = req.params.authors;
 
   authors.foreach(function(userId) {
     var playlistCollection = readDocument('playlistCollections', userId);
     // Add to likeCounter if not already present.
-    if (playlistCollection.contents.indexOf(playlistId) === -1) {
+    if (playlistCollection.contents.indexOf(userId) === -1) {
       playlistCollection.contents.push(userId);
       writeDocument('playlistCollections', playlistCollection);
     }
@@ -208,7 +208,7 @@ app.put('playlistCollections/:playlistid', function(req, res) {
 
 // ------- getPlaylistData
 app.get('/user/:userid/playlistCollection', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userid = req.params.userid;
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
   // userid is a string. We need it to be a number.
@@ -226,10 +226,10 @@ app.get('/user/:userid/playlistCollection', function(req, res) {
 // ------ addPlaylist
 app.post('/playlists/:playlistid',
          validate({ body: PlaylistSchema }), function(req, res) {
-  var playlistId = req.params.playlistid;
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var playlistId = req.params.playlistid;
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
 
-  var body = re.body;
+  var body = req.body;
 
   var newPlaylist = addPlaylist(body.name, body.description);
   // When POST creates a new resource, we should tell the client about it
@@ -253,21 +253,21 @@ function addPlaylist(name, description) {
     "dateCreated": time,
     "playlistItems": [],
     "playlistItemUpvotes": [],
-    "playlistItemDownvotes": [],
+    "playlistItemDownvotes": []
   };
 
   addDocument('playlists', newPlaylist);
 
   // Return the newly-posted object.
-  return newUser;
+  return newPlaylist;
 }
 
 
 // ------ editPlaylistName
 app.put('/playlists/:playlistid/name', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
-  var playlist = readDocument('playlists', playlistID);
+  var playlist = readDocument('playlists', playlistId);
 
   if (typeof(req.body) !== 'string') {
    // 400: Bad request.
@@ -284,9 +284,9 @@ app.put('/playlists/:playlistid/name', function(req, res) {
 
 // ------ editPlaylistDescription
 app.put('/playlists/:playlistid/description', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
-  var playlist = readDocument('playlists', playlistID);
+  var playlist = readDocument('playlists', playlistId);
 
   if (typeof(req.body) !== 'string') {
    // 400: Bad request.
@@ -302,7 +302,7 @@ app.put('/playlists/:playlistid/description', function(req, res) {
 
 // ------ addToPlaylist
 app.put('/playlists/:playlistid/playlistItems/:playlistitemid', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
 
@@ -320,7 +320,7 @@ app.put('/playlists/:playlistid/playlistItems/:playlistitemid', function(req, re
 
 // ------ deleteFromPlaylist
 app.delete('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
 
@@ -339,9 +339,9 @@ app.delete('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, 
 
 // ------- getPlaylistItemData
 app.get('/playlist/:playlistid/playlistItems', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  var playlistId = req.params.playlistid;
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var playlistId = req.params.playlistid;
+
   // userid is a string. We need it to be a number.
   //var useridNumber = parseInt(userid, 10);
   //if (fromUser === useridNumber) {
@@ -366,9 +366,9 @@ app.get('/playlist/:playlistid/playlistItems', function(req, res) {
 
 // ------ upvoteItem
 app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistId = req.params.playlistid;
-  var userId = req.params.playlistitemid;
+  var playlistItemId = req.params.playlistitemid;
 
   var playlist = readDocument('playlists', playlistId);
   // Add to likeCounter if not already present.

@@ -36,15 +36,12 @@ class MainDashboard extends React.Component {
 class MainBodyMusicPage extends React.Component {
   render() {
     return <MainBodyMusic  playlistCollection={this.props.playlistCollection} currentPlaylist = {this.props.currentPlaylist} currentSong = {this.props.currentSong} handleSelectPlaylist = {this.props.handleSelectPlaylist} handleSelectSong= {this.props.handleSelectSong}/>;
-   
-    //return <MainBodyMusic />
   }
 }
 
 class AccountOverviewPage extends React.Component{
   render(){
     return <MainBodyAccount playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
-    //return <MainBodyAccount />
   }
 }
 
@@ -142,7 +139,7 @@ class App extends React.Component {
       <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
       <SidebarMusic playlistCollection={this.state.playlistCollection} handleSelectPlaylist={this.handleSelectPlaylist} currentSong={this.state.currentSong}/>
       <CPModal />
-      <ASModal />
+      <ASModal user = {this.state.user}/>
       <SRModal />
       {childrenWithProps}
       </div>
@@ -154,8 +151,8 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={MainBodyMusicPage} />
-      <Route path="mainBodyAccount" component={AccountOverviewPage}/>
-      <Route path="mainBodyEditProfile" component={EditProfilePage}/>
+      <Route path="mainBodyAccount/:user" component={AccountOverviewPage}/>
+      <Route path="mainBodyEditProfile/:user" component={EditProfilePage}/>
     </Route>
   </Router>
 ),document.getElementById('dashboard'));

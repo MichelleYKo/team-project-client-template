@@ -15,12 +15,15 @@ export default class accountInfo extends React.Component {
         <div className = "container-fluid">
           <table className="table table-hover table-borderless">
             <thead>
-              <h1 style={{color: white}}><strong>Account Settings</strong>
-                    <Link className="btn btn-default pull-right" to="/mainBodyEditProfile">
+              <th className="page-header" style={{color: white}}>
+
+                    Account Overview
+              
+                    <Link className="btn btn-default pull-right" to={"/mainBodyEditProfile/" + this.props.user}>
                         Edit Profile
                         <span className="glyphicon glyphicon-pencil"> </span>
                     </Link>
-              </h1>
+              </th>
             </thead>
             <tbody>
                 <tr className="info-borders">
@@ -33,7 +36,14 @@ export default class accountInfo extends React.Component {
                 </tr>
                 <tr className="info-borders">
                   <td><strong>Connected Accounts:</strong> </td>
-                  <td>{this.props.connectedAccts}</td>
+                  <td>{this.props.connectedAccts.map((acct, i) => {
+                    if(i != this.props.connectedAccts.length-1){
+                      return(acct + ", ")
+                    }
+                    else{
+                      return(acct)
+                    }
+                  })}</td>
                 </tr>
                 <tr className="info-borders">
                   <td><strong>Friends:</strong> </td>

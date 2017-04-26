@@ -6,7 +6,7 @@ export default class mainBodyEditProfile extends React.Component {
     return (
 	<div className="container-fluid">
 		<div className="row">
-      <EditAccountInfo playlistCollection={this.props.playlistCollection} name={this.props.name} email={this.props.email} connectedAccts={this.props.connectedAccts}/>
+      		<EditAccountInfo playlistCollection={this.props.playlistCollection} user={this.props.user} name={this.props.name} email={this.props.email} connectedAccts={this.props.connectedAccts}/>
 		</div>
 	</div>
     )

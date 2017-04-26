@@ -41,13 +41,13 @@ class MainBodyMusicPage extends React.Component {
 
 class AccountOverviewPage extends React.Component{
   render(){
-    return <MainBodyAccount playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
+    return <MainBodyAccount user = {this.props.user} playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
   }
 }
 
 class EditProfilePage extends React.Component{
   render(){
-    return <MainBodyEditProfile playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
+    return <MainBodyEditProfile user = {this.props.user} playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
   }
 }
 
@@ -128,7 +128,10 @@ class App extends React.Component {
     //var childrenWithProps = React.cloneElement(this.props.children, this.state);
     var childrenWithProps = React.cloneElement(this.props.children, {
       user: this.state.user,
-      playlistCollection: this.playlistCollection,
+      email: this.state.email,
+      name: this.state.name,
+      connectedAccts: this.state.connectedAccts,
+      playlistCollection: this.state.playlistCollection,
       currentPlaylist: this.state.currentPlaylist,
       currentSong: this.state.currentSong,
       handleSelectSong: this.handleSelectSong

@@ -4,9 +4,9 @@ import ErrorBanner from './components/errorbanner';
 import Navbar from './components/mainDashboard/navbar';
 import SidebarMusic from './components/mainDashboard/sidebarmusic';
 import {getPlaylistCollection} from './server';
-import {getEmail} from './server';
-import {getName} from './server';
-import {getConnectedAccts} from './server';
+import {getPlaylistData} from './server';
+import {getPlaylistItemData} from './server';
+import {getUserData} from './server';
 import CPModal from './components/CPModal';
 import ASModal from './components/ASModal';
 import SRModal from './components/SRModal';
@@ -36,7 +36,7 @@ class MainDashboard extends React.Component {
 class MainBodyMusicPage extends React.Component {
   render() {
     return <MainBodyMusic  playlistCollection={this.props.playlistCollection} currentPlaylist = {this.props.currentPlaylist} currentSong = {this.props.currentSong} handleSelectPlaylist = {this.props.handleSelectPlaylist} handleSelectSong= {this.props.handleSelectSong}/>;
-   
+
     //return <MainBodyMusic />
   }
 }
@@ -63,6 +63,7 @@ class App extends React.Component {
     this.state = {
       user: 1,
       playlistCollection: [],
+      playlistJSON: [],
       currentPlaylist: {
         _id: 1,
         name: "",
@@ -70,7 +71,8 @@ class App extends React.Component {
         authors: [],
         dateCreated: 0,
         playlistItems: [],
-        numSongs: 0
+        playlistItemUpvotes: [0, 0],
+        playlistItemDownvotes: [0, 1]
       },
       currentSong: {
         _id: 1,
@@ -78,11 +80,7 @@ class App extends React.Component {
         artists: [],
         album: "",
         genres: [],
-        duration_ms: 0,
-        upvotes: [0],
-        downvotes: [0],
-        associatedPlaylists: [0]
-
+        duration_ms: 0
       }
     };
   }
@@ -92,8 +90,15 @@ class App extends React.Component {
     var newID = parseInt(window.prompt("Enter a user ID:"), 10);
     this.setState({user: newID});
     getPlaylistCollection(newID, (playlistCollection) => {
-      this.setState({playlistCollection: playlistCollection});
-      this.setState({currentPlaylist: this.state.playlistCollection[0]})
+      this.setState({playlistCollection: playlistCollection.contents});
+    });
+    getPlaylistData(newID, (playlistData) => {
+      this.setState({playlistJSON: playlistData});
+      this.setState({currentPlaylist: playlistData[0]});
+    });
+    var curPlaylistId = this.state.currentPlaylist._id
+    getPlaylistItemData(curPlaylistId, (playlistItems) => {
+      this.setState({currentSong: playlistItems[0]});
     });
   }
 
@@ -109,17 +114,15 @@ class App extends React.Component {
 
   refresh() {
     getPlaylistCollection(this.state.user, (playlistCollection) => {
-      this.setState({playlistCollection: playlistCollection});
-      this.setState({currentPlaylist: this.state.playlistCollection[0]})
+      this.setState({playlistCollection: playlistCollection.contents});
     });
-    getEmail(this.state.user, (email) => {
-      this.setState({email: email})
+    getPlaylistData(this.state.user, (playlistData) => {
+      this.setState({playlistJSON: playlistData});
+      this.setState({currentPlaylist: playlistData[0]});
     });
-    getName(this.state.user, (name) => {
-      this.setState({name: name})
-    });
-    getConnectedAccts(this.state.user, (connectedAccts) => {
-      this.setState({connectedAccts: connectedAccts})
+    getUserData(this.state.user, (user) => {
+      this.setState({email: user.email});
+      this.setState({name: user.name});
     });
   }
 
@@ -131,6 +134,7 @@ class App extends React.Component {
     //var childrenWithProps = React.cloneElement(this.props.children, this.state);
     var childrenWithProps = React.cloneElement(this.props.children, {
       user: this.state.user,
+      playlistJSON: this.state.playlistJSON,
       playlistCollection: this.playlistCollection,
       currentPlaylist: this.state.currentPlaylist,
       currentSong: this.state.currentSong,
@@ -140,8 +144,8 @@ class App extends React.Component {
       <div>
       <ErrorBanner />
       <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
-      <SidebarMusic playlistCollection={this.state.playlistCollection} handleSelectPlaylist={this.handleSelectPlaylist} currentSong={this.state.currentSong}/>
-      <CPModal />
+      <SidebarMusic playlistJSON={this.state.playlistJSON} playlistCollection={this.state.playlistCollection} handleSelectPlaylist={this.handleSelectPlaylist} currentSong={this.state.currentSong}/>
+      <CPModal user={this.state.user}/>
       <ASModal />
       <SRModal />
       {childrenWithProps}

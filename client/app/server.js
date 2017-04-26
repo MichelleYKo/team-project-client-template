@@ -66,7 +66,7 @@ function sendXHR(verb, resource, body, cb) {
 }
 
 export function getPlaylistData(user, cb) {
-  sendXHR('GET', '/user/2/playlistCollection', undefined, (xhr) => {
+  sendXHR('GET', '/user/' + user + '/playlistCollection', undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));
   });
@@ -80,7 +80,14 @@ export function getPlaylistItemData(playlistId, cb) {
 }
 
 export function getUserData(user, cb) {
-  sendXHR('GET', '/user/2', undefined, (xhr) => {
+  sendXHR('GET', '/user/' + user, undefined, (xhr) => {
+    // Call the callback with the data.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function getPlaylistCollection(playlistCollectionId, cb) {
+  sendXHR('GET', '/playlistCollections/' + playlistCollectionId, undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));
   });
@@ -181,7 +188,7 @@ function emulateServerReturn(data, cb) {
   setTimeout(() => {cb(data);}, 4);
 }
 
-export function getPlaylistCollection(user, cb) {
+/*export function getPlaylistCollection(user, cb) {
   // Get the User object with the id "user".
   var userData = readDocument('users', user);
 
@@ -192,7 +199,7 @@ export function getPlaylistCollection(user, cb) {
   // emulateServerReturn will emulate an asynchronous server operation, which
   // invokes (calls) the "cb" function some time in the future.
   emulateServerReturn(playlistCollection, cb);
-}
+}*/
 
 function getPlaylistSync(playlistId) {
   var playlist = readDocument("playlists", playlistId);

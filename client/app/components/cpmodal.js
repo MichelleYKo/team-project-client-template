@@ -1,5 +1,6 @@
-import React from 'react'
-import {addPlaylist} from '../server.js'
+import React from 'react';
+import {addPlaylist} from '../server.js';
+import {addPlaylistToCollection} from '../server.js';
 
 export default class CPModal extends React.Component {
   constructor(props) {
@@ -65,7 +66,12 @@ export default class CPModal extends React.Component {
       friendList = this.state.friendList;
 
     if (clickEvent.button === 0 && name !== "") {
-      addPlaylist(name, description, friendList);
+      addPlaylist(name, description, friendList, (x) => {
+        this.setState({blank: x});
+      });
+      addPlaylistToCollection(this.props.user, (x) => {
+        this.setState({blank: x});
+      });
     }
   }
 
@@ -138,7 +144,7 @@ export default class CPModal extends React.Component {
             </div>
             <div className="modal-footer" id="cpmodal-footer">
               <button type="button" className="btn btn-default cpModal-cancel" data-dismiss="modal">Cancel</button>
-              <button type="button" className="btn btn-primary cpModal-create">Create</button>
+              <button onClick={(e) => this.handleCreatePlaylist(e)} type="button" className="btn btn-primary cpModal-create">Create</button>
             </div>
           </div>
         </div>

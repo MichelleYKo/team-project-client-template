@@ -32,11 +32,11 @@ function getPlaylistSync(playlistId) {
 
 function getPlaylistData(user) {
   var userData = readDocument('users', user);
-  var playlistData = readDocument('playlists', userData.playlistCollection);
+  var playlistData = readDocument('playlistCollections', user);
 
-  playlistData.contents = playlistData.contents.map(getPlaylistSync);
+  var playlists = playlistData.contents.map(getPlaylistSync);
 
-  return playlistData;
+  return playlists;
 }
 
 function getPlaylistItemSync(playlistItemId) {
@@ -183,7 +183,7 @@ app.delete('/user/:userid/playlistCollection/:playlistid', function(req, res) {
 });*/
 
 // deletePlaylist
-app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
+app.delete('/playlistCollections/:playlistCollectionsid', function(req, res) {
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
 
   var playlistCollectionId = req.params.playlistCollectionid
@@ -202,21 +202,17 @@ app.delete('/playlistCollections/:playlistCollectionid', function(req, res) {
 });
 
 // ------ addPlaylistToCollection
-app.put('playlistCollections/:playlistCollectionid', function(req, res) {
+app.put('/playlistCollections/:playlistCollectionsid', function(req, res) {
   // var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // Convert params from string to number.
-  var authors = req.params.authors;
+  var playlistCollectionId = req.params.playlistCollectionsid
+  var playlistCollection = readDocument('playlistCollections', req.params.playlistCollectionsid)
 
-  authors.foreach(function(userId) {
-    var playlistCollection = readDocument('playlistCollections', userId);
-    // Add to likeCounter if not already present.
-    if (playlistCollection.contents.indexOf(userId) === -1) {
-      playlistCollection.contents.push(userId);
-      writeDocument('playlistCollections', playlistCollection);
-    }
-  });
+  if (playlistCollection.contents.indexOf(playlistCollectionId) === -1) {
+    playlistCollection.contents.push(playlistCollectionId);
+    writeDocument('playlistCollections', playlistCollection);
+  }
 
-  res.send()
+  res.send(playlistCollection);
 });
 
 // ------- getPlaylistData
@@ -235,16 +231,31 @@ app.get('/user/:userid/playlistCollection', function(req, res) {
   //}
 });
 
+// ------ getPlaylistCollection
+app.get('/playlistCollections/:playlistCollectionid', function(req, res) {
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var playlistCollectionId = req.params.playlistCollectionid;
+  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // userid is a string. We need it to be a number.
+  //var useridNumber = parseInt(userid, 10);
+  //if (fromUser === useridNumber) {
+    // Send response.
+  res.send(readDocument('playlistCollections', playlistCollectionId));
+  //} else {
+    // 403: Unauthorized request.
+  //  res.status(403).end();
+  //}
+});
 
 // ------ addPlaylist
-app.post('/playlists/:playlistid',
+app.post('/playlists',
          validate({ body: PlaylistSchema }), function(req, res) {
   //var playlistId = req.params.playlistid;
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
 
   var body = req.body;
 
-  var newPlaylist = addPlaylist(body.name, body.description);
+  var newPlaylist = addPlaylist(body.name, body.description, body.authors);
   // When POST creates a new resource, we should tell the client about it
   // in the 'Location' header and use status code 201.
   res.status(201);
@@ -253,7 +264,7 @@ app.post('/playlists/:playlistid',
   res.send(newPlaylist);
 });
 
-function addPlaylist(name, description) {
+function addPlaylist(name, description, authors) {
 
   // Get the current UNIX time.
   var time = new Date().getTime();
@@ -262,8 +273,8 @@ function addPlaylist(name, description) {
   var newPlaylist = {
     "name": name,
     "description": description,
-    "authors": [],
-    "dateCreated": time,
+    "authors": authors,
+    "dateCreated": 1453690800000,
     "playlistItems": [],
     "playlistItemUpvotes": [],
     "playlistItemDownvotes": []

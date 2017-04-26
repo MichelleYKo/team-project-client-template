@@ -6,21 +6,18 @@ var initialData = {
       "_id": 1,
       "name": "Tim Richards", // Name of user.
       "email": "trichards@cs.umass.edu", // Email associated with account.
-      "connectedAccts": ["Spotify", "Facebook"], // Linked accounts with application.
       "playlistCollection": 1 // List of playlist IDs that this user has been an author of.
     },
     "2": {
       "_id": 2,
       "name": "Jon Bailey",
       "email": "jonathanbail@umass.edu",
-      "connectedAccts": ["Spotify"],
       "playlistCollection": 2
     },
     "3": {
       "_id": 3,
       "name": "Jake Magier",
       "email": "jmagier@umass.edu",
-      "connectedAccts": ["Napster", "MySpace", "Facebook"],
       "playlistCollection": 3
     }
   },
@@ -106,7 +103,7 @@ var initialData = {
       "_id": 1,
       "contents": [2, 3]
     }
-  },
+  }/*,
   "playlistItems": {
     "3": {
       "_id": 3,
@@ -120,7 +117,7 @@ var initialData = {
       "_id": 1,
       "contents": [1, 2]
     }
-  }
+  }*/
 };
 
 var data;

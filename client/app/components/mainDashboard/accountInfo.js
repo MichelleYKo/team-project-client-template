@@ -32,10 +32,6 @@ export default class accountInfo extends React.Component {
                   <td>{this.props.email}</td>
                 </tr>
                 <tr className="info-borders">
-                  <td><strong>Connected Accounts:</strong> </td>
-                  <td>{this.props.connectedAccts}</td>
-                </tr>
-                <tr className="info-borders">
                   <td><strong>Friends:</strong> </td>
                   <td>17</td>
                 </tr>

@@ -39,15 +39,6 @@ export default class editAccountInfo extends React.Component {
                   </td>
                 </tr>
                 <tr className="info-borders">
-                  <td><strong>Connected Accounts:</strong> </td>
-                  <td>
-                    <button type="submit" className="btn btn-default pull-right" onClick={() => window.alert("Coming Soon!")}>
-                      Connect/Remove Accounts
-                      <span className="glyphicon glyphicon-link"> </span>
-                    </button>
-                </td>
-                </tr>
-                <tr className="info-borders">
                   <td><strong>Friends:</strong> </td>
                   <td>17</td>
                 </tr>

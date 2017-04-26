@@ -4,6 +4,8 @@ var white = "#ffffff";
 
 export default class TableHead extends React.Component {
 
+
+
   render() {
     return (
       <thead>
@@ -14,14 +16,9 @@ export default class TableHead extends React.Component {
           <th colSpan="999" className="th-Filter">
             <div className="form-inline div-filter">
               <div className="input-group div-filter">
+                <input type="text" className="form-control input-filter" placeholder="Filter" value = {this.props.filterTerm} onChange = { (e) => this.props.handleFilterChange(e)}></input>
                 <span className="input-group-btn">
-                  <button type="submit" className="btn btn-secondary">
-                    <span className="glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-                <input type="text" className="form-control input-filter" placeholder="Filter"></input>
-                <span className="input-group-btn">
-                  <button type="submit" className="btn btn-secondary">
+                  <button type="submit" className="btn btn-secondary" onClick = { (clickEvent) => this.props.clearFilterField(clickEvent) }>
                     <span className="glyphicon glyphicon-remove-circle"></span>
                   </button>
                 </span>

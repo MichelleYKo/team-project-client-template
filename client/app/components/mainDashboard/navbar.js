@@ -19,7 +19,7 @@ export default class Navbar extends React.Component {
           <a className="navbar-brand" href="/">
             <img src="img/Logo_HeadphonesOuterGlow.png" style={divStyle}/>
           </a>
-          <NavbarLeftItem />
+          <NavbarLeftItem handleSearchRequest = {this.props.handleSearchRequest} handleSearchChange = {this.props.handleSearchChange} searchTerm = {this.props.searchTerm}/>
           <NavbarRightItem handleUserChange={this.props.handleUserChange}/>
 
         </div>

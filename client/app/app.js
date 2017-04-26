@@ -90,11 +90,21 @@ class App extends React.Component {
 
   handleUserChange(e){
     e.preventDefault();
+  //  var currentLocation = this.props.location.pathname
     var newID = parseInt(window.prompt("Enter a user ID:"), 10);
     this.setState({user: newID});
     getPlaylistCollection(newID, (playlistCollection) => {
       this.setState({playlistCollection: playlistCollection});
       this.setState({currentPlaylist: this.state.playlistCollection[0]})
+    });
+    getEmail(newID, (email) => {
+      this.setState({email: email})
+    });
+    getName(newID, (name) => {
+      this.setState({name: name})
+    });
+    getConnectedAccts(newID, (connectedAccts) => {
+      this.setState({connectedAccts: connectedAccts})
     });
   }
 

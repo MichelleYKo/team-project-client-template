@@ -51,10 +51,6 @@
     },
     "required": [
         "name",
-        "playlistItemDownvotes",
-        "playlistItemUpvotes",
-        "dateCreated",
-        "playlistItems",
         "authors",
         "description"
     ],

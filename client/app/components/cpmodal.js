@@ -63,7 +63,8 @@ export default class CPModal extends React.Component {
 
     var name = this.state.name.trim(),
       description = this.state.description.trim(),
-      friendList = this.state.friendList;
+      friendList = Array.apply(null, Array(this.state.friendList.length))
+                                          .map(function (_, i) { return i + 1;} );
 
     if (clickEvent.button === 0 && name !== "") {
       addPlaylist(name, description, friendList, (x) => {
@@ -144,7 +145,7 @@ export default class CPModal extends React.Component {
             </div>
             <div className="modal-footer" id="cpmodal-footer">
               <button type="button" className="btn btn-default cpModal-cancel" data-dismiss="modal">Cancel</button>
-              <button onClick={(e) => this.handleCreatePlaylist(e)} type="button" className="btn btn-primary cpModal-create">Create</button>
+              <button onClick={(e) => this.handleCreatePlaylist(e)} type="button" className="btn btn-primary cpModal-create" data-dismiss="modal">Create</button>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import {readDocument /*, writeDocument, addDocument*/} from './database.js';
 
-var token = 'eyAiaWQiOiA0IH0NCg==';
+var token = 'eyJpZCI6IjEifQ==';
 
 /**
  * Properly configure+send an XMLHttpRequest with error handling, authorization token,

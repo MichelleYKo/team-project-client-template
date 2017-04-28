@@ -62,9 +62,11 @@ function getUserIdFromToken(authorizationLine) {
     var regularString = new Buffer(token, 'base64').toString('utf8');
     // Convert the UTF-8 string into a JavaScript object.
     var tokenObj = JSON.parse(regularString);
+
     var id = tokenObj['id'];
+
     // Check that id is a number.
-    if (typeof id === 'number') {
+    if (typeof id === 'string') {
       return id;
     } else {
       // Not a number. Return -1, an invalid ID.
@@ -108,53 +110,61 @@ function addUser(name, email) {
 
 // ------- getUserData
 app.get('/user/:userid', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
 
-  //if (fromUser === useridNumber) {
+  if (fromUser === userId) {
     // Send response.
   res.send(readDocument('users', userId));
-  //} else {
+  } else {
     // 403: Unauthorized request.
-  //  res.status(403).end();
-  //}
+    res.status(403).end();
+  }
 });
 
 // ------ editUserName
 app.put('/user/:userid/name', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
   var user = readDocument('users', userId);
 
-  if (typeof(req.body) !== 'string') {
-   // 400: Bad request.
-   res.status(400).end();
-   return;
+  if (fromUser === userId) {
+    if (typeof(req.body) !== 'string') {
+     // 400: Bad request.
+     res.status(400).end();
+     return;
+    }
+
+    user.name = req.body
+    writeDocument('users', user)
+
+    res.send(readDocument('users', userId));
+  } else {
+    res.status(401).end();
   }
-
-  user.name = req.body
-  writeDocument('users', user)
-
-  res.send(readDocument('users', userId));
 });
 
 
 // ------ editUserEmail
 app.put('/user/:userid/email', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userId = req.params.userid;
   var user = readDocument('users', userId);
 
-  if (typeof(req.body) !== 'string') {
-   // 400: Bad request.
-   res.status(400).end();
-   return;
+  if (fromUser === userId) {
+    if (typeof(req.body) !== 'string') {
+     // 400: Bad request.
+     res.status(400).end();
+     return;
+    }
+
+    user.email = req.body
+    writeDocument('users', user)
+
+    res.send(readDocument('users', userId));
+  } else {
+    res.status(401).end();
   }
-
-  user.email = req.body
-  writeDocument('users', user)
-
-  res.send(readDocument('users', userId));
 });
 
 
@@ -184,67 +194,74 @@ app.delete('/user/:userid/playlistCollection/:playlistid', function(req, res) {
 
 // deletePlaylist
 app.delete('/playlistCollections/:playlistCollectionsid', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
 
   var playlistCollectionId = req.params.playlistCollectionid
 
-  var playlistCollection = readDocument('playlistCollections', playlistCollectionId);
-  var index = playlistCollection.contents.indexOf(playlistCollectionId);
+  if (fromUser === playlistCollectionId){
+    var playlistCollection = readDocument('playlistCollections', playlistCollectionId);
+    var index = playlistCollection.contents.indexOf(playlistCollectionId);
 
-  // Remove from likeCounter if present
-  if (index !== -1) {
-    playlistCollection.contents.splice(index, 1);
-    writeDocument('playlistCollections', playlistCollection);
+    // Remove from likeCounter if present
+    if (index !== -1) {
+      playlistCollection.contents.splice(index, 1);
+      writeDocument('playlistCollections', playlistCollection);
+    }
+
+    res.send(playlistCollection.contents.map((playlistId) => readDocument('playlists', playlistId)));
+  } else {
+    res.status(401).end();
   }
-
-  res.send(playlistCollection.contents.map((playlistId) => readDocument('playlists', playlistId)));
 
 });
 
 // ------ addPlaylistToCollection
 app.put('/playlistCollections/:playlistCollectionsid', function(req, res) {
-  // var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistCollectionId = req.params.playlistCollectionsid
   var playlistCollection = readDocument('playlistCollections', req.params.playlistCollectionsid)
 
-  if (playlistCollection.contents.indexOf(playlistCollectionId) === -1) {
-    playlistCollection.contents.push(playlistCollectionId);
-    writeDocument('playlistCollections', playlistCollection);
-  }
 
-  res.send(playlistCollection);
+  if (fromUser === playlistCollectionId){
+    if (playlistCollection.contents.indexOf(playlistCollectionId) === -1) {
+      playlistCollection.contents.push(playlistCollectionId);
+      writeDocument('playlistCollections', playlistCollection);
+    }
+
+    res.send(playlistCollection);
+  } else {
+    res.status(401).end();
+  }
 });
 
 // ------- getPlaylistData
 app.get('/user/:userid/playlistCollection', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var userid = req.params.userid;
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+
   // userid is a string. We need it to be a number.
   //var useridNumber = parseInt(userid, 10);
-  //if (fromUser === useridNumber) {
+  if (fromUser === userid) {
     // Send response.
-  res.send(getPlaylistData(userid));
-  //} else {
+    res.send(getPlaylistData(userid));
+  } else {
     // 403: Unauthorized request.
-  //  res.status(403).end();
-  //}
+    res.status(403).end();
+  }
 });
 
 // ------ getPlaylistCollection
 app.get('/playlistCollections/:playlistCollectionid', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
   var playlistCollectionId = req.params.playlistCollectionid;
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // userid is a string. We need it to be a number.
-  //var useridNumber = parseInt(userid, 10);
-  //if (fromUser === useridNumber) {
+
+  if (fromUser === playlistCollectionId) {
     // Send response.
   res.send(readDocument('playlistCollections', playlistCollectionId));
-  //} else {
+  } else {
     // 403: Unauthorized request.
-  //  res.status(403).end();
-  //}
+    res.status(403).end();
+  }
 });
 
 // ------ addPlaylist
@@ -252,7 +269,6 @@ app.post('/playlists',
          validate({ body: PlaylistSchema }), function(req, res) {
   //var playlistId = req.params.playlistid;
   //var fromUser = getUserIdFromToken(req.get('Authorization'));
-
   var body = req.body;
 
   var newPlaylist = addPlaylist(body.name, body.description, body.authors);
@@ -289,18 +305,25 @@ function addPlaylist(name, description, authors) {
 
 // ------ editPlaylistName
 app.put('/playlists/:playlistid/name', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
   var playlistId = req.params.playlistid;
   var playlist = readDocument('playlists', playlistId);
 
-  if (typeof(req.body) !== 'string') {
-   // 400: Bad request.
-   res.status(400).end();
-   return;
-  }
+  if(playlist.authors.indexOf(fromUser) !== -1){
+    if (typeof(req.body) !== 'string') {
+     // 400: Bad request.
+     res.status(400).end();
+     return;
+    }
 
-  playlist.name = req.body
-  writeDocument('playlists', playlist)
+    playlist.name = req.body;
+    writeDocument('playlists', playlist)
+
+    res.send(playlist);
+
+  } else {
+    res.status(403).end();
+  }
 
   //res.send(getUserItemSync(playlistId));
 });
@@ -308,73 +331,85 @@ app.put('/playlists/:playlistid/name', function(req, res) {
 
 // ------ editPlaylistDescription
 app.put('/playlists/:playlistid/description', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
   var playlistId = req.params.playlistid;
   var playlist = readDocument('playlists', playlistId);
 
-  if (typeof(req.body) !== 'string') {
-   // 400: Bad request.
-   res.status(400).end();
-   return;
+  if(playlist.authors.indexOf(fromUser) !== -1){
+    if (typeof(req.body) !== 'string') {
+     // 400: Bad request.
+     res.status(400).end();
+     return;
+    }
+
+    playlist.name = req.body
+    writeDocument('playlists', playlist)
+
+    res.send(playlist);
+  } else {
+    res.status(403).end();
   }
 
-  playlist.name = req.body
-  writeDocument('playlists', playlist)
-
-  //res.send(getUserItemSync(playlistId));
 });
 
 // ------ addToPlaylist
 app.put('/playlists/:playlistid/playlistItems/:playlistitemid', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
-
   var playlist = readDocument('playlists', playlistId);
-  // Add to likeCounter if not already present.
-  if (playlist.playlistItems.indexOf(playlistItemId) === -1) {
-    playlist.playlistItems.push(playlistItemId);
-    writeDocument('playlists', playlist);
+
+  if(playlist.authors.indexOf(fromUser) !== -1){
+
+    if (playlist.playlistItems.indexOf(playlistItemId) === -1) {
+      playlist.playlistItems.push(playlistItemId);
+      writeDocument('playlists', playlist);
+    }
+    // Return a resolved version of the likeCounter
+    res.send(playlist.playlistItems.map((playlistItemId) => readDocument('playlistItems', playlistItemId)));
+  } else {
+    res.status(403).end();
   }
-  // Return a resolved version of the likeCounter
-  res.send(playlist.playlistItems.map((playlistId) => readDocument('playlists', playlistId)));
 
   //res.send(getUserItemSync(playlistId));
 });
 
 // ------ deleteFromPlaylist
 app.delete('/playlist/:playlistid/playlistItems/:playlistitemid', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
 
   var playlist = readDocument('playlists', playlistId);
-  var playlistItemIndex = playlist.playlistItems.indexOf(playlistItemId)
-  // Add to likeCounter if not already present.
-  if (playlist.playlistItems.indexOf(playlistItemId) === -1) {
-    playlist.playlistItems.splice(playlistItemIndex, 1);
-    writeDocument('playlists', playlist);
+
+  if(playlist.authors.indexOf(fromUser) !== -1){
+    var playlistItemIndex = playlist.playlistItems.indexOf(playlistItemId)
+    // Add to likeCounter if not already present.
+    if (playlist.playlistItems.indexOf(playlistItemId) === -1) {
+      playlist.playlistItems.splice(playlistItemIndex, 1);
+      writeDocument('playlists', playlist);
+    }
+    // Return a resolved version of the likeCounter
+    res.send(playlist.playlistItems.map((playlistId) => readDocument('playlists', playlistId)));
+  } else {
+    res.status(403).end();
   }
-  // Return a resolved version of the likeCounter
-  res.send(playlist.playlistItems.map((playlistId) => readDocument('playlists', playlistId)));
 
   //res.send(getUserItemSync(playlistId));
 });
 
 // ------- getPlaylistItemData
 app.get('/playlist/:playlistid/playlistItems', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
   var playlistId = req.params.playlistid;
+  var playlist = readDocument('playlists', playlistId);
 
-  // userid is a string. We need it to be a number.
-  //var useridNumber = parseInt(userid, 10);
-  //if (fromUser === useridNumber) {
-    // Send response.
-  res.send(getPlaylistItemData(playlistId));
-  //} else {
-    // 403: Unauthorized request.
-  //  res.status(403).end();
-  //}
+  if(playlist.authors.indexOf(fromUser) !== -1){
+
+    res.send(getPlaylistItemData(playlistId));
+  } else {
+    res.status(403).end();
+  }
 });
 
 
@@ -390,18 +425,44 @@ app.get('/playlist/:playlistid/playlistItems', function(req, res) {
 
 // ------ upvoteItem
 app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
-  //var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
   var playlistId = req.params.playlistid;
   var playlistItemId = req.params.playlistitemid;
 
   var playlist = readDocument('playlists', playlistId);
-  // Add to likeCounter if not already present.
-  if (playlist.playlistItemUpvotes.indexOf(playlistItemId) === -1) {
-    playlist.playlistItemUpvotes.push(playlistItemId);
-    writeDocument('playlists', playlist);
+
+  if(playlist.authors.indexOf(fromUser) !== -1){
+    if (playlist.playlistItemUpvotes.indexOf(playlistItemId) === -1) {
+      playlist.playlistItemUpvotes.push(playlistItemId);
+      writeDocument('playlists', playlist);
+    }
+    // Return a resolved version of the likeCounter
+    res.send(playlist.playlistItemUpvotes.map((playlistId) => readDocument('playlists', playlistId)));
+  } else {
+    res.status(403).end();
   }
-  // Return a resolved version of the likeCounter
-  res.send(playlist.playlistItemUpvotes.map((playlistId) => readDocument('playlists', playlistId)));
+
+  //res.send(getUserItemSync(playlistId));
+});
+
+// ------ downvoteItem
+app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
+  var fromUser = parseInt(getUserIdFromToken(req.get('Authorization')), 10);
+  var playlistId = req.params.playlistid;
+  var playlistItemId = req.params.playlistitemid;
+
+  var playlist = readDocument('playlists', playlistId);
+
+  if(playlist.authors.indexOf(fromUser) !== -1){
+    if (playlist.playlistItemUpvotes.indexOf(playlistItemId) === -1) {
+      playlist.playlistItemUpvotes.splice(playlistItemId, 1);
+      writeDocument('playlists', playlist);
+    }
+    // Return a resolved version of the likeCounter
+    res.send(playlist.playlistItemUpvotes.map((playlistId) => readDocument('playlists', playlistId)));
+  } else {
+    res.status(403).end();
+  }
 
   //res.send(getUserItemSync(playlistId));
 });

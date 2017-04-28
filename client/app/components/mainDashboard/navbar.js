@@ -16,10 +16,10 @@ export default class Navbar extends React.Component {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             <img src="img/Logo_HeadphonesOuterGlow.png" style={divStyle}/>
           </a>
-          <NavbarLeftItem />
+          <NavbarLeftItem handleSearchRequest = {this.props.handleSearchRequest} handleSearchChange = {this.props.handleSearchChange} searchTerm = {this.props.searchTerm}/>
           <NavbarRightItem handleUserChange={this.props.handleUserChange}/>
 
         </div>

@@ -12,11 +12,14 @@ export default class ASModal extends React.Component {
             </div>
             <ul className="nav nav-pills center-pills text-center pill-top">
               <li id="submenu-item-account-overview" className="large-button">
-                  <Link to="/mainBodyAccount"><h1 className="glyphicon glyphicon-home style-icon">
-                  </h1> <br /><strong className="white">Account Overview</strong></Link>
+                  <Link to={"/mainBodyAccount/" + this.props.user}>
+                    <h1 className="glyphicon glyphicon-home style-icon"></h1>
+                    <br />
+                    <strong className="white">Account Overview</strong>
+                  </Link>
               </li>
-              <li id="submenu-item-edit-profile" className="large-button">
-                  <Link to="/mainBodyEditProfile"><h1 className="glyphicon glyphicon-pencil style-icon">
+              <li id="submenu-item-edit-profile"  className="large-button">
+                  <Link to={"/mainBodyEditProfile/" + this.props.user}><h1 className="glyphicon glyphicon-pencil style-icon">
                   </h1> <br /><strong className="white">Edit Profile</strong></Link>
               </li>
               <li id="submenu-item-change-password" className="large-button">

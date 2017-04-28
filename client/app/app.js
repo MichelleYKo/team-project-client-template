@@ -36,21 +36,18 @@ class MainDashboard extends React.Component {
 class MainBodyMusicPage extends React.Component {
   render() {
     return <MainBodyMusic  playlistCollection={this.props.playlistCollection} currentPlaylist = {this.props.currentPlaylist} currentSong = {this.props.currentSong} handleSelectPlaylist = {this.props.handleSelectPlaylist} handleSelectSong= {this.props.handleSelectSong}/>;
-
-    //return <MainBodyMusic />
   }
 }
 
 class AccountOverviewPage extends React.Component{
   render(){
-    return <MainBodyAccount playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
-    //return <MainBodyAccount />
+    return <MainBodyAccount user = {this.props.user} playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
   }
 }
 
 class EditProfilePage extends React.Component{
   render(){
-    return <MainBodyEditProfile playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
+    return <MainBodyEditProfile user = {this.props.user} playlistCollection={this.props.playlistCollection} currentPlaylist={this.props.currentPlaylist} handleSelectPlaylist={this.props.handleSelectPlaylist} email={this.props.email} connectedAccts={this.props.connectedAccts} name={this.props.name}/>
   }
 }
 
@@ -60,6 +57,8 @@ class App extends React.Component {
     this.handleUserChange = this.handleUserChange.bind(this);
     this.handleSelectPlaylist = this.handleSelectPlaylist.bind(this);
     this.handleSelectSong = this.handleSelectSong.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchRequest = this.handleSearchRequest.bind(this);
     this.state = {
       user: 1,
       playlistCollection: [],
@@ -81,12 +80,16 @@ class App extends React.Component {
         album: "",
         genres: [],
         duration_ms: 0
-      }
+      },
+      searchTerm: ""
     };
   }
 
+
+
   handleUserChange(e){
     e.preventDefault();
+  //  var currentLocation = this.props.location.pathname
     var newID = parseInt(window.prompt("Enter a user ID:"), 10);
     this.setState({user: newID});
     getPlaylistCollection(newID, (playlistCollection) => {
@@ -100,6 +103,15 @@ class App extends React.Component {
     getPlaylistItemData(curPlaylistId, (playlistItems) => {
       this.setState({currentSong: playlistItems[0]});
     });
+    getEmail(newID, (email) => {
+      this.setState({email: email})
+    });
+    getName(newID, (name) => {
+      this.setState({name: name})
+    });
+    getConnectedAccts(newID, (connectedAccts) => {
+      this.setState({connectedAccts: connectedAccts})
+    });
   }
 
   handleSelectPlaylist(clickEvent, selectedPlaylist) {
@@ -110,6 +122,35 @@ class App extends React.Component {
   handleSelectSong(clickEvent, selectedSong) {
     clickEvent.preventDefault();
     this.setState({currentSong: selectedSong});
+  }
+
+  handleSearchChange(e) {
+    // Prevent the event from "bubbling" up the DOM tree.
+    e.preventDefault();
+    // e.target is the React Virtual DOM target of the input event -- the
+    // <textarea> element. The textarea's `value` is the entire contents of
+    // what the user has typed in so far.
+    this.setState({searchTerm: e.target.value});
+  }
+
+  handleSearchRequest(clickEvent) {
+    // Stop the event from propagating up the DOM tree, since we handle it here.
+    // Also prevents the link click from causing the page to scroll to the top.
+    clickEvent.preventDefault();
+
+    var searchTerm = this.state.searchTerm.trim();
+    if(searchTerm == ""){
+      window.alert("Please enter a valid, non-empty search term.");
+    }
+    if (clickEvent.button === 0 && searchTerm !== "") {
+      /*
+      * Do the following:
+      * 1) Navigate to Search Results Page
+      * 2) Use search term and some algorithm on server to retrieve relevant data from spotify (or nothing if nothing is related to search term)
+      * 3) Populate search results page with the results.
+      */
+      window.alert("Currently working on implementing a search results algorithm for your query.");
+    }
   }
 
   refresh() {
@@ -143,11 +184,11 @@ class App extends React.Component {
     return (
       <div>
       <ErrorBanner />
-      <Navbar user={this.state.user} handleUserChange={this.handleUserChange}/>
       <SidebarMusic playlistJSON={this.state.playlistJSON} playlistCollection={this.state.playlistCollection} handleSelectPlaylist={this.handleSelectPlaylist} currentSong={this.state.currentSong}/>
       <CPModal user={this.state.user}/>
-      <ASModal />
-      <SRModal />
+      <Navbar user={this.state.user} handleUserChange={this.handleUserChange} handleSearchChange={this.handleSearchChange} handleSearchRequest = {this.handleSearchRequest} searchTerm = {this.state.searchTerm}/>
+      <ASModal user = {this.state.user}/>
+      <SRModal searchTerm = {this.state.searchTerm}/>
       {childrenWithProps}
       </div>
     )
@@ -158,8 +199,8 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={MainBodyMusicPage} />
-      <Route path="mainBodyAccount" component={AccountOverviewPage}/>
-      <Route path="mainBodyEditProfile" component={EditProfilePage}/>
+      <Route path="mainBodyAccount/:user" component={AccountOverviewPage}/>
+      <Route path="mainBodyEditProfile/:user" component={EditProfilePage}/>
     </Route>
   </Router>
 ),document.getElementById('dashboard'));

@@ -1,51 +1,63 @@
 import React from 'react';
-import Songs from './search_results/songs';
+import Tracks from './search_results/tracks';
 import Artists from './search_results/artists';
-import Genre from './search_results/genre';
 import Albums from './search_results/albums';
 import Playlists from './search_results/playlists';
 import Users from './search_results/users';
 
 export default class SRModal extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     query: this.props.query
-  //     songs: []
-  //     artists: []
-  //     genre: []
-  //     albums: []
-  //     playlists: []
-  //     users: []
-  //   }
-  // }
+  constructor(props){
+    super(props);
+    this.state = {text: '', albums: [], artists: [], tracks: []};
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.searchSpotify = this.searchSpotify.bind(this);
+        this.addItems = this.addItems.bind(this);
+  }
 
-  // componentDidMount(){
-  //   this.searchSpotify(this.state.text, this.addItems);
-  // }
+  componentDidMount() {
+     this.searchSpotify(this.state.text, this.addItems);
+     $('ul.tabs').tabs();
+   }
+   handleSubmit(e) {
+     e.preventDefault();
+     this.props.onHandleSubmit();
+   }
 
-  // searchSpotify(query, handleData) {
-  //   $.ajax({
-  //     url: 'https://api.spotify.com/v1/search',
-  //     data: {
-  //       q: query,
-  //       type: 'track,artist,album',
-  //       market: 'US',
-  //       limit: 10
-  //     },
-  //     success: function(response) {
-  //       handleData(response);
-  //     }
-  //   });
-  // }
+   handleChange(e) {
+     this.props.onHandleChange(e.target.value);
+   }
 
-  // addItems(data) {
-  //   this.setState({
-  //     albums: data.albums.items,
-  //     artists: data.artists.items,
-  //     tracks: data.tracks.items
-  //   });
-  // }
+   searchSpotify(query, handleData) {
+      $.ajax({
+        url: 'https://api.spotify.com/v1/search',
+        data: {
+          q: query,
+          type: 'track,artist,album',
+          market: 'US',
+          limit: 10
+        },
+        success: function(response) {
+          handleData(response);
+        }
+      });
+    }
+
+    addItems(data) {
+        this.setState({
+          albums: data.albums.items,
+          artists: data.artists.items,
+          tracks: data.tracks.items
+        });
+      }
+
+      handleSubmit() {
+        this.searchSpotify(this.state.text, this.addItems);
+      }
+
+      handleChange(text) {
+        this.setState({text: text});
+      }
 
 
 
@@ -55,21 +67,19 @@ export default class SRModal extends React.Component {
         <div className= "modal-dialog">
           <div className= "modal-content" id="srmodal-content">
             <div className= "modal-header">
-              <input type="text" className="form-control" placeholder="Search"></input>
-
-              <button type="submit" className="btn btn-default">
-                <span className="glyphicon glyphicon-search"></span>
-              </button>
+              <form onSubmit={this.handleSubmit}>
+                <div className="row">
+                  <input type="text" value={this.props.text} onChange={this.handleChange} placeholder="Search"/>
+                </div>
+              </form>
 
             </div>
 
-            <Songs/>
+            <Tracks tracks={this.state.tracks}/>
 
-            <Artists/>
+            <Artists artists={this.state.artists}/>
 
-            <Genre/>
-
-            <Albums />
+            <Albums albums={this.state.albums}/>
 
             <Playlists />
 

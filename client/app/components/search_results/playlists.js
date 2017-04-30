@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default class Playlists extends React.Component {
+  constructor(props) {
+     super(props);
+   }
   render() {
     return (
       <div className="playlists">

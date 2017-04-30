@@ -1,7 +1,14 @@
 import React from 'react';
 
 export default class Artists extends React.Component {
+  constructor(props) {
+     super(props);
+   }
+
   render() {
+    var filterArtists = this.props.artists.filter(function(artist) {
+        return artist.images[0] !== undefined;
+      });
     return (
       <div className="artists">
           <div className="panel-heading">
@@ -13,15 +20,16 @@ export default class Artists extends React.Component {
             <div className="panel-body">
               <table className="table table-hover">
                 <tbody>
-                  <tr>
-                    <td>{"Rihanna"}</td>
-                  </tr>
-                  <tr>
-                    <td>{"Big Bang"}</td>
-                  </tr>
-                  <tr>
-                    <td>{"Kanye"}</td>
-                  </tr>
+
+                  {filterArtists.map(function(artist) {
+                    return (
+                      <tr>
+                        <td>{<a href={'https://open.spotify.com/artist/' + artist.id} target="_blank">{artist.name}</a>}</td>
+                      </tr>
+                    )
+                  }
+                )}
+
                 </tbody>
               </table>
             </div>

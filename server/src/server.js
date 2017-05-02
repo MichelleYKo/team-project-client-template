@@ -467,6 +467,21 @@ app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
   //res.send(getUserItemSync(playlistId));
 });
 
+app.get('/search/:query', function(req, res) {
+
+  var query = req.params.query;
+  console.log(query);
+
+  res.redirect('https://api.spotify.com/v1/search/?q=' + query + '&type=track'
+    /*querystring.stringify({
+      query: query,
+      type: type
+    })*/);
+
+  //not actually sending the response back to the client side...
+
+});
+
 // Reset database.
 app.post('/resetdb', function(req, res) {
   console.log("Resetting database...");

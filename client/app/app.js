@@ -7,6 +7,7 @@ import {getPlaylistCollection} from './server';
 import {getPlaylistData} from './server';
 import {getPlaylistItemData} from './server';
 import {getUserData} from './server';
+import {getSearchResults} from './server';
 import CPModal from './components/CPModal';
 import ASModal from './components/ASModal';
 import SRModal from './components/SRModal';
@@ -79,9 +80,13 @@ class App extends React.Component {
         artists: [],
         album: "",
         genres: [],
-        duration_ms: 0
+        duration_ms: 0,
+        upvotes: [0],
+        downvotes: [0],
+        associatedPlaylists: [0]
       },
-      searchTerm: ""
+      searchTerm: "",
+      searchResults: ""
     };
   }
 
@@ -143,13 +148,9 @@ class App extends React.Component {
       window.alert("Please enter a valid, non-empty search term.");
     }
     if (clickEvent.button === 0 && searchTerm !== "") {
-      /*
-      * Do the following:
-      * 1) Navigate to Search Results Page
-      * 2) Use search term and some algorithm on server to retrieve relevant data from spotify (or nothing if nothing is related to search term)
-      * 3) Populate search results page with the results.
-      */
-      window.alert("Currently working on implementing a search results algorithm for your query.");
+      getSearchResults(searchTerm, (searchResults) => {
+        this.setState({searchResults})
+      });
     }
   }
 
@@ -158,12 +159,12 @@ class App extends React.Component {
       this.setState({playlistCollection: playlistCollection.contents});
     });
     getPlaylistData(this.state.user, (playlistData) => {
-      this.setState({playlistJSON: playlistData});
-      this.setState({currentPlaylist: playlistData[0]});
+      this.setState({playlistJSON: playlistData,
+                    currentPlaylist: playlistData[0]});
     });
     getUserData(this.state.user, (user) => {
-      this.setState({email: user.email});
-      this.setState({name: user.name});
+      this.setState({email: user.email,
+                        name: user.name});
     });
   }
 
@@ -175,8 +176,10 @@ class App extends React.Component {
     //var childrenWithProps = React.cloneElement(this.props.children, this.state);
     var childrenWithProps = React.cloneElement(this.props.children, {
       user: this.state.user,
+      email: this.state.email,
+      name: this.state.name,
       playlistJSON: this.state.playlistJSON,
-      playlistCollection: this.playlistCollection,
+      playlistCollection: this.state.playlistCollection,
       currentPlaylist: this.state.currentPlaylist,
       currentSong: this.state.currentSong,
       handleSelectSong: this.handleSelectSong

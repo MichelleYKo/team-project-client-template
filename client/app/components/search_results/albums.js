@@ -1,13 +1,7 @@
 import React from 'react';
 
 export default class Albums extends React.Component {
-  constructor(props) {
-     super(props);
-   }
   render() {
-    var filterAlbums = this.props.albums.filter(function(album) {
-        return album.images[0].url !== undefined;
-      });
     return (
       <div className="albums">
           <div className="panel-heading">
@@ -19,18 +13,24 @@ export default class Albums extends React.Component {
             <div className="panel-body">
               <table className="table table-hover">
                 <tbody>
-
-                  {filterAlbums.map(function(album) {
-                    return (
-                      <tr>
-                        <td>{<a href={'https://open.spotify.com/album/' + album.id} target="_blank">{album.name}</a>}</td>
-                        <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
-                          <span className="glyphicon glyphicon-plus-sign"></span>
-                        </button></td>
-                      </tr>
-                    )
-                  })}
-
+                  <tr>
+                    <td>{"What's My Name"}</td>
+                    <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
+                      <span className="glyphicon glyphicon-plus-sign"></span>
+                    </button></td>
+                  </tr>
+                  <tr>
+                    <td>{"Map of the Human Soul"}</td>
+                    <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
+                      <span className="glyphicon glyphicon-plus-sign"></span>
+                    </button></td>
+                  </tr>
+                  <tr>
+                    <td>{"Born Hater"}</td>
+                    <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
+                      <span className="glyphicon glyphicon-plus-sign"></span>
+                    </button></td>
+                  </tr>
                 </tbody>
               </table>
             </div>

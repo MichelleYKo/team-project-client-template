@@ -93,6 +93,15 @@ export function getPlaylistCollection(playlistCollectionId, cb) {
   });
 }
 
+export function getSearchResults(query, cb) {
+  var parsed = query.replace(' ', '%20');
+  console.log('trying to get search results');
+  sendXHR('GET', '/search/' + query, undefined, (xhr) => {
+    // Call the callback with the data.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 export function editUserName(userId, cb) {
   sendXHR('PUT', '/user/' + userId + '/name', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));

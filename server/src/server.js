@@ -13,6 +13,9 @@ var getCollection = database.getCollection;
 var validate = require('express-jsonschema').validate;
 var UserSchema = require('./schemas/userSchema.json');
 var PlaylistSchema = require('./schemas/playlistSchema.json');
+var querystring = require('querystring');
+
+var spotifyURL = 'https://api.spotify.com';
 
 
 app.use(bodyParser.text());
@@ -76,6 +79,19 @@ function getUserIdFromToken(authorizationLine) {
   }
 }
 
+app.get('/search/:query', function(req, res) {
+
+  var query = req.params.query;
+
+  res.redirect('https://api.spotify.com/v1/search/?q=' + query + '&type=track'
+    /*querystring.stringify({
+      query: query,
+      type: type
+    })*/);
+
+  //not actually sending the response back to the client side...
+
+});
 
 //---------- addUser
 app.post('/user/:userid', validate({ body: UserSchema }), function(req, res) {
@@ -235,7 +251,6 @@ app.get('/user/:userid/playlistCollection', function(req, res) {
   //}
 });
 
-
 // ------ addPlaylist
 app.post('/playlists/:playlistid',
          validate({ body: PlaylistSchema }), function(req, res) {
@@ -394,6 +409,14 @@ app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
 
   //res.send(getUserItemSync(playlistId));
 });
+
+
+//Spotify API stuff
+// app.get(spotifyURL + '/v1/search/?q=' )
+
+// 'GET', 'https://api.spotify.com/v1/search/?q=\*&type=track,artist,album'
+
+
 
 // Reset database.
 app.post('/resetdb', function(req, res) {

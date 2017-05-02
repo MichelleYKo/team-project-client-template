@@ -2,6 +2,8 @@ import {readDocument /*, writeDocument, addDocument*/} from './database.js';
 
 var token = 'eyAiaWQiOiA0IH0NCg==';
 
+var spotifyURL = 'https://api.spotify.com';
+
 /**
  * Properly configure+send an XMLHttpRequest with error handling, authorization token,
  * and other needed properties.
@@ -58,6 +60,7 @@ function sendXHR(verb, resource, body, cb) {
       // Tell the server we are sending JSON.
       xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       // Convert body into a JSON string.
+      console.log(body);
       xhr.send(JSON.stringify(body));
       break;
     default:
@@ -81,6 +84,14 @@ export function getPlaylistItemData(playlistId, cb) {
 
 export function getUserData(user, cb) {
   sendXHR('GET', '/user/2', undefined, (xhr) => {
+    // Call the callback with the data.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function getSearchResults(query, cb) {
+  var parsed = query.replace(' ', '%20')
+  sendXHR('GET', '/search/' + query, undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));
   });

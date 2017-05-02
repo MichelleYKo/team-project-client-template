@@ -12,7 +12,7 @@ export default class ASModal extends React.Component {
             </div>
             <ul className="nav nav-pills center-pills text-center pill-top">
               <li id="submenu-item-account-overview" className="large-button">
-                  <Link to={"/mainBodyAccount/" + this.props.user}>
+                  <Link to={"/mainBodyAccount/" + this.props.user} >
                     <h1 className="glyphicon glyphicon-home style-icon"></h1>
                     <br />
                     <strong className="white">Account Overview</strong>

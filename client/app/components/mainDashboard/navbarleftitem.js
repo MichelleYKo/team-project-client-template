@@ -38,7 +38,7 @@ export default class NavbarLeftItem extends React.Component {
           <input type="text" className="form-control" placeholder="Search..." value={this.props.searchTerm} onChange={(e) => this.props.handleSearchChange(e)}/>
         </div>
         <Link to="#" data-toggle="modal" data-target="#srModal">
-          <button type="submit" className="btn btn-default" >Submit</button>
+          <button type="submit" className="btn btn-default" onClick={(e) => this.props.handleSearchRequest(e)}> Submit</button>
         </Link>
       </form>
     )

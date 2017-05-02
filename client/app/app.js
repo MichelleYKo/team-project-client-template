@@ -7,6 +7,7 @@ import {getPlaylistCollection} from './server';
 import {getEmail} from './server';
 import {getName} from './server';
 import {getConnectedAccts} from './server';
+import {getSearchResults} from './server';
 import CPModal from './components/CPModal';
 import ASModal from './components/ASModal';
 import SRModal from './components/SRModal';
@@ -82,7 +83,8 @@ class App extends React.Component {
         downvotes: [0],
         associatedPlaylists: [0]
       },
-      searchTerm: ""
+      searchTerm: "",
+      searchResults: ""
     };
   }
 
@@ -143,6 +145,11 @@ class App extends React.Component {
       * 2) Use search term and some algorithm on server to retrieve relevant data from spotify (or nothing if nothing is related to search term)
       * 3) Populate search results page with the results.
       */
+
+      getSearchResults(searchTerm, (searchResults) => {
+        this.setState({searchResults})
+      });
+
       window.alert("Currently working on implementing a search results algorithm for your query.");
     }
   }
@@ -186,7 +193,7 @@ class App extends React.Component {
       <SidebarMusic playlistCollection={this.state.playlistCollection} handleSelectPlaylist={this.handleSelectPlaylist} currentSong={this.state.currentSong}/>
       <CPModal />
       <ASModal user = {this.state.user}/>
-      <SRModal searchTerm = {this.state.searchTerm}/>
+      <SRModal searchTerm = {this.state.searchTerm} searchResults = {this.state.searchResults}/>
       {childrenWithProps}
       </div>
     )

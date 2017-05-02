@@ -44,7 +44,8 @@ export default class editAccountInfo extends React.Component {
     var email = this.state.tempEmail.trim();
     if(name !== "" || email !== "" && clickEvent.button == 0){
       //server function
-      window.alert("Currently updating server support")
+      this.setState({tempEmail: "", tempName: ""});
+      window.alert("Currently updating server support");
     }
   }
 

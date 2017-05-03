@@ -13,13 +13,13 @@ export default class editProfile extends React.Component {
     this.handleUserChange = this.handleUserChange.bind(this);
     this.handleSelectPlaylist = this.handleSelectPlaylist.bind(this);
     this.state = {
-      user: 1,
+      user: "000000000000000000000001",
       name: "",
       email: "",
       connectedAccts: [],
       playlistCollection: [],
       currentPlaylist: {
-        _id: 1,
+        _id: "000000000000000000000001",
         name: "",
         description: "",
         authors: [],

@@ -61,11 +61,11 @@ class App extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchRequest = this.handleSearchRequest.bind(this);
     this.state = {
-      user: 1,
+      user: "000000000000000000000001",
       playlistCollection: [],
       playlistJSON: [],
       currentPlaylist: {
-        _id: 1,
+        _id: "000000000000000000000001",
         name: "",
         description: "",
         authors: [],
@@ -75,7 +75,7 @@ class App extends React.Component {
         playlistItemDownvotes: [0, 1]
       },
       currentSong: {
-        _id: 1,
+        _id: "000000000000000000000001",
         title: "",
         artists: [],
         album: "",

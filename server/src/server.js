@@ -29,23 +29,116 @@ MongoClient.connect(url, function(err, db) {
   app.use('/mongo_express', mongo_express(mongo_express_config));
 
 
-  function getPlaylistSync(playlistId) {
-    var playlist = readDocument('playlists', playlistId);
-    // Resolve authors
-    playlist.authors = playlist.authors.map((id) => readDocument('users', id));
-    // Resolve playlist items
-    playlist.playlistItems = playlist.playlistItems.map((id) => readDocument('playlistItems', id));
+  function resolveUserObjects(userList, callback) {
+  if (userList.length === 0) {
+    callback(null, {});
+  }
+  else {
+    var query = {
+      $or: userList.map((id) => { return {_id: id } })
+    };
+    // Resolve stuff
+    db.collection('users').find(query).toArray(function(err, users) {
+      if (err) {
+        return callback(err);
+      }
+      var userMap = {};
+      users.forEach((user) => {
+        userMap[user._id] = user;
+      });
+      callback(null, userMap);
+    });
+  }
+}
 
-    return playlist;
+  function getPlaylist(playlistId, callback) {
+    db.collection('playlists').findOne({
+      _id: playlistId
+    }, function(err, playlist){
+      if (err){
+        return callback(err);
+      }
+    else if(playlist === null){
+      return callback(null,null);
+    }
+
+    var userList = [playlist._id];
+    userList=userList.concat(playlist.authors);
+    userList=userList.concat(playlist.playlistItems);
+    resolveUserObjects(userList, function(err, userMap){
+      if (err) {
+        return callback(err);
+      }
+    playlist._id = userMap[playlist._id];
+    playlist.authors=playlist.authors.map((userId)=>userMap[userId]);
+    playlist.playlistItems=playlist.playlistItems.map((userId)=>userMap[userId]);
+    });
+    callback(null, playlist);
+    });
+    //var playlist = readDocument('playlists', playlistId);
+    // Resolve authors
+    //playlist.authors = playlist.authors.map((id) => readDocument('users', id));
+    // Resolve playlist items
+    //playlist.playlistItems = playlist.playlistItems.map((id) => readDocument('playlistItems', id));
+    //return playlist;
   }
 
-  function getPlaylistData(user) {
+  function getPlaylistData(user, callback) {
+  db.collection('users').findOne({
+    _id: user
+  }, function(err, userData) {
+  if (err) {
+    return callback(err);
+  } else if (userData === null) {
+    // User not found.
+    return callback(null, null);
+  }
+
+  db.collection('playlists').findOne({
+    _id: userData.playlistCollection
+  }, function(err, playlistData) {
+    if (err) {
+      return callback(err);
+    } else if (playlistData === null) {
+      // Playlist not found.
+      return callback(null, null);
+    }
+    var resolvedContents = [];
+    function processNextPlaylist(i) {
+    getPlaylist(playlistData.contents[i], function(err, playlist) {
+    if (err) {
+      callback(err);
+    }
+    else {
+      resolvedContents.push(playlist);
+      if (resolvedContents.length === playlistData.contents.length) {
+        // I am the final feed item; all others are resolved.
+        // Pass the resolved feed document back to the callback.
+        playlistData.contents = resolvedContents;
+        callback(null, playlistData);
+      } else {
+        // Process the next feed item.
+        processNextPlaylist(i + 1);
+      }
+    }
+  });
+}
+// Empty Case
+if (playlistData.contents.length === 0) {
+  callback(null, playlistData);
+} else {
+  processNextPlaylist(0);
+}
+});
+});
+    /*
     var userData = readDocument('users', user);
     var playlistData = readDocument('playlistCollections', user);
 
     var playlists = playlistData.contents.map(getPlaylistSync);
 
     return playlists;
+    */
   }
 
   function getPlaylistItemSync(playlistItemId) {

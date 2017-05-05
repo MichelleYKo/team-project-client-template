@@ -66,7 +66,7 @@ function sendXHR(verb, resource, body, cb) {
 }
 
 export function getPlaylistData(user, cb) {
-  sendXHR('GET', '/user/' + user + '/playlistCollection', undefined, (xhr) => {
+  sendXHR('GET', '/user/000000000000000000000001/playlistCollection', undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));
   });
@@ -209,7 +209,7 @@ function emulateServerReturn(data, cb) {
   // invokes (calls) the "cb" function some time in the future.
   emulateServerReturn(playlistCollection, cb);
 }*/
-
+/*
 function getPlaylistSync(playlistId) {
   var playlist = readDocument("playlists", playlistId);
   //Resolve all data fields
@@ -234,7 +234,7 @@ export function getPlaylistID(playlistID, cb){
 function getPlaylistItemSync(playlistItemId) {
   return readDocument('playlistItems', playlistItemId);
 }
-
+*/
 export function calculateVotes(upvotes, downvotes){
   //Take a song and all of the user IDs associated with it
   return upvotes-downvotes;

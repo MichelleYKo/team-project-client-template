@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var database = require('./database');
 var readDocument = database.readDocument;
 var writeDocument = database.writeDocument;
-var deleteDocument = database.deleteDocument;
+//var deleteDocument = database.deleteDocument;
 var addDocument = database.addDocument;
-var getCollection = database.getCollection;
+//var getCollection = database.getCollection;
 var validate = require('express-jsonschema').validate;
 var UserSchema = require('./schemas/userSchema.json');
 var PlaylistSchema = require('./schemas/playlistSchema.json');
@@ -95,7 +95,7 @@ MongoClient.connect(url, function(err, db) {
   }
 
   db.collection('playlists').findOne({
-    _id: userData.playlistCollection
+    _id: userData.playlistCollections
   }, function(err, playlistData) {
     if (err) {
       return callback(err);
@@ -120,17 +120,17 @@ MongoClient.connect(url, function(err, db) {
         // Process the next feed item.
         processNextPlaylist(i + 1);
       }
+      }
+    });
     }
-  });
-}
-// Empty Case
-if (playlistData.contents.length === 0) {
-  callback(null, playlistData);
-} else {
-  processNextPlaylist(0);
-}
-});
-});
+    // Empty Case
+    if (playlistData.contents.length === 0) {
+      callback(null, playlistData);
+    } else {
+      processNextPlaylist(0);
+    }
+    });
+    });
     /*
     var userData = readDocument('users', user);
     var playlistData = readDocument('playlistCollections', user);
@@ -141,19 +141,89 @@ if (playlistData.contents.length === 0) {
     */
   }
 
-  function getPlaylistItemSync(playlistItemId) {
+  function getPlaylistItem(playlistItemId, callback) {
+    db.collection('playlistsItems').findOne({
+      _id: playlistItemId
+    }, function(err, playlistItem){
+      if (err){
+        return callback(err);
+      }
+    else if(playlistItem === null){
+      return callback(null,null);
+    }
+    var playlistItemList = [playlistItem._id];
+    //playlistItemList=playlistItemList.concat(playlistItems.);
+    resolveUserObjects(playlistItemList, function(err, playlistItemMap){
+      if (err) {
+        return callback(err);
+      }
+    playlistItem._id = playlistItemMap[playlistItem._id];
+    //playlistItem.playlistItems=playlistItem.playlistItems.map((userId)=>userMap[userId]);
+    });
+    callback(null, playlistItem);
+    });
+    /*
     var playlistItems = readDocument('playlistItems', playlistItemId);
 
     return playlistItems;
+    */
   }
 
-  function getPlaylistItemData(playlist) {
+  function getPlaylistItemData(playlist, callback) {
+    db.collection('playlists').findOne({
+      _id: playlist
+    }, function(err, playlistData) {
+    if (err) {
+      return callback(err);
+    } else if (playlistData === null) {
+      // Playlist not found.
+      return callback(null, null);
+    }
+    db.collection('playlistItems').findOne({
+      _id: playlistData.playlistItems
+    }, function(err, playlistItemData) {
+      if (err) {
+        return callback(err);
+      } else if (playlistItemData === null) {
+        // PlaylistItem not found.
+        return callback(null, null);
+      }
+      var resolvedContents = [];
+      function processNextPlaylistItem(i) {
+      getPlaylistItem(playlistItemData.contents[i], function(err, playlist) {
+      if (err) {
+        callback(err);
+      }
+      else {
+        resolvedContents.push(playlist);
+        if (resolvedContents.length === playlistItemData.contents.length) {
+          // I am the final feed item; all others are resolved.
+          // Pass the resolved feed document back to the callback.
+          playlistData.contents = resolvedContents;
+          callback(null, playlistItemData);
+        } else {
+          // Process the next feed item.
+          processNextPlaylistItem(i + 1);
+        }
+        }
+      });
+      }
+      // Empty Case
+      if (playlistItemData.contents.length === 0) {
+        callback(null, playlistItemData);
+      } else {
+        processNextPlaylistItem(0);
+      }
+      });
+      });
+    /*
     var playlistData = readDocument('playlists', playlist);
     var playlistItemData = readDocument('playlistItems', playlistData.playlistItems);
 
     playlistData.contents = playlistData.contents.map(getPlaylistItemSync);
 
     return playlistItemData;
+    */
   }
 
   function getUserIdFromToken(authorizationLine) {
@@ -171,8 +241,8 @@ if (playlistData.contents.length === 0) {
       if (typeof id === 'string') {
         return id;
       } else {
-        // Not a number. Return -1, an invalid ID.
-        return -1;
+        // Not a string. Return "", an invalid ID.
+        return "";
       }
     } catch (e) {
       // Return an invalid ID.
@@ -344,8 +414,26 @@ if (playlistData.contents.length === 0) {
     // userid is a string. We need it to be a number.
     //var useridNumber = parseInt(userid, 10);
     if (fromUser === userid) {
-      // Send response.
+    /*  // Send response.
       res.send(getPlaylistData(userid));
+    } else {
+      // 403: Unauthorized request.
+      res.status(403).end();
+    }
+    */
+    getPlaylistData(new ObjectID(userid), function(err, playlistData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (playlistData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not look up playlist for user " + userid);
+      } else {
+        // Send data.
+        res.send(playlistData);
+      }
+      });
     } else {
       // 403: Unauthorized request.
       res.status(403).end();
@@ -385,7 +473,7 @@ if (playlistData.contents.length === 0) {
   function addPlaylist(name, description, authors) {
 
     // Get the current UNIX time.
-    var time = new Date().getTime();
+    //var time = new Date().getTime();
 
     // The new user
     var newPlaylist = {

@@ -128,7 +128,7 @@ function resetCollection(db, name, cb) {
  * Adds any desired indexes to the database.
  */
 function addIndexes(db, cb) {
-  db.collection('feedItems').createIndex({ "contents.contents": "text" }, null, cb);
+  db.collection('playlists').createIndex({ "contents.contents": "text" }, null, cb);
 }
 
 /**

@@ -8,6 +8,7 @@ import {getPlaylistData} from './server';
 import {getPlaylistItemData} from './server';
 import {getUserData} from './server';
 import {getSearchResults} from './server';
+import {getSpotifyAccess} from './server';
 import CPModal from './components/CPModal';
 import ASModal from './components/ASModal';
 import SRModal from './components/SRModal';
@@ -149,7 +150,7 @@ class App extends React.Component {
     }
     if (clickEvent.button === 0 && searchTerm !== "") {
       getSearchResults(searchTerm, (searchResults) => {
-        this.setState({searchResults})
+        this.setState({searchResults: searchResults.results})
       });
     }
   }
@@ -166,6 +167,7 @@ class App extends React.Component {
       this.setState({email: user.email,
                         name: user.name});
     });
+    getSpotifyAccess()
   }
 
   componentDidMount() {

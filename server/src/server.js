@@ -1,5 +1,6 @@
 // Imports the express Node module.
 var express = require('express');
+var request = require('request');
 // Creates an Express server.
 var app = express();
 // Parses response bodies.
@@ -18,6 +19,11 @@ var PlaylistSchema = require('./schemas/playlistSchema.json');
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use(express.static('../client/build'));
+
+
+var clientID = '516d3e7895814f35a45f419a114e37b3';
+var clientSecret = 'd8d330c4c35d430dbf45f6edbcb9a4ef';
+var access_token = '';
 
 
 function getPlaylistSync(playlistId) {
@@ -469,18 +475,48 @@ app.put('/playlist/:playlistid/playlistItemUpvotes/', function(req, res) {
 
 app.get('/search/:query', function(req, res) {
 
-  var query = req.params.query;
-  console.log(query);
+  var authOptions = {
+    url: 'https://api.spotify.com/v1/search/?q='  + req.params.query + '&type=track',
+    headers: { 'Authorization': 'Bearer ' + access_token},
+    json: true
+  };
 
-  res.redirect('https://api.spotify.com/v1/search/?q=' + query + '&type=track'
-    /*querystring.stringify({
-      query: query,
-      type: type
-    })*/);
-
-  //not actually sending the response back to the client side...
-
+  request.get(authOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      var tracks = body.tracks;
+      console.log(tracks);
+      res.send({
+        'results': tracks
+      });
+    }
+  });
 });
+
+app.get('/client_credentials', function(req, res) {
+
+  // requesting access token from refresh token
+  var authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: { 'Authorization': 'Basic ' + (new Buffer(clientID + ':' + clientSecret).toString('base64')) },
+    form: {
+      grant_type: 'client_credentials',
+    },
+    json: true
+  };
+
+  request.post(authOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      access_token = body.access_token;
+      res.send({
+        'access_token': access_token
+      });
+    }
+  });
+});
+
+// app.post('/request_access_token', function(req, res) {
+//   res.redirect('https://accounts.spotify.com/api/token')
+// });
 
 // Reset database.
 app.post('/resetdb', function(req, res) {

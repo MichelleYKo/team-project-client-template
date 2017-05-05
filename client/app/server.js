@@ -65,6 +65,31 @@ function sendXHR(verb, resource, body, cb) {
   }
 }
 
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+    console.log("w/ credentials");
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
 export function getPlaylistData(user, cb) {
   sendXHR('GET', '/user/' + user + '/playlistCollection', undefined, (xhr) => {
     // Call the callback with the data.
@@ -95,12 +120,52 @@ export function getPlaylistCollection(playlistCollectionId, cb) {
 
 export function getSearchResults(query, cb) {
   var parsed = query.replace(' ', '%20');
-  console.log('trying to get search results');
   sendXHR('GET', '/search/' + query, undefined, (xhr) => {
     // Call the callback with the data.
+    console.log(JSON.parse(xhr.responseText));
     cb(JSON.parse(xhr.responseText));
   });
 }
+
+// export function getSpotifyAccess(cb) {
+//   var key = new Buffer(clientID + ':' + clientSecret).toString('base64')
+//   var xhr = createCORSRequest('POST', '/request_access_token')
+//   xhr.open('POST', 'https://accounts.spotify.com/api/token');
+//   xhr.setRequestHeader('Authorization', 'Basic ' + key);
+//   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//   xhr.addEventListener('load', function() {
+//     var statusCode = xhr.status;
+//     var statusText = xhr.statusText;
+//     if (statusCode >= 200 && statusCode < 300) {
+//       // Success: Status code is in the [200, 300) range.
+//       // Call the callback with the final XHR object.
+//       cb(JSON.parse(xhr.responseText));
+//     } else {
+//       // Client or server error.
+//       // The server may have included some response text with details concerning
+//       // the error.
+//       var responseText = xhr.responseText;
+//       KiwiError("Could not obtain Spotify client credientals: Received " + statusCode + " " + statusText + ": " + responseText);
+//     }
+//   });
+//   // Time out the request if it takes longer than 10,000 milliseconds (10 seconds)
+//   xhr.timeout = 10000;
+//   // Network failure: Could not connect to server.
+//   xhr.addEventListener('error', function() {
+//     KiwiError("Could not obtain Spotify client credentials.");
+//   });
+
+//   // Network failure: request took too long to complete.
+//   xhr.addEventListener('timeout', function() {
+//     KiwiError("Spotify client credentials request timed out.");
+//   });
+//   xhr.send(JSON.stringify({grant_type: "client_credentials"}));
+// };
+
+export function getSpotifyAccess(){
+    sendXHR('GET', '/client_credentials', undefined, (xhr) => {});
+}
+
 
 export function editUserName(userId, cb) {
   sendXHR('PUT', '/user/' + userId + '/name', undefined, (xhr) => {

@@ -87,7 +87,13 @@ class App extends React.Component {
         associatedPlaylists: [0]
       },
       searchTerm: "",
-      searchResults: ""
+      searchResults: {
+        items: [{
+          name: "",
+          artists: [],
+          album: {name: ""}
+        }]
+      }
     };
   }
 
@@ -139,16 +145,16 @@ class App extends React.Component {
     this.setState({searchTerm: e.target.value});
   }
 
-  handleSearchRequest(clickEvent) {
+  handleSearchRequest(event) {
     // Stop the event from propagating up the DOM tree, since we handle it here.
     // Also prevents the link click from causing the page to scroll to the top.
-    clickEvent.preventDefault();
+    event.preventDefault();
 
     var searchTerm = this.state.searchTerm.trim();
     if(searchTerm == ""){
       window.alert("Please enter a valid, non-empty search term.");
     }
-    if (clickEvent.button === 0 && searchTerm !== "") {
+    if ((event.button == 0) && searchTerm !== "") {
       getSearchResults(searchTerm, (searchResults) => {
         this.setState({searchResults: searchResults.results})
       });
@@ -193,7 +199,7 @@ class App extends React.Component {
       <CPModal user={this.state.user}/>
       <Navbar user={this.state.user} handleUserChange={this.handleUserChange} handleSearchChange={this.handleSearchChange} handleSearchRequest = {this.handleSearchRequest} searchTerm = {this.state.searchTerm}/>
       <ASModal user = {this.state.user}/>
-      <SRModal searchTerm = {this.state.searchTerm}/>
+      <SRModal searchTerm = {this.state.searchTerm} searchResults = {this.state.searchResults} handleSearchChange = {this.handleSearchChange} handleSearchRequest = {this.handleSearchRequest} />
       {childrenWithProps}
       </div>
     )

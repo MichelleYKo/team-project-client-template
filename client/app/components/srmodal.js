@@ -4,6 +4,7 @@ import Artists from './search_results/artists';
 import Albums from './search_results/albums';
 import Playlists from './search_results/playlists';
 import Users from './search_results/users';
+import {Link} from 'react-router';
 
 export default class SRModal extends React.Component {
 
@@ -13,21 +14,20 @@ export default class SRModal extends React.Component {
         <div className= "modal-dialog">
           <div className= "modal-content" id="srmodal-content">
             <div className= "modal-header">
-              <form>
+              <form value={this.props.searchTerm} onChange={(e) => this.props.handleSearchChange(e)}>
                 <div className="row">
                   <input type="text" placeholder="Search"/>
                 </div>
               </form>
-
             </div>
 
-            <Songs />
+            <Songs searchResults = {this.props.searchResults}/>
 
             <Artists />
 
-            <Albums />
+            <Albums searchResults = {this.props.searchResults}/>
 
-            <Playlists />
+            <Playlists searchResults = {this.props.searchResults}/>
 
             <Users />
 
@@ -37,3 +37,12 @@ export default class SRModal extends React.Component {
     )
   }
 }
+
+
+              //<Link to="#" data-toggle="modal" data-target="#srModal">
+              //   <button type="button" className="btn btn-default btn-sr push-right" onClick={(e) => {
+              //     e.preventDefault();
+              //     this.props.handleSearchRequest(e)}}>
+              //     <span className="glyphicon glyphicon-search"></span>
+              //   </button>
+              // </Link>

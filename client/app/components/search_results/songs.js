@@ -2,6 +2,7 @@ import React from 'react';
 
 export default class Songs extends React.Component {
 
+
   render() {
     return (
       <div className="Songs">
@@ -19,47 +20,17 @@ export default class Songs extends React.Component {
                   <th>{"Title"}</th>
                   <th>{"Artist"}</th>
                   <th>{"Album"}</th>
-                  <th>{"Genre"}</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><button type="submit" className="btn btn-default btn-sr">
-                    <span className="glyphicon glyphicon-play"></span>
-                  </button></td>
-                  <td>{"Fire"}</td>
-                  <td>{"Carter"}</td>
-                  <td>{"Blood"}</td>
-                  <td>{"Rock"}</td>
-                  <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
-                    <span className="glyphicon glyphicon-plus-sign"></span>
-                  </button></td>
-                </tr>
-                <tr>
-                  <td><button type="submit" className="btn btn-default btn-sr">
-                    <span className="glyphicon glyphicon-play"></span>
-                  </button></td>
-                  <td>{"Dope"}</td>
-                  <td>{"Parker"}</td>
-                  <td>{"Sweat"}</td>
-                  <td>{"R&B"}</td>
-                  <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
-                    <span className="glyphicon glyphicon-plus-sign"></span>
-                  </button></td>
-                </tr>
-                <tr>
-                  <td><button type="submit" className="btn btn-default btn-sr">
-                    <span className="glyphicon glyphicon-play"></span>
-                  </button></td>
-                  <td>{"Save Me"}</td>
-                  <td>{"Rambo"}</td>
-                  <td>{"Tears"}</td>
-                  <td>{"Pop"}</td>
-                  <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
-                    <span className="glyphicon glyphicon-plus-sign"></span>
-                  </button></td>
-                </tr>
+                { 
+                  this.props.searchResults.items.map((result, i) => {
+                    return(
+                      <SongInfo key = {i} result = {result} />
+                    )
+                  })
+                }
               </tbody>
             </table>
           </div>
@@ -67,6 +38,30 @@ export default class Songs extends React.Component {
       </div>
     )
   }
+}
+
+class SongInfo extends React.Component {
+  render(){
+    return(
+    <tr>
+      <td><button type="submit" className="btn btn-default btn-sr">
+        <span className="glyphicon glyphicon-play"></span>
+      </button></td>
+      <td>{this.props.result.name}</td>
+      <td>{this.props.result.artists.map((artist, i) => {                      
+        if(i != this.props.result.artists.length-1){
+            return(artist.name + ", ")
+        }
+        else{
+            return(artist.name)
+        }
+      })}</td>
+      <td>{this.props.result.album.name}</td>
+      <td><button type="submit" className="btn btn-default btn-sr" data-toggle="popover" data-content="Add to Playlist">
+        <span className="glyphicon glyphicon-plus-sign"></span>
+      </button></td>
+    </tr>    
+  )}
 }
 
 
